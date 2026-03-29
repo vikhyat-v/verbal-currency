@@ -5,6 +5,7 @@ import About from './pages/About';
 import FAQPage from './pages/FAQ';
 import Contact from './pages/Contact';
 import Simulator from './pages/Simulator';
+import Products from './pages/Products';
 import './index.css';
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/simulator" element={<Simulator />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Analytics />

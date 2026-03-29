@@ -140,6 +140,7 @@ export function Navbar() {
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
     { label: 'Simulator', to: '/simulator' },
+    { label: 'Products', to: '/products' },
     { label: 'Program', to: '/#program' },
     { label: 'Mentors', to: '/#mentors' },
     { label: 'FAQ', to: '/faq' },
@@ -195,7 +196,7 @@ export function Footer() {
           </div>
           <div>
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-3">Pages</h4>
-            {[{ l: 'Home', t: '/' }, { l: 'About', t: '/about' }, { l: 'Simulator', t: '/simulator' }, { l: 'FAQ', t: '/faq' }, { l: 'Contact', t: '/contact' }].map(x =>
+            {[{ l: 'Home', t: '/' }, { l: 'About', t: '/about' }, { l: 'Simulator', t: '/simulator' }, { l: 'Products', t: '/products' }, { l: 'FAQ', t: '/faq' }, { l: 'Contact', t: '/contact' }].map(x =>
               <Link key={x.l} to={x.t} className="block text-sm text-white/15 hover:text-white/50 transition-colors mb-1.5">{x.l}</Link>
             )}
           </div>
@@ -208,10 +209,12 @@ export function Footer() {
           <div>
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-3">Built By</h4>
             <div className="flex items-center gap-3">
-              <img src={vikhyat} alt="Vikhyat" className="w-10 h-10 object-cover rounded-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500" />
+              <a href="https://www.instagram.com/vikhyat.v/" target="_blank" rel="noreferrer">
+                <img src={vikhyat} alt="Vikhyat" className="w-10 h-10 object-cover rounded-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-500" />
+              </a>
               <div>
-                <p className="text-sm text-white/40 font-medium">Vikhyat</p>
-                <p className="text-[10px] text-white/15">Design & Development</p>
+                <a href="https://www.instagram.com/vikhyat.v/" target="_blank" rel="noreferrer" className="text-sm text-white/40 font-medium hover:text-white transition-colors">Vikhyat</a>
+                <p className="text-[10px] text-white/15">Tech & AI/ML Consultant</p>
               </div>
             </div>
           </div>

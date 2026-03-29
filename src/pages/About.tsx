@@ -85,21 +85,21 @@ function BuiltBy() {
       <div ref={ref} className="max-w-4xl mx-auto px-6">
         <div className={`grid md:grid-cols-5 gap-12 items-center transition-all duration-700 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`}>
           <div className="md:col-span-2">
-            <div className="relative">
-              <img src={IMG.vikhyat} alt="Vikhyat" className="w-full aspect-[3/4] object-cover border border-white/[0.05]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <a href="https://www.instagram.com/vikhyat.v/" target="_blank" rel="noreferrer" className="block relative group">
+              <img src={IMG.vikhyat} alt="Vikhyat" className="w-full aspect-[3/4] object-cover border border-white/[0.05] grayscale group-hover:grayscale-0 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4">
-                <span className="font-['Bebas_Neue'] text-xl tracking-[0.1em] text-white/80">VIKHYAT</span>
-                <p className="text-[10px] text-white/40 tracking-wider">Design & Development</p>
+                <span className="font-['Bebas_Neue'] text-xl tracking-[0.1em] text-white/80 group-hover:text-white transition-colors">VIKHYAT ↗</span>
+                <p className="text-[10px] text-white/40 tracking-wider">Tech & AI/ML Consultant</p>
               </div>
-            </div>
+            </a>
           </div>
           <div className="md:col-span-3">
             <span className="text-[10px] tracking-[0.5em] uppercase text-white/20">Built By</span>
             <h2 className="mt-3 font-['Bebas_Neue'] text-3xl sm:text-4xl tracking-[0.06em] text-white/90">THE MIND BEHIND THE SCREEN</h2>
             <div className="w-8 h-px bg-white/15 mt-4 mb-6" />
             <div className="space-y-4 text-white/30 text-sm leading-relaxed">
-              <p>This website wasn't outsourced to an agency. It was built by Vikhyat — performance marketer, web developer, and the silent architect behind Truth Over Tactics' digital presence.</p>
+              <p>This website wasn't outsourced to an agency. It was built by <a href="https://www.instagram.com/vikhyat.v/" target="_blank" rel="noreferrer" className="text-white hover:underline">Vikhyat</a> — Tech & AI/ML Consultant, performance marketer, and the silent architect behind Truth Over Tactics' digital presence.</p>
               <p>From custom WordPress themes to high-converting sales funnels, Meta ad systems, and now this cinematic React experience — every pixel serves the philosophy: communicate simply, sell authentically, and never play the shiny object game.</p>
               <p>The same principles that drive the Verbal Currency program drove the design of this site: no unnecessary noise, no visual tactics, just clarity and presence.</p>
             </div>
