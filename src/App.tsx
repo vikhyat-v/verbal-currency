@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import FAQPage from './pages/FAQ';
 import Contact from './pages/Contact';
+import Simulator from './pages/Simulator';
 import './index.css';
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/simulator" element={<Simulator />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Analytics />

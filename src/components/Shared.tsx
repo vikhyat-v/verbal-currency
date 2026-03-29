@@ -139,6 +139,7 @@ export function Navbar() {
   const navLinks = [
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
+    { label: 'Simulator', to: '/simulator' },
     { label: 'Program', to: '/#program' },
     { label: 'Mentors', to: '/#mentors' },
     { label: 'FAQ', to: '/faq' },
@@ -194,7 +195,7 @@ export function Footer() {
           </div>
           <div>
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-3">Pages</h4>
-            {[{ l: 'Home', t: '/' }, { l: 'About', t: '/about' }, { l: 'FAQ', t: '/faq' }, { l: 'Contact', t: '/contact' }].map(x =>
+            {[{ l: 'Home', t: '/' }, { l: 'About', t: '/about' }, { l: 'Simulator', t: '/simulator' }, { l: 'FAQ', t: '/faq' }, { l: 'Contact', t: '/contact' }].map(x =>
               <Link key={x.l} to={x.t} className="block text-sm text-white/15 hover:text-white/50 transition-colors mb-1.5">{x.l}</Link>
             )}
           </div>
