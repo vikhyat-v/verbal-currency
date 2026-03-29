@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Home from './pages/Home';
 import About from './pages/About';
 import FAQPage from './pages/FAQ';
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
