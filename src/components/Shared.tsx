@@ -73,14 +73,37 @@ export function FogCanvas({ opacity = 1 }: { opacity?: number }) {
 export function BookBtn({ text = 'Book Your Seat', size = 'md', variant = 'solid', className = '', href }: {
   text?: string; size?: 'sm' | 'md' | 'lg'; variant?: 'solid' | 'outline'; className?: string; href?: string;
 }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const mm = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setPos({ x: x * 0.25, y: y * 0.25 });
+  };
+  const ml = () => setPos({ x: 0, y: 0 });
+
   const sz = { sm: 'px-5 py-2.5 text-xs', md: 'px-8 py-3.5 text-sm', lg: 'px-10 py-4 text-base' }[size];
   const base = variant === 'solid'
     ? 'bg-white text-black hover:bg-gray-200'
     : 'border border-white/30 text-white/80 hover:bg-white hover:text-black';
-  const cls = `inline-block font-semibold uppercase tracking-[0.2em] transition-all duration-500 relative overflow-hidden group font-['DM_Sans'] ${base} ${sz} ${className}`;
+  const cls = `magnetic inline-block font-semibold uppercase tracking-[0.2em] transition-colors duration-500 relative overflow-hidden group font-['DM_Sans'] ${base} ${sz} ${className}`;
+  const wrapperCls = 'inline-block transition-transform duration-200 ease-out';
   const inner = (<><span className="relative z-10">{text}</span>{variant === 'solid' && <span className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />}</>);
-  if (href?.startsWith('/')) return <Link to={href} className={cls}>{inner}</Link>;
-  return <a href={href || '#book'} className={cls}>{inner}</a>;
+
+  if (href?.startsWith('/')) {
+    return (
+      <div className={wrapperCls} style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}>
+        <Link to={href} className={cls} ref={ref as any} onMouseMove={mm} onMouseLeave={ml}>{inner}</Link>
+      </div>
+    );
+  }
+  return (
+    <div className={wrapperCls} style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}>
+      <a href={href || '#book'} className={cls} ref={ref} onMouseMove={mm} onMouseLeave={ml}>{inner}</a>
+    </div>
+  );
 }
 
 /* ═══════ DIVIDER ═══════ */
@@ -201,10 +224,57 @@ export function Footer() {
   );
 }
 
+/* ═══════ CUSTOM CURSOR ═══════ */
+export function CustomCursor() {
+  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [isHover, setIsHover] = useState(false);
+
+  useEffect(() => {
+    // Hide default cursor over purely static body
+    document.body.style.cursor = 'none';
+
+    const mm = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
+    const hoverOn = (e: Event) => {
+      const el = e.target as HTMLElement;
+      if (el.closest('a') || el.closest('button') || el.closest('.magnetic') || window.getComputedStyle(el).cursor === 'pointer') {
+        setIsHover(true);
+      } else {
+        setIsHover(false);
+      }
+    };
+
+    window.addEventListener('mousemove', mm, { passive: true });
+    window.addEventListener('mouseover', hoverOn, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', mm);
+      window.removeEventListener('mouseover', hoverOn);
+      document.body.style.cursor = 'auto';
+    };
+  }, []);
+
+  // Use fixed positioning so it overlays everything but ignores pointer events
+  return (
+    <>
+      {/* Center dot */}
+      <div
+        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none mix-blend-difference transition-transform duration-75 z-[9999] hidden sm:block"
+        style={{ transform: `translate3d(${pos.x - 4}px, ${pos.y - 4}px, 0) scale(${isHover ? 3 : 1})` }}
+      />
+      {/* Outer ring */}
+      <div
+        className={`fixed top-0 left-0 w-10 h-10 border border-white/30 rounded-full pointer-events-none transition-all duration-300 ease-out z-[9998] hidden sm:block ${isHover ? 'opacity-30' : 'opacity-100'}`}
+        style={{ transform: `translate3d(${pos.x - 20}px, ${pos.y - 20}px, 0) scale(${isHover ? 1.5 : 1})` }}
+      />
+    </>
+  );
+}
+
 /* ═══════ PAGE LAYOUT ═══════ */
 export function PageLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-black text-white/70">
+      <CustomCursor />
       <Navbar />
       {children}
       <Footer />

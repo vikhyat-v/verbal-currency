@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Tab } from '@headlessui/react';
 import { PageLayout, FogCanvas, Divider, useInView } from '../components/Shared';
 import { submitApplication } from '../lib/supabase';
 import { openPayment, isRazorpayReady } from '../lib/razorpay';
@@ -141,7 +140,7 @@ function ApplicationForm() {
         </div>
 
         <p className="mt-6 text-white/15 text-xs">
-          Or <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/60 underline">book a call first</a> to discuss.
+          Only accepted applicants proceed to payment.
         </p>
       </div>
     );
@@ -159,7 +158,9 @@ function ApplicationForm() {
           Payment confirmed. Welcome to Verbal Currency. You'll receive onboarding details at <span className="text-white/50">{form.email}</span> within 24 hours.
         </p>
         <div className="w-12 h-px bg-white/10 mx-auto my-6" />
-        <span className="text-[10px] tracking-[0.4em] uppercase text-white/15">Truth Over Tactics</span>
+        <span className="text-[10px] tracking-[0.4em] uppercase text-white/15 mb-10 block">Truth Over Tactics</span>
+
+        <CalendlyEmbed />
       </div>
     );
   }
@@ -237,25 +238,10 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Tabbed section: Apply / Book a Call */}
+      {/* Application Form View */}
       <section className="py-16 sm:py-24 bg-[#050505]">
         <div className="max-w-2xl mx-auto px-6">
-          <Tab.Group>
-            <Tab.List className="flex gap-2 mb-12 justify-center">
-              <Tab className={({ selected }) =>
-                `px-8 py-3 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 outline-none
-                ${selected ? 'bg-white text-black' : 'border border-white/10 text-white/40 hover:text-white/70'}`
-              }>Apply Now</Tab>
-              <Tab className={({ selected }) =>
-                `px-8 py-3 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 outline-none
-                ${selected ? 'bg-white text-black' : 'border border-white/10 text-white/40 hover:text-white/70'}`
-              }>Book a Call</Tab>
-            </Tab.List>
-            <Tab.Panels>
-              <Tab.Panel><ApplicationForm /></Tab.Panel>
-              <Tab.Panel><CalendlyEmbed /></Tab.Panel>
-            </Tab.Panels>
-          </Tab.Group>
+          <ApplicationForm />
         </div>
       </section>
 
