@@ -1,0 +1,18 @@
+
+> verbal-currency@0.0.0 build /media/windows/P6/verbal-currency
+> tsc -b && vite build
+
+src/components/Shared.tsx(1,39): error TS1484: 'RefObject' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/Shared.tsx(1,50): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/components/ui/resizable.tsx(9,51): error TS2339: Property 'PanelGroup' does not exist on type 'typeof import("/media/windows/P6/verbal-currency/node_modules/.pnpm/react-resizable-panels@4.8.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+src/components/ui/resizable.tsx(10,23): error TS2339: Property 'PanelGroup' does not exist on type 'typeof import("/media/windows/P6/verbal-currency/node_modules/.pnpm/react-resizable-panels@4.8.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+src/components/ui/resizable.tsx(25,51): error TS2339: Property 'PanelResizeHandle' does not exist on type 'typeof import("/media/windows/P6/verbal-currency/node_modules/.pnpm/react-resizable-panels@4.8.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+src/components/ui/resizable.tsx(28,23): error TS2339: Property 'PanelResizeHandle' does not exist on type 'typeof import("/media/windows/P6/verbal-currency/node_modules/.pnpm/react-resizable-panels@4.8.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+src/components/ui/resizable.tsx(40,24): error TS2339: Property 'PanelResizeHandle' does not exist on type 'typeof import("/media/windows/P6/verbal-currency/node_modules/.pnpm/react-resizable-panels@4.8.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/react-resizable-panels/dist/react-resizable-panels")'.
+src/hooks/useAnimations.ts(1,39): error TS1484: 'RefObject' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/lib/api.ts(1,20): error TS1484: 'Application' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/lib/api.ts(1,33): error TS2305: Module '"./supabase"' has no exported member 'BookingLead'.
+src/lib/api.ts(56,57): error TS2551: Property 'catch' does not exist on type 'PostgrestFilterBuilder<any, any, any, null, "booking_leads", unknown, "POST">'. Did you mean 'match'?
+src/pages/Contact.tsx(3,33): error TS6133: 'BookBtn' is declared but its value is never read.
+src/pages/FAQ.tsx(2,42): error TS6133: 'Divider' is declared but its value is never read.
+ ELIFECYCLE  Command failed with exit code 2.

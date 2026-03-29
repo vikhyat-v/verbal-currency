@@ -1,0 +1,22 @@
+
+> verbal-currency@0.0.0 build /media/windows/P6/verbal-currency
+> tsc -b && vite build
+
+vite v8.0.3 building client environment for production...
+[2Ktransforming...
+warn - The class `delay-[1200ms]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `delay-&lsqb;1200ms&rsqb;` to silence this warning.
+
+warn - The class `delay-[800ms]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `delay-&lsqb;800ms&rsqb;` to silence this warning.
+
+warn - The class `delay-[900ms]` is ambiguous and matches multiple utilities.
+warn - If this is content and not a class, replace it with `delay-&lsqb;900ms&rsqb;` to silence this warning.
+✓ 281 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.01 kB │ gzip:   0.50 kB
+dist/assets/index-BJQoYQ9H.css   64.76 kB │ gzip:  11.19 kB
+dist/assets/index-BUPFKuMQ.js   354.12 kB │ gzip: 108.85 kB
+
+✓ built in 1.56s

@@ -1,0 +1,7 @@
+
+> verbal-currency@0.0.0 build /media/windows/P6/verbal-currency
+> tsc -b && vite build
+
+src/components/ui/resizable.tsx(2,10): error TS2724: '"react-resizable-panels"' has no exported member named 'PanelGroup'. Did you mean 'PanelProps'?
+src/components/ui/resizable.tsx(2,29): error TS2305: Module '"react-resizable-panels"' has no exported member 'PanelResizeHandle'.
+ ELIFECYCLE  Command failed with exit code 2.
