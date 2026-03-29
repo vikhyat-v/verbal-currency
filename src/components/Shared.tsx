@@ -224,57 +224,10 @@ export function Footer() {
   );
 }
 
-/* ═══════ CUSTOM CURSOR ═══════ */
-export function CustomCursor() {
-  const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [isHover, setIsHover] = useState(false);
-
-  useEffect(() => {
-    // Hide default cursor over purely static body
-    document.body.style.cursor = 'none';
-
-    const mm = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
-    const hoverOn = (e: Event) => {
-      const el = e.target as HTMLElement;
-      if (el.closest('a') || el.closest('button') || el.closest('.magnetic') || window.getComputedStyle(el).cursor === 'pointer') {
-        setIsHover(true);
-      } else {
-        setIsHover(false);
-      }
-    };
-
-    window.addEventListener('mousemove', mm, { passive: true });
-    window.addEventListener('mouseover', hoverOn, { passive: true });
-
-    return () => {
-      window.removeEventListener('mousemove', mm);
-      window.removeEventListener('mouseover', hoverOn);
-      document.body.style.cursor = 'auto';
-    };
-  }, []);
-
-  // Use fixed positioning so it overlays everything but ignores pointer events
-  return (
-    <>
-      {/* Center dot */}
-      <div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none mix-blend-difference transition-transform duration-75 z-[9999] hidden sm:block"
-        style={{ transform: `translate3d(${pos.x - 4}px, ${pos.y - 4}px, 0) scale(${isHover ? 3 : 1})` }}
-      />
-      {/* Outer ring */}
-      <div
-        className={`fixed top-0 left-0 w-10 h-10 border border-white/30 rounded-full pointer-events-none transition-all duration-300 ease-out z-[9998] hidden sm:block ${isHover ? 'opacity-30' : 'opacity-100'}`}
-        style={{ transform: `translate3d(${pos.x - 20}px, ${pos.y - 20}px, 0) scale(${isHover ? 1.5 : 1})` }}
-      />
-    </>
-  );
-}
-
 /* ═══════ PAGE LAYOUT ═══════ */
 export function PageLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-black text-white/70">
-      <CustomCursor />
       <Navbar />
       {children}
       <Footer />

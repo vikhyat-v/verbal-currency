@@ -359,6 +359,73 @@ function FinalCTA() {
   );
 }
 
+/* ═══ OBJECTION ALCHEMY ═══ */
+function ObjectionAlchemy() {
+  const [ref, vis] = useInView(0.1);
+  const cards = [
+    {
+      obj: `"It's too expensive."`,
+      tactic: "Defend the ROI. Try to prove the value mathematically. Offer a payment plan or a discount to save the deal.",
+      truth: "Agree and detach. Diagnose why they don't see the value. If it's truly out of budget, let them walk with dignity."
+    },
+    {
+      obj: `"I need to think about it."`,
+      tactic: "Corner them. 'What exactly do you need to think about?' Try to handle the objection before letting them off the phone.",
+      truth: "Give them space. 'Of course. What's a good timeline for you?' Pressure creates resistance; freedom creates trust."
+    },
+    {
+      obj: `"Send me a proposal."`,
+      tactic: "Spend hours making a 20-page PDF. Follow up endlessly until they ghost you completely.",
+      truth: "Clarify intent. 'Happy to. What specifically are you looking to see that we haven't covered today?'"
+    }
+  ];
+
+  return (
+    <section className="py-24 sm:py-32 bg-[#050505] overflow-hidden">
+      <div ref={ref} className="max-w-6xl mx-auto px-6">
+        <SectionHead eyebrow="Interactive" title="OBJECTION ALCHEMY." titleAccent="PLAY THE GAME." vis={vis} />
+        <p className={`text-center text-white/40 text-sm mb-16 max-w-xl mx-auto transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
+          Hover over the common client objections below to reveal the difference between a scripted tactic and the ultimate truth.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {cards.map((c, i) => (
+            <div key={i} className={`group perspective-1000 h-[320px] transition-all duration-700 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${400 + i * 150}ms` }}>
+              <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+
+                {/* Front */}
+                <div className="absolute inset-0 backface-hidden border border-white/[0.05] bg-black/50 p-8 flex flex-col items-center justify-center text-center">
+                  <span className="text-[10px] tracking-[0.4em] uppercase text-white/20 mb-6">The Client Says:</span>
+                  <h3 className="font-['Playfair_Display'] italic text-2xl sm:text-3xl text-white/90">
+                    {c.obj}
+                  </h3>
+                  <div className="mt-8 text-white/20 text-[10px] tracking-widest uppercase animate-pulse">
+                    Hover to Flip →
+                  </div>
+                </div>
+
+                {/* Back */}
+                <div className="absolute inset-0 backface-hidden rotate-y-180 border border-white/[0.1] bg-[#0a0a0a] p-8 flex flex-col justify-center text-left">
+                  <div className="mb-6">
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-[#C41E1E]">The Tactic</span>
+                    <p className="mt-2 text-white/40 text-[13px] leading-relaxed">{c.tactic}</p>
+                  </div>
+                  <div className="w-8 h-px bg-white/10 mb-6" />
+                  <div>
+                    <span className="text-[10px] tracking-[0.3em] uppercase text-white">The Truth</span>
+                    <p className="mt-2 text-white/80 text-[13px] leading-relaxed font-medium">{c.truth}</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══ HOME PAGE ═══ */
 export default function Home() {
   return (
@@ -371,6 +438,7 @@ export default function Home() {
       <Mentors />
       <Results />
       <Manifesto />
+      <ObjectionAlchemy />
       <Pricing />
       <FinalCTA />
       <Marquee />
