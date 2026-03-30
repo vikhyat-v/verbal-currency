@@ -86,8 +86,8 @@ export function BookBtn({ text = 'Book Your Seat', size = 'md', variant = 'solid
 
   const sz = { sm: 'px-5 py-2.5 text-xs', md: 'px-8 py-3.5 text-sm', lg: 'px-10 py-4 text-base' }[size];
   const base = variant === 'solid'
-    ? 'bg-white text-black hover:bg-gray-200'
-    : 'border border-white/30 text-white/80 hover:bg-white hover:text-black';
+    ? 'bg-[#C41E1E] text-white hover:bg-red-700'
+    : 'border border-[#C41E1E] text-white/80 hover:bg-[#C41E1E] hover:text-white';
   const cls = `magnetic inline-block font-semibold uppercase tracking-[0.2em] transition-colors duration-500 relative overflow-hidden group font-['DM_Sans'] ${base} ${sz} ${className}`;
   const wrapperCls = 'inline-block transition-transform duration-200 ease-out';
   const inner = (<><span className="relative z-10">{text}</span>{variant === 'solid' && <span className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />}</>);
@@ -155,12 +155,12 @@ export function Navbar() {
           <span className="text-[9px] tracking-[0.4em] text-white/30 uppercase">Truth Over Tactics</span>
         </Link>
         <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map(l => (
+          {loc.pathname !== '/' && navLinks.map(l => (
             l.to.includes('#') ?
-              <a key={l.label} href={l.to} className="text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-white transition-colors">{l.label}</a> :
-              <Link key={l.label} to={l.to} className={`text-[11px] tracking-[0.2em] uppercase transition-colors ${loc.pathname === l.to ? 'text-white' : 'text-white/40 hover:text-white'}`}>{l.label}</Link>
+              <a key={l.label} href={l.to} className="text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-[#C41E1E] transition-colors">{l.label}</a> :
+              <Link key={l.label} to={l.to} className={`text-[11px] tracking-[0.2em] uppercase transition-colors ${loc.pathname === l.to ? 'text-white' : 'text-white/40 hover:text-[#C41E1E]'}`}>{l.label}</Link>
           ))}
-          <BookBtn text="Book Now" size="sm" href="/contact" />
+          <BookBtn text="Book Your Clarity Call" size="sm" href="/contact" />
         </div>
         <button onClick={() => setOpen(!open)} className="lg:hidden flex flex-col gap-1.5 p-2">
           <span className={`w-6 h-px bg-white transition-all duration-300 ${open ? 'rotate-45 translate-y-[3px]' : ''}`} />
@@ -170,12 +170,12 @@ export function Navbar() {
       </div>
       <div className={`lg:hidden overflow-hidden transition-all duration-400 bg-black/98 ${open ? 'max-h-96' : 'max-h-0'}`}>
         <div className="px-6 py-6 flex flex-col gap-4">
-          {navLinks.map(l => (
+          {loc.pathname !== '/' && navLinks.map(l => (
             l.to.includes('#') ?
               <a key={l.label} href={l.to} onClick={() => setOpen(false)} className="text-sm tracking-widest uppercase text-white/50">{l.label}</a> :
               <Link key={l.label} to={l.to} onClick={() => setOpen(false)} className="text-sm tracking-widest uppercase text-white/50 hover:text-white">{l.label}</Link>
           ))}
-          <BookBtn text="Book Now" size="sm" href="/contact" className="text-center mt-2" />
+          <BookBtn text="Book Your Clarity Call" size="sm" href="/contact" className="text-center mt-2" />
         </div>
       </div>
     </nav>

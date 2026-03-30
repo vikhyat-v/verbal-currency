@@ -22,18 +22,18 @@ function Hero() {
           <span className="inline-block text-[10px] tracking-[0.6em] uppercase text-white/30 mb-8 border border-white/10 px-5 py-2">Sales &amp; Communication Mastery</span>
         </div>
         <h1 className={`transition-all duration-1000 delay-200 ${ld ? 'opacity-100' : 'opacity-0 translate-y-12'}`}>
-          <span className="block font-['Bebas_Neue'] text-6xl sm:text-8xl lg:text-[120px] xl:text-[140px] leading-[0.85] tracking-[0.04em] text-white">CLOSE WITHOUT</span>
-          <span className="block font-['Bebas_Neue'] text-6xl sm:text-8xl lg:text-[120px] xl:text-[140px] leading-[0.85] tracking-[0.04em] text-white">NEEDING TO.</span>
+          <span className="block font-['Bebas_Neue'] text-6xl sm:text-7xl lg:text-[100px] xl:text-[120px] leading-[0.85] tracking-[0.04em] text-white">YOU'RE NOT BAD AT SALES.</span>
+          <span className="block font-['Bebas_Neue'] text-5xl sm:text-6xl lg:text-[80px] xl:text-[100px] leading-[0.85] tracking-[0.04em] text-[#C41E1E]">YOU'VE JUST NEVER BEEN SEEN.</span>
         </h1>
-        <div className={`mt-2 h-px w-32 sm:w-48 mx-auto bg-white/20 transition-all duration-1000 delay-500 origin-center ${ld ? 'scale-x-100' : 'scale-x-0'}`} />
-        <p className={`mt-8 font-['Cormorant_Garamond'] italic text-lg sm:text-2xl text-white/35 max-w-xl mx-auto leading-relaxed transition-all duration-1000 delay-600 ${ld ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
-          The sale happens when you let go. Master the inner game through freedom, not force.
+        <div className={`mt-4 h-px w-32 sm:w-48 mx-auto bg-[#C41E1E]/50 transition-all duration-1000 delay-500 origin-center ${ld ? 'scale-x-100' : 'scale-x-0'}`} />
+        <p className={`mt-8 font-['Cormorant_Garamond'] italic text-lg sm:text-2xl text-white/40 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-600 ${ld ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
+          For the service business owner who delivers exceptional work — and walks away from conversations wondering why nobody seems to notice.
         </p>
         <div className={`mt-5 transition-all duration-1000 delay-700 ${ld ? 'opacity-100' : 'opacity-0'}`}>
           <span className="font-['Bebas_Neue'] text-sm tracking-[0.5em] text-white/15">TRUTH OVER TACTICS</span>
         </div>
         <div className={`mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 transition-all duration-1000 delay-900 ${ld ? 'opacity-100' : 'opacity-0 translate-y-8'}`}>
-          <BookBtn text="Reserve Your Seat" size="lg" href="/contact" />
+          <BookBtn text="Book Your Clarity Call" size="lg" href="/contact" />
           <Link to="/about" className="text-white/25 hover:text-white/60 text-xs tracking-[0.2em] uppercase transition-colors">Learn More →</Link>
         </div>
       </div>
@@ -142,6 +142,7 @@ function Philosophy() {
               { q: 'Were you talking to a friend?', d: 'When you treat the call like a conversation with a friend — your authenticity becomes your weapon.' },
               { q: 'Did you have nothing to prove?', d: 'Carry the identity of an expert and you stop listening. Your insecurity speaks louder than your words.' },
               { q: 'Did you use zero tactics?', d: 'If tactic is the king, you cannot dance in your truest form. Freedom from structure IS the structure.' },
+              { q: 'Did you charge what you\'re worth?', d: 'The service professional who discounts does not have a pricing problem. He has a belief problem. And belief does not respond to better proposals. It responds only to truth.' },
             ].map((x, i) => (
               <div key={i} className={`border-l border-white/10 pl-6 transition-all duration-700 ${vis ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ transitionDelay: `${400 + i * 200}ms` }}>
                 <h3 className="font-['Playfair_Display'] text-lg text-white/70 italic">"{x.q}"</h3>
@@ -181,6 +182,10 @@ function ProgramSection() {
     <section id="program" className="py-24 sm:py-32 bg-[#080808]">
       <div ref={ref} className="max-w-6xl mx-auto px-6">
         <SectionHead eyebrow="The Program" title="10 MODULES." titleAccent="ONE TRANSFORMATION." vis={vis} />
+        <p className={`text-center text-white/40 text-sm mb-12 max-w-2xl mx-auto transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
+          Not a library of content to consume.<br />
+          A structured dismantling of everything that has been getting in your way — followed by the construction of something that actually holds.
+        </p>
         <Tab.Group>
           <Tab.List className={`flex gap-2 mb-8 justify-center transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
             {Object.keys(cats).map(c => <Tab key={c} className={({ selected }) => `px-6 py-2.5 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 outline-none ${selected ? 'bg-white text-black' : 'border border-white/10 text-white/40 hover:text-white/70'}`}>{c}</Tab>)}
@@ -225,13 +230,13 @@ function Mentors() {
   const [ref, vis] = useInView(0.1);
   const m = [
     {
-      name: 'RISHAB', role: 'Sales Philosophy & Inner Game', tag: 'Truth Over Tactics', img: IMG.spotlight,
-      bio: "Doesn't teach scripts — creates the ambience for you to find your own truth. 10+ years in high-ticket sales. 500+ pros trained.",
+      name: 'RISHABH', role: 'Sales Philosophy & Inner Game', tag: 'Truth Over Tactics', img: IMG.spotlight,
+      bio: "Doesn't teach scripts — creates the ambience for you to find your own truth. 10+ years in high-ticket sales. 500+ pros trained. He has sat across from every version of the person this program is for. The one who over-prepares. The one who under-charges. The one who delivers brilliantly — and then apologises for existing when it is time to ask for the sale.",
       quote: '"If you have the sensibility DNA, I will give you the ambience which no one could."', accent: '#C41E1E'
     },
     {
       name: 'BRIAN', role: 'Communication & Vocal Mastery', tag: 'Verbal Currency', img: IMG.window,
-      bio: "The voice architect behind Verbal Currency. Pitch, resonance, emotional intelligence, storytelling — transforms how you show up.",
+      bio: "The voice architect behind Verbal Currency. Pitch, resonance, emotional intelligence, storytelling — transforms how you show up. Because the invisible service business owner is often invisible not because of what they say — but because of how little space they take up when they say it.",
       quote: '"It\'s not what you say. It\'s how you say it."', accent: '#fff'
     },
   ];
@@ -270,7 +275,10 @@ function Results() {
   return (
     <section id="results" className="py-24 sm:py-32 bg-[#050505]">
       <div ref={ref} className="max-w-6xl mx-auto px-6">
-        <SectionHead eyebrow="Results" title="NUMBERS DON'T NEED TACTICS." vis={vis} />
+        <SectionHead eyebrow="Results" title="WHAT HAPPENS WHEN THE RIGHT PERSON FINDS THE RIGHT ENVIRONMENT." vis={vis} />
+        <p className={`text-center text-white/40 text-sm mb-12 max-w-3xl mx-auto transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
+          Across agencies, consulting practices, and service businesses — the pattern is always identical. The work is exceptional. The person behind it has simply decided, somewhere quietly, that they are negotiable.
+        </p>
         <div className={`grid grid-cols-3 gap-8 max-w-xl mx-auto mb-16 transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
           {[{ v: `${c1}+`, l: 'Pros Trained' }, { v: `${c2}%`, l: 'Breakthrough' }, { v: `${c3}x`, l: 'Revenue Growth' }].map((s, i) =>
             <div key={i} className="text-center"><div className="font-['Bebas_Neue'] text-4xl sm:text-5xl text-white tracking-wider">{s.v}</div><div className="text-[10px] text-white/25 tracking-wider uppercase mt-1">{s.l}</div></div>
@@ -308,8 +316,60 @@ function Manifesto() {
         <blockquote className={`font-['Cormorant_Garamond'] text-xl sm:text-2xl lg:text-3xl text-white/50 leading-relaxed italic transition-all duration-1000 delay-300 ${vis ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
           The body heals itself. The person becomes a great salesperson themselves. It's just that you're giving them the right environment. <span className="text-white/80">This is also a possibility.</span>
         </blockquote>
-        <div className={`mt-6 transition-all duration-700 delay-600 ${vis ? 'opacity-100' : 'opacity-0'}`}><span className="text-[10px] tracking-[0.4em] uppercase text-white/15">— Rishab</span></div>
+        <div className={`mt-6 transition-all duration-700 delay-600 ${vis ? 'opacity-100' : 'opacity-0'}`}><span className="text-[10px] tracking-[0.4em] uppercase text-white/15">— Rishabh</span></div>
         <div className={`mt-10 transition-all duration-700 delay-800 ${vis ? 'opacity-100' : 'opacity-0'}`}><BookBtn text="Begin" variant="outline" size="lg" href="/contact" /></div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══ THE CLARITY CALL ═══ */
+function ClarityCall() {
+  const [ref, vis] = useInView(0.1);
+  return (
+    <section className="py-24 sm:py-32 bg-[#050505] border-t border-white/[0.04]">
+      <div ref={ref} className="max-w-4xl mx-auto px-6 text-center">
+        <span className={`text-[10px] tracking-[0.5em] uppercase text-[#C41E1E] transition-all duration-700 ${vis ? 'opacity-100' : 'opacity-0'}`}>The Clarity Call</span>
+        <h2 className={`mt-6 font-['Bebas_Neue'] text-5xl sm:text-6xl lg:text-7xl tracking-[0.04em] text-white/90 transition-all duration-700 delay-200 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          THIS IS WHERE IT STARTS.
+        </h2>
+
+        <div className={`mt-12 space-y-2 text-white/40 text-base sm:text-lg font-['Cormorant_Garamond'] italic transition-all duration-700 delay-300 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <p>Not with a module.</p>
+          <p>Not with a framework.</p>
+          <p>Not with a technique you practise in the mirror.</p>
+          <p className="text-white/80 not-italic font-['DM_Sans'] text-sm tracking-widest uppercase mt-6 mb-8 pt-4">With a conversation.</p>
+        </div>
+
+        <div className={`mt-12 space-y-6 text-white/40 text-sm sm:text-base leading-relaxed text-left max-w-2xl mx-auto transition-all duration-700 delay-400 ${vis ? 'opacity-100' : 'opacity-0'}`}>
+          <p>
+            The Clarity Call is a 45-minute deep diagnostic — designed for the service business owner who knows something is getting in the way, but hasn't been able to name it precisely.
+          </p>
+          <p>On this call, we go to the root.</p>
+          <p className="pl-4 border-l border-[#C41E1E]/50">
+            Not "what's your sales process" — but what is actually happening in the room when the conversation turns to money?
+          </p>
+          <p className="pl-4 border-l border-[#C41E1E]/50">
+            Not "how do you handle objections" — but what do you believe, underneath the objection, about whether you deserve the yes?
+          </p>
+          <p>
+            By the end of the call — regardless of what comes next — you will leave with something most sales conversations never give you.<br /><br />
+            <span className="text-white inset-0 font-['Bebas_Neue'] text-4xl tracking-widest">CLARITY.</span>
+          </p>
+          <ul className="space-y-3 mt-4">
+            <li className="flex gap-3"><span className="text-[#C41E1E]">—</span> About where the gap actually is.</li>
+            <li className="flex gap-3"><span className="text-[#C41E1E]">—</span> About what has been running the room without your permission.</li>
+            <li className="flex gap-3"><span className="text-[#C41E1E]">—</span> About what changes when it stops.</li>
+          </ul>
+          <div className="w-12 h-px bg-[#C41E1E]/50 my-8 mx-auto" />
+          <p className="text-center">If there is a fit, we will discuss what working together looks like.<br />If there isn't — you leave with more than you came with.</p>
+          <p className="text-center font-['Playfair_Display'] italic text-[#C41E1E] text-xl mt-6">There is no pitch on this call.<br />Only truth.</p>
+        </div>
+
+        <div className={`mt-16 transition-all duration-700 delay-600 ${vis ? 'opacity-100' : 'opacity-0'}`}>
+          <BookBtn text="Book Your Clarity Call" size="lg" href="/contact" />
+          <p className="mt-4 text-[10px] tracking-wider text-white/20 uppercase">The Clarity Call is reviewed before booking is confirmed.<br />Not every application is accepted.</p>
+        </div>
       </div>
     </section>
   );
@@ -318,22 +378,23 @@ function Manifesto() {
 /* ═══ PRICING ═══ */
 function Pricing() {
   const [ref, vis] = useInView(0.1);
-  const inc = ['10 Core Modules', 'Live cohort with Rishab & Brian', 'Vocal Mastery Workshop', 'EI & Mindfulness Training', 'Pitchcraft Frameworks', 'Objection Alchemy Playbook', 'Lifetime community', '1-on-1 hot seats', 'Bonus Philosophy Module', 'All recordings'];
+  const inc = ['45-Minute Deep Diagnostic', 'Root Cause Identification', 'Sales Block Dismantling', 'No-Pitch Conversation', 'Immediate Actionable Clarity'];
   return (
     <section id="pricing" className="py-24 sm:py-32 bg-[#080808]">
       <div ref={ref} className="max-w-3xl mx-auto px-6">
-        <SectionHead eyebrow="Investment" title="NOT A COURSE." titleAccent="LIBERATION." vis={vis} />
+        <SectionHead eyebrow="Investment" title="NOT A COURSE." titleAccent="LIBERATION." sub="The program begins on a call. One honest conversation about where you actually are." vis={vis} />
         <div className={`relative border border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent p-8 sm:p-12 transition-all duration-700 delay-400 ${vis ? 'opacity-100' : 'opacity-0 translate-y-12'}`}>
-          <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-white/20" /><div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-white/20" /><div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-white/20" /><div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-white/20" />
+          <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#C41E1E]/50" /><div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#C41E1E]/50" /><div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#C41E1E]/50" /><div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#C41E1E]/50" />
           <div className="text-center">
-            <span className="text-[9px] tracking-[0.4em] uppercase text-white/20">Verbal Currency Premium</span>
-            <div className="mt-3 font-['Bebas_Neue'] text-6xl sm:text-7xl text-white tracking-[0.05em]">₹1,50,000</div>
-            <p className="mt-1 text-white/15 text-[10px] tracking-wider">One-time. Lifetime transformation.</p>
+            <span className="text-[9px] tracking-[0.4em] uppercase text-[#C41E1E]">Strategic Alignment</span>
+            <div className="mt-3 font-['Bebas_Neue'] text-5xl sm:text-6xl text-white tracking-[0.05em] uppercase">Book A Call</div>
+            <p className="mt-1 text-white/30 text-[10px] tracking-wider uppercase">Free. No long-term commitment.</p>
           </div>
           <div className="w-full h-px bg-white/[0.06] my-8" />
-          <div className="space-y-3">{inc.map((x, i) => <div key={i} className="flex items-start gap-3"><span className="text-white/20 text-[10px] mt-0.5">—</span><span className="text-white/35 text-sm">{x}</span></div>)}</div>
+          <div className="space-y-3">{inc.map((x, i) => <div key={i} className="flex items-start gap-3"><span className="text-[#C41E1E] text-[10px] mt-0.5">✓</span><span className="text-white/50 text-sm">{x}</span></div>)}</div>
           <div className="w-full h-px bg-white/[0.06] my-8" />
-          <div className="text-center"><BookBtn text="Apply Now" size="lg" href="/contact" /><p className="mt-3 text-white/10 text-[10px]">Application reviewed before acceptance.</p></div>
+          <p className="text-center text-white/50 text-sm mb-6 max-w-xl mx-auto italic font-['Cormorant_Garamond']">For the service professional whose only real competitor has never been the market. It has been the version of himself that apologises before the client even objects.</p>
+          <div className="text-center"><BookBtn text="Book Your Clarity Call" size="lg" href="/contact" /><p className="mt-3 text-white/10 text-[10px]">Application reviewed before acceptance.</p></div>
         </div>
       </div>
       <div className="mt-20"><Divider /></div>
@@ -351,9 +412,12 @@ function FinalCTA() {
       <div className="absolute inset-0 z-[2] pointer-events-none opacity-[0.05]"><img src={IMG.stage} alt="" className="w-full h-full object-cover" /></div>
       <div ref={ref} className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         <h2 className={`font-['Bebas_Neue'] text-5xl sm:text-6xl lg:text-7xl tracking-[0.04em] leading-[0.95] transition-all duration-700 delay-200 ${vis ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
-          FREEDOM IS THE HIGHEST<br /><span className="font-['Playfair_Display'] italic font-normal text-[0.85em] text-white/60">SALES SKILL.</span>
+          FREEDOM IS THE HIGHEST<br /><span className="font-['Playfair_Display'] italic font-normal text-[0.85em] text-[#C41E1E]">SALES SKILL.</span>
         </h2>
-        <div className={`mt-10 transition-all duration-700 delay-600 ${vis ? 'opacity-100' : 'opacity-0'}`}><BookBtn text="Apply for Verbal Currency" size="lg" href="/contact" /></div>
+        <p className={`mt-6 text-white/50 text-xl font-['Cormorant_Garamond'] italic transition-all duration-700 delay-400 ${vis ? 'opacity-100' : 'opacity-0'}`}>
+          You've been seen here.<br />Come be heard.
+        </p>
+        <div className={`mt-10 transition-all duration-700 delay-600 ${vis ? 'opacity-100' : 'opacity-0'}`}><BookBtn text="Book Your Clarity Call" size="lg" href="/contact" /></div>
       </div>
     </section>
   );
@@ -377,6 +441,11 @@ function ObjectionAlchemy() {
       obj: `"Send me a proposal."`,
       tactic: "Spend hours making a 20-page PDF. Follow up endlessly until they ghost you completely.",
       truth: "Clarify intent. 'Happy to. What specifically are you looking to see that we haven't covered today?'"
+    },
+    {
+      obj: `"We've worked with cheaper options before."`,
+      tactic: "Justify why you are better. Pull out case studies. Offer a starter package so they can test you first.",
+      truth: "Premium does not explain itself. The moment you prove you are not cheap — you have accepted the frame that you might be. Your silence on this comparison is the answer."
     }
   ];
 
@@ -440,6 +509,7 @@ export default function Home() {
       <Manifesto />
       <ObjectionAlchemy />
       <Pricing />
+      <ClarityCall />
       <FinalCTA />
       <Marquee />
     </PageLayout>

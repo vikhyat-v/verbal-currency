@@ -5,7 +5,7 @@ const faqs = [
   {
     cat: 'About the Program', qs: [
       { q: 'Is this just another sales course?', a: "No. This is anti-course. We don't teach scripts or 10-step formulas. We give you freedom to access the skills you already possess. The goal of our structure is to make you free of that structure." },
-      { q: 'What is Verbal Currency exactly?', a: "Verbal Currency is the idea that your words, voice, and presence are currency. The program combines Rishab's inner-game sales philosophy (Truth Over Tactics) with Brian's vocal and communication mastery. It's a complete transformation of how you sell and communicate." },
+      { q: 'What is Verbal Currency exactly?', a: "Verbal Currency is the idea that your words, voice, and presence are currency. The program combines Rishabh's inner-game sales philosophy (Truth Over Tactics) with Brian's vocal and communication mastery. It's a complete transformation of how you sell and communicate." },
       { q: 'How is this different from other sales training?', a: "Most training teaches you what to say. We teach you how to be free enough that the right thing comes naturally. We don't add more tactics to your toolkit — we remove the barriers that prevent you from accessing what you already know." },
       { q: 'Is this only for salespeople?', a: "No. Anyone who communicates for a living benefits — founders, consultants, coaches, managers, therapists, speakers. If you need to connect with people and move them to action, this is for you." },
     ]
@@ -14,13 +14,13 @@ const faqs = [
     cat: 'Investment & Logistics', qs: [
       { q: 'What makes this worth ₹1,50,000?', a: "We sell liberation from dependency on tactics. One breakthrough on a high-ticket call returns this 10x. This is not a weekend workshop — it's a permanent upgrade to how you show up in every conversation." },
       { q: 'Are there payment plans?', a: 'Yes. Structured payment options are shared after your application is reviewed and accepted.' },
-      { q: 'How is the program delivered?', a: 'Live cohort sessions with Rishab and Brian, recorded for replay. Includes 1-on-1 hot seat coaching, vocal mastery workshops, and lifetime community access. We work with small cohorts (max 20) to maintain depth.' },
+      { q: 'How is the program delivered?', a: 'Live cohort sessions with Rishabh and Brian, recorded for replay. Includes 1-on-1 hot seat coaching, vocal mastery workshops, and lifetime community access. We work with small cohorts (max 20) to maintain depth.' },
       { q: 'How long is the program?', a: 'The core program runs over 10 weeks, one module per week. But the community, recordings, and support are lifetime.' },
     ]
   },
   {
     cat: 'Fit & Expectations', qs: [
-      { q: "What if it doesn't work for me?", a: "Rishab says it openly: 'Probably it will not help you.' If you don't have the sensibility DNA — the latent understanding that something deeper drives sales — no course will help. But if you do, we give you the ambience no one else can." },
+      { q: "What if it doesn't work for me?", a: "Rishabh says it openly: 'Probably it will not help you.' If you don't have the sensibility DNA — the latent understanding that something deeper drives sales — no course will help. But if you do, we give you the ambience no one else can." },
       { q: 'Do I need any prerequisites?', a: 'For the communication modules, a minimum CEFR A2/B1 level in English is recommended. For the sales philosophy modules, the only prerequisite is openness to unlearning what you think you know.' },
       { q: 'I already have 10+ years of experience. Is this too basic?', a: "The opposite. The more experience you have, the more identity and tactics you've accumulated. This program strips that away. Senior professionals often have the biggest breakthroughs because they have the most to let go of." },
       { q: 'Can my company sponsor multiple seats?', a: 'Yes. Reach out through the contact page for corporate cohort pricing.' },

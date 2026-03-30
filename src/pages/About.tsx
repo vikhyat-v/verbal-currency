@@ -37,7 +37,7 @@ function Story() {
             <div className="w-8 h-px bg-white/15 mt-4 mb-6" />
             <div className="space-y-4 text-white/30 text-sm leading-relaxed">
               <p>Most sales training teaches you what to say. We teach you how to be free enough that the right thing to say comes naturally.</p>
-              <p>The name "Truth Over Tactics" isn't a marketing angle — it's the entire operating system. When Rishab ran his first raw, unscripted sales training session, the room was confused. No slides. No frameworks. No "repeat after me."</p>
+              <p>The name "Truth Over Tactics" isn't a marketing angle — it's the entire operating system. When Rishabh ran his first raw, unscripted sales training session, the room was confused. No slides. No frameworks. No "repeat after me."</p>
               <p>Instead, he asked three questions: Were you talking to a friend? Did you have nothing to prove? Did you use zero tactics? If the answer to all three isn't yes, you're not free. And if you're not free, your insecurities speak louder than your words.</p>
               <p>Brian brought the science of voice — how your pitch, your pause, your resonance can transform a conversation before you even say anything meaningful. Together they created Verbal Currency: the idea that your words, your voice, your presence are currency. And the richest people on a call aren't the ones with the best script — they're the ones with the most freedom.</p>
             </div>
