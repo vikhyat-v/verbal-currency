@@ -10,7 +10,7 @@ function AboutHero() {
         <img src={IMG.poster} alt="" className="w-full h-full object-cover" />
       </div>
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-20">
-        <span className="text-[10px] tracking-[0.6em] uppercase text-white/30 border border-white/10 px-5 py-2 inline-block mb-8">Our Story</span>
+        <span className="inline-block text-[11px] font-bold tracking-[0.5em] uppercase text-[#C41E1E] mb-8 border border-[#C41E1E]/30 bg-[#C41E1E]/5 px-6 py-2">Our Story</span>
         <h1 className="font-['Bebas_Neue'] text-5xl sm:text-7xl lg:text-8xl tracking-[0.04em] text-white leading-[0.9]">
           TRUTH OVER<br />TACTICS.
         </h1>
@@ -32,10 +32,10 @@ function Story() {
             <img src={IMG.filmscape} alt="Truth Over Tactics" className="w-full aspect-[3/4] object-cover border border-white/[0.05] grayscale hover:grayscale-0 transition-all duration-700" />
           </div>
           <div className="md:col-span-3">
-            <span className="text-[10px] tracking-[0.5em] uppercase text-white/20">The Origin</span>
-            <h2 className="mt-3 font-['Bebas_Neue'] text-3xl sm:text-4xl tracking-[0.06em] text-white/90">WHY WE EXIST</h2>
-            <div className="w-8 h-px bg-white/15 mt-4 mb-6" />
-            <div className="space-y-4 text-white/30 text-sm leading-relaxed">
+            <span className="text-[10px] tracking-[0.5em] uppercase text-[#C41E1E] font-bold">The Origin</span>
+            <h2 className="mt-3 font-['Bebas_Neue'] text-4xl sm:text-5xl tracking-[0.06em] text-white">WHY WE EXIST</h2>
+            <div className="w-12 h-px bg-[#C41E1E]/50 mt-5 mb-8" />
+            <div className="space-y-6 text-white/60 text-sm leading-relaxed">
               <p>Most sales training teaches you what to say. We teach you how to be free enough that the right thing to say comes naturally.</p>
               <p>The name "Truth Over Tactics" isn't a marketing angle — it's the entire operating system. When Rishabh ran his first raw, unscripted sales training session, the room was confused. No slides. No frameworks. No "repeat after me."</p>
               <p>Instead, he asked three questions: Were you talking to a friend? Did you have nothing to prove? Did you use zero tactics? If the answer to all three isn't yes, you're not free. And if you're not free, your insecurities speak louder than your words.</p>
@@ -63,12 +63,13 @@ function Values() {
     <section className="py-24 sm:py-32 bg-[#080808]">
       <div ref={ref} className="max-w-5xl mx-auto px-6">
         <SectionHead eyebrow="What We Believe" title="OUR VALUES." vis={vis} />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {vals.map((v, i) => (
-            <div key={i} className={`border border-white/[0.05] p-6 transition-all duration-700 hover:border-white/10 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`}
+            <div key={i} className={`border border-white/10 bg-[#080808] p-8 transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${300 + i * 100}ms` }}>
-              <h3 className="font-['Playfair_Display'] text-lg text-white/70 font-medium">{v.title}</h3>
-              <p className="mt-3 text-white/25 text-sm leading-relaxed">{v.desc}</p>
+              <div className="w-8 h-[2px] bg-[#C41E1E]/80 mb-6" />
+              <h3 className="font-['Playfair_Display'] text-xl text-white font-semibold">{v.title}</h3>
+              <p className="mt-4 text-white/50 text-sm leading-relaxed">{v.desc}</p>
             </div>
           ))}
         </div>
@@ -95,11 +96,11 @@ function BuiltBy() {
             </a>
           </div>
           <div className="md:col-span-3">
-            <span className="text-[10px] tracking-[0.5em] uppercase text-white/20">Built By</span>
-            <h2 className="mt-3 font-['Bebas_Neue'] text-3xl sm:text-4xl tracking-[0.06em] text-white/90">THE MIND BEHIND THE SCREEN</h2>
-            <div className="w-8 h-px bg-white/15 mt-4 mb-6" />
-            <div className="space-y-4 text-white/30 text-sm leading-relaxed">
-              <p>This website wasn't outsourced to an agency. It was built by <a href="https://www.instagram.com/vikhyat.v/" target="_blank" rel="noreferrer" className="text-white hover:underline">Vikhyat</a> — Tech & AI/ML Consultant, performance marketer, and the silent architect behind Truth Over Tactics' digital presence.</p>
+            <span className="text-[10px] tracking-[0.5em] uppercase text-[#C41E1E] font-bold">Built By</span>
+            <h2 className="mt-3 font-['Bebas_Neue'] text-4xl sm:text-5xl tracking-[0.06em] text-white">THE MIND BEHIND THE SCREEN</h2>
+            <div className="w-12 h-px bg-[#C41E1E]/50 mt-5 mb-8" />
+            <div className="space-y-6 text-white/60 text-sm leading-relaxed">
+              <p>This website wasn't outsourced to an agency. It was built by <a href="https://www.instagram.com/vikhyat.v/" target="_blank" rel="noreferrer" className="text-white font-semibold hover:text-[#C41E1E] underline decoration-[#C41E1E]/50 transition-colors">Vikhyat</a> — Tech & AI/ML Consultant, performance marketer, and the silent architect behind Truth Over Tactics' digital presence.</p>
               <p>From custom WordPress themes to high-converting sales funnels, Meta ad systems, and now this cinematic React experience — every pixel serves the philosophy: communicate simply, sell authentically, and never play the shiny object game.</p>
               <p>The same principles that drive the Verbal Currency program drove the design of this site: no unnecessary noise, no visual tactics, just clarity and presence.</p>
             </div>

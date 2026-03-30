@@ -38,7 +38,7 @@ export default function FAQPage() {
         <FogCanvas opacity={0.3} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black z-[1]" />
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <span className="text-[10px] tracking-[0.6em] uppercase text-white/30 border border-white/10 px-5 py-2 inline-block mb-8">FAQ</span>
+          <span className="inline-block text-[11px] font-bold tracking-[0.5em] uppercase text-[#C41E1E] mb-8 border border-[#C41E1E]/30 bg-[#C41E1E]/5 px-6 py-2">FAQ</span>
           <h1 className="font-['Bebas_Neue'] text-5xl sm:text-7xl tracking-[0.04em] text-white">
             EVERY QUESTION. <span className="font-['Playfair_Display'] italic font-normal text-[0.85em] text-white/50">ANSWERED.</span>
           </h1>
@@ -54,20 +54,20 @@ export default function FAQPage() {
                 style={{ transitionDelay: `${si * 200}ms` }}>
                 {section.cat}
               </h2>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {section.qs.map((faq, i) => (
                   <Disclosure key={i}>
                     {({ open }) => (
-                      <div className={`border border-white/[0.04] transition-all duration-500 hover:border-white/8 ${open ? 'border-white/10 bg-white/[0.01]' : ''}
+                      <div className={`border border-white/10 bg-[#080808] transition-all duration-500 hover:border-[#C41E1E]/50 ${open ? 'border-[#C41E1E]/50 bg-black/80' : ''}
                         ${vis ? 'opacity-100' : 'opacity-0 translate-y-4'}`}
                         style={{ transitionDelay: `${si * 200 + i * 80}ms` }}>
-                        <Disclosure.Button className="w-full px-5 py-4 flex items-center justify-between text-left">
-                          <span className="text-white/50 text-sm pr-4">{faq.q}</span>
-                          <span className={`text-white/30 text-lg transition-transform duration-300 flex-shrink-0 ${open ? 'rotate-45' : ''}`}>+</span>
+                        <Disclosure.Button className="w-full px-6 py-5 flex items-center justify-between text-left group">
+                          <span className={`font-['Playfair_Display'] text-lg ${open ? 'font-bold text-white' : 'text-white/70 group-hover:text-white'} transition-colors pr-4`}>{faq.q}</span>
+                          <span className={`text-xl transition-transform duration-300 flex-shrink-0 ${open ? 'rotate-45 text-[#C41E1E]' : 'text-white/30 group-hover:text-white'}`}>+</span>
                         </Disclosure.Button>
-                        <Disclosure.Panel className="px-5 pb-4">
-                          <div className="w-6 h-px bg-white/10 mb-3" />
-                          <p className="text-white/25 text-sm leading-relaxed">{faq.a}</p>
+                        <Disclosure.Panel className="px-6 pb-6 pt-2">
+                          <div className="w-12 h-px bg-[#C41E1E]/50 mb-4" />
+                          <p className="text-white/60 text-sm leading-relaxed">{faq.a}</p>
                         </Disclosure.Panel>
                       </div>
                     )}

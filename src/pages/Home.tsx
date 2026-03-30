@@ -496,6 +496,40 @@ function ObjectionAlchemy() {
   );
 }
 
+/* ═══ ECOSYSTEM / EXPLORE ═══ */
+function EcosystemExplore() {
+  const [ref, vis] = useInView(0.1);
+  const pages = [
+    { title: "THE SIMULATOR", desc: "Interactive roleplay to test your responses in real-time.", href: "/simulator", tag: "Practice", img: IMG.stage },
+    { title: "PRODUCTS", desc: "Targeted deep dives into specific communication bottlenecks.", href: "/products", tag: "Self-Paced", img: IMG.poster },
+    { title: "THE PHILOSOPHY", desc: "Understand the origin of Truth Over Tactics.", href: "/about", tag: "About", img: IMG.window },
+    { title: "FAQ", desc: "Every question, answered with absolute clarity.", href: "/faq", tag: "Details", img: IMG.filmscape },
+  ];
+  return (
+    <section className="py-24 sm:py-32 bg-[#050505] border-t border-white/[0.02]">
+      <div ref={ref} className="max-w-6xl mx-auto px-6">
+        <SectionHead eyebrow="The Ecosystem" title="EXPLORE." titleAccent="GO DEEPER." vis={vis} />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+          {pages.map((p, i) => (
+            <Link key={i} to={p.href} className={`group relative h-[300px] border border-white/10 bg-[#080808] overflow-hidden transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${300 + i * 150}ms` }}>
+              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700"><img src={p.img} alt="" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110" /></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent" />
+              <div className="relative h-full flex flex-col justify-end p-6 z-10">
+                <span className="text-[10px] tracking-widest uppercase text-[#C41E1E] font-bold mb-3">{p.tag}</span>
+                <h3 className="font-['Bebas_Neue'] text-3xl sm:text-4xl text-white tracking-wide">{p.title}</h3>
+                <p className="mt-3 text-white/50 text-sm leading-relaxed group-hover:text-white/90 transition-colors">{p.desc}</p>
+                <div className="mt-6 flex items-center text-[#C41E1E] text-xs tracking-widest uppercase font-bold opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                  Explore →
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══ HOME PAGE ═══ */
 export default function Home() {
   return (
@@ -510,6 +544,7 @@ export default function Home() {
       <Manifesto />
       <ObjectionAlchemy />
       <Pricing />
+      <EcosystemExplore />
       <ClarityCall />
       <FinalCTA />
       <Marquee />
