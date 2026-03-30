@@ -58,7 +58,7 @@ export default function FAQPage() {
                 {section.qs.map((faq, i) => (
                   <Disclosure key={i}>
                     {({ open }) => (
-                      <div className={`border border-white/10 bg-[#080808] transition-all duration-500 hover:border-[#C41E1E]/50 ${open ? 'border-[#C41E1E]/50 bg-black/80' : ''}
+                      <div className={`border border-white/10 bg-[#050505]/60 backdrop-blur-md transition-all duration-500 hover:border-[#C41E1E]/50 ${open ? 'border-[#C41E1E]/50 bg-black/60' : ''}
                         ${vis ? 'opacity-100' : 'opacity-0 translate-y-4'}`}
                         style={{ transitionDelay: `${si * 200 + i * 80}ms` }}>
                         <Disclosure.Button className="w-full px-6 py-5 flex items-center justify-between text-left group">

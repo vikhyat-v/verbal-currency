@@ -144,7 +144,7 @@ function Philosophy() {
               { q: 'Did you use zero tactics?', d: 'If tactic is the king, you cannot dance in your truest form. Freedom from structure IS the structure.' },
               { q: 'Did you charge what you\'re worth?', d: 'The service professional who discounts does not have a pricing problem. He has a belief problem. And belief does not respond to better proposals. It responds only to truth.' },
             ].map((x, i) => (
-              <div key={i} className={`border border-white/10 bg-[#080808] p-6 hover:border-[#C41E1E]/50 transition-all duration-700 ${vis ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ transitionDelay: `${400 + i * 150}ms` }}>
+              <div key={i} className={`border border-white/10 bg-[#050505]/60 backdrop-blur-md p-6 hover:border-[#C41E1E]/50 transition-all duration-700 ${vis ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ transitionDelay: `${400 + i * 150}ms` }}>
                 <h3 className="font-['Playfair_Display'] text-xl text-white font-semibold">"{x.q}"</h3>
                 <p className="mt-3 text-white/50 text-sm leading-relaxed">{x.d}</p>
               </div>
@@ -197,7 +197,7 @@ function ProgramSection() {
                   {mods.map((m, i) => (
                     <Disclosure key={i}>
                       {({ open }) => (
-                        <div className={`border border-white/[0.05] bg-black/50 transition-all duration-500 hover:border-[#C41E1E]/40 ${open ? 'border-[#C41E1E]/50 bg-black/80' : ''} ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${400 + i * 100}ms` }}>
+                        <div className={`border border-white/[0.05] bg-[#050505]/40 backdrop-blur-md transition-all duration-500 hover:border-[#C41E1E]/40 ${open ? 'border-[#C41E1E]/50 bg-black/60' : ''} ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${400 + i * 100}ms` }}>
                           <Disclosure.Button className="w-full p-6 text-left relative overflow-hidden group">
                             <span className={`absolute top-0 left-0 w-1 h-full transition-all duration-500 ${open ? 'bg-[#C41E1E]' : 'bg-transparent group-hover:bg-[#C41E1E]/50'}`} />
                             <span className={`text-[11px] tracking-widest font-mono font-bold transition-colors ${open ? 'text-[#C41E1E]' : 'text-white/30'}`}>{m.n}</span>
@@ -245,9 +245,9 @@ function Mentors() {
     <section id="mentors" className="py-24 sm:py-32 bg-[#050505]">
       <div ref={ref} className="max-w-6xl mx-auto px-6">
         <SectionHead eyebrow="Your Mentors" title="TWO MINDS." titleAccent="ONE MISSION." vis={vis} />
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 relative z-10">
           {m.map((p, i) => (
-            <div key={i} className={`relative overflow-hidden border border-white/10 bg-[#080808] group transition-all duration-700 hover:border-[#C41E1E] ${vis ? 'opacity-100' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${400 + i * 250}ms` }}>
+            <div key={i} className={`relative overflow-hidden border border-white/10 bg-[#050505]/60 backdrop-blur-xl group transition-all duration-700 hover:border-[#C41E1E] ${vis ? 'opacity-100' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${400 + i * 250}ms` }}>
               <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.25] transition-opacity duration-700"><img src={p.img} alt="" className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-1000" /></div>
               <div className="relative z-10 p-8 sm:p-12">
                 <div className="absolute top-0 left-0 w-24 h-[3px]" style={{ background: p.accent }} />
@@ -282,16 +282,16 @@ function Results() {
         </p>
         <div className={`grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-20 transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
           {[{ v: `${c1}+`, l: 'Pros Trained' }, { v: `${c2}%`, l: 'Breakthrough' }, { v: `${c3}x`, l: 'Revenue Growth' }].map((s, i) =>
-            <div key={i} className="text-center p-6 border border-white/5 bg-[#080808] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div className="font-['Bebas_Neue'] text-5xl sm:text-6xl text-[#C41E1E] tracking-wider">{s.v}</div><div className="text-[11px] font-bold text-white/40 tracking-widest uppercase mt-2">{s.l}</div></div>
+            <div key={i} className="text-center p-6 border border-white/5 bg-[#050505]/60 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div className="font-['Bebas_Neue'] text-5xl sm:text-6xl text-[#C41E1E] tracking-wider">{s.v}</div><div className="text-[11px] font-bold text-white/40 tracking-widest uppercase mt-2">{s.l}</div></div>
           )}
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 relative z-10">
           {[
             { t: "Before this I was chasing every deal. Now I close more by caring less about the close.", n: 'Sales Director', r: '18% → 42%' },
             { t: "'Your insecurities speak louder than your words.' That changed everything.", n: 'Founder, Ed-Tech', r: '3x revenue' },
             { t: "Brian's vocal mastery alone was worth it. I command every room now.", n: 'VP Sales', r: '+65% performance' },
           ].map((t, i) => (
-            <div key={i} className={`border border-white/10 bg-[#080808] p-8 transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${500 + i * 150}ms` }}>
+            <div key={i} className={`border border-white/10 bg-[#050505]/70 backdrop-blur-lg p-8 transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${500 + i * 150}ms` }}>
               <p className="font-serif text-white/80 text-lg leading-relaxed mb-6">"{t.t}"</p>
               <div className="mt-auto pt-4 border-t border-white/10"><p className="text-[#C41E1E] text-xs font-bold tracking-wider uppercase mb-1">{t.n}</p><p className="text-white/60 text-sm font-semibold">{t.r}</p></div>
             </div>
@@ -509,9 +509,9 @@ function EcosystemExplore() {
     <section className="py-24 sm:py-32 bg-[#050505] border-t border-white/[0.02]">
       <div ref={ref} className="max-w-6xl mx-auto px-6">
         <SectionHead eyebrow="The Ecosystem" title="EXPLORE." titleAccent="GO DEEPER." vis={vis} />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12 relative z-10">
           {pages.map((p, i) => (
-            <Link key={i} to={p.href} className={`group relative h-[300px] border border-white/10 bg-[#080808] overflow-hidden transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${300 + i * 150}ms` }}>
+            <Link key={i} to={p.href} className={`group relative h-[300px] border border-white/10 bg-[#050505]/80 backdrop-blur-md overflow-hidden transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${300 + i * 150}ms` }}>
               <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700"><img src={p.img} alt="" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110" /></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent" />
               <div className="relative h-full flex flex-col justify-end p-6 z-10">

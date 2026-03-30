@@ -147,7 +147,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${vis || open ? '' : '-translate-y-full'} ${scrollY > 60 || open ? 'bg-black/95 backdrop-blur-md border-b border-white/5' : ''}`}>
+      <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${vis || open ? '' : '-translate-y-full'} ${scrollY > 60 || open ? 'bg-black/60 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : ''}`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex flex-col leading-none z-50">
             <span className="font-['Bebas_Neue'] text-2xl text-white tracking-[0.15em]">VERBAL CURRENCY</span>
@@ -169,7 +169,7 @@ export function Navbar() {
 
       {/* Sidebar Overlay */}
       <div
-        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-black/60 backdrop-blur-md z-40 transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setOpen(false)}
       />
 
@@ -256,10 +256,15 @@ export function Footer() {
 /* ═══════ PAGE LAYOUT ═══════ */
 export function PageLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-black text-white/70">
+    <div className="relative min-h-screen bg-[#030303] text-white/70">
+      <div className="bg-noise" />
       <Navbar />
-      {children}
-      <Footer />
+      <div className="relative z-10">
+        {children}
+      </div>
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }

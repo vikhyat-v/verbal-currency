@@ -63,9 +63,9 @@ function Values() {
     <section className="py-24 sm:py-32 bg-[#080808]">
       <div ref={ref} className="max-w-5xl mx-auto px-6">
         <SectionHead eyebrow="What We Believe" title="OUR VALUES." vis={vis} />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
           {vals.map((v, i) => (
-            <div key={i} className={`border border-white/10 bg-[#080808] p-8 transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`}
+            <div key={i} className={`border border-white/10 bg-[#050505]/60 backdrop-blur-md p-8 transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${300 + i * 100}ms` }}>
               <div className="w-8 h-[2px] bg-[#C41E1E]/80 mb-6" />
               <h3 className="font-['Playfair_Display'] text-xl text-white font-semibold">{v.title}</h3>
