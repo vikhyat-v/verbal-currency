@@ -148,37 +148,64 @@ export function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${vis ? '' : '-translate-y-full'} ${scrollY > 60 ? 'bg-black/95 backdrop-blur-md border-b border-white/5' : ''}`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex flex-col leading-none">
-          <span className="font-['Bebas_Neue'] text-2xl text-white tracking-[0.15em]">VERBAL CURRENCY</span>
-          <span className="text-[9px] tracking-[0.4em] text-white/30 uppercase">Truth Over Tactics</span>
-        </Link>
-        <div className="hidden lg:flex items-center gap-8">
-          {loc.pathname !== '/' && navLinks.map(l => (
-            l.to.includes('#') ?
-              <a key={l.label} href={l.to} className="text-[11px] tracking-[0.2em] uppercase text-white/40 hover:text-[#C41E1E] transition-colors">{l.label}</a> :
-              <Link key={l.label} to={l.to} className={`text-[11px] tracking-[0.2em] uppercase transition-colors ${loc.pathname === l.to ? 'text-white' : 'text-white/40 hover:text-[#C41E1E]'}`}>{l.label}</Link>
-          ))}
-          <BookBtn text="Book Your Clarity Call" size="sm" href="/contact" />
+    <>
+      <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${vis || open ? '' : '-translate-y-full'} ${scrollY > 60 || open ? 'bg-black/95 backdrop-blur-md border-b border-white/5' : ''}`}>
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <Link to="/" className="flex flex-col leading-none z-50">
+            <span className="font-['Bebas_Neue'] text-2xl text-white tracking-[0.15em]">VERBAL CURRENCY</span>
+            <span className="text-[9px] tracking-[0.4em] text-[#C41E1E] uppercase mt-0.5">Truth Over Tactics</span>
+          </Link>
+
+          <div className="flex items-center gap-5 z-50">
+            <div className="hidden sm:block">
+              <BookBtn text="Book Your Clarity Call" size="sm" href="/contact" />
+            </div>
+            <button onClick={() => setOpen(!open)} className="flex flex-col gap-1.5 p-2 focus:outline-none group">
+              <span className={`w-7 h-[1px] bg-white transition-all duration-300 ${open ? 'rotate-45 translate-y-[7px]' : 'group-hover:bg-[#C41E1E]'}`} />
+              <span className={`w-7 h-[1px] bg-white transition-all duration-300 ${open ? 'opacity-0' : 'group-hover:bg-[#C41E1E]'}`} />
+              <span className={`w-7 h-[1px] bg-white transition-all duration-300 ${open ? '-rotate-45 -translate-y-[7px]' : 'group-hover:bg-[#C41E1E]'}`} />
+            </button>
+          </div>
         </div>
-        <button onClick={() => setOpen(!open)} className="lg:hidden flex flex-col gap-1.5 p-2">
-          <span className={`w-6 h-px bg-white transition-all duration-300 ${open ? 'rotate-45 translate-y-[3px]' : ''}`} />
-          <span className={`w-6 h-px bg-white transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
-          <span className={`w-6 h-px bg-white transition-all duration-300 ${open ? '-rotate-45 -translate-y-[3px]' : ''}`} />
+      </nav>
+
+      {/* Sidebar Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 transition-opacity duration-500 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setOpen(false)}
+      />
+
+      {/* Sidebar Drawer */}
+      <div className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-[#050505] border-l border-white/5 z-50 transform transition-transform duration-500 ease-[cubic-bezier(0.8,0,0.2,1)] flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex-1 overflow-y-auto px-10 py-24 flex flex-col justify-center">
+          <div className="space-y-6 flex flex-col">
+            {navLinks.map((l, i) => (
+              <div key={l.label} className={`overflow-hidden transition-all duration-700 delay-[${open ? 100 + i * 50 : 0}ms] ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                {l.to.includes('#') ? (
+                  <a href={l.to} onClick={() => setOpen(false)} className="text-2xl sm:text-3xl font-['Bebas_Neue'] tracking-[0.1em] text-white/50 hover:text-[#C41E1E] transition-colors block py-2">
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link to={l.to} onClick={() => setOpen(false)} className={`text-2xl sm:text-3xl font-['Bebas_Neue'] tracking-[0.1em] transition-colors block py-2 ${loc.pathname === l.to ? 'text-white' : 'text-white/50 hover:text-[#C41E1E]'}`}>
+                    {l.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className={`mt-16 pt-10 border-t border-white/10 transition-all duration-700 delay-500 ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <span className="block text-[10px] tracking-widest uppercase text-white/30 mb-6">Ready to break the cycle?</span>
+            <BookBtn text="Book Your Clarity Call" size="lg" href="/contact" />
+          </div>
+        </div>
+
+        <button onClick={() => setOpen(false)} className="absolute top-6 right-6 p-4 text-white/40 hover:text-white transition-colors">
+          <span className="sr-only">Close menu</span>
+          ✕
         </button>
       </div>
-      <div className={`lg:hidden overflow-hidden transition-all duration-400 bg-black/98 ${open ? 'max-h-96' : 'max-h-0'}`}>
-        <div className="px-6 py-6 flex flex-col gap-4">
-          {loc.pathname !== '/' && navLinks.map(l => (
-            l.to.includes('#') ?
-              <a key={l.label} href={l.to} onClick={() => setOpen(false)} className="text-sm tracking-widest uppercase text-white/50">{l.label}</a> :
-              <Link key={l.label} to={l.to} onClick={() => setOpen(false)} className="text-sm tracking-widest uppercase text-white/50 hover:text-white">{l.label}</Link>
-          ))}
-          <BookBtn text="Book Your Clarity Call" size="sm" href="/contact" className="text-center mt-2" />
-        </div>
-      </div>
-    </nav>
+    </>
   );
 }
 
