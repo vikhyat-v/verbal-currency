@@ -19,15 +19,15 @@ function Hero() {
         style={{ background: 'conic-gradient(from 180deg, transparent 30%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 55%, transparent 70%)', animation: 'flickerLight 8s ease-in-out infinite' }} />
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div className={`transition-all duration-1000 ${ld ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
-          <span className="inline-block text-[10px] tracking-[0.6em] uppercase text-white/30 mb-8 border border-white/10 px-5 py-2">Sales &amp; Communication Mastery</span>
+          <span className="inline-block text-[11px] font-bold tracking-[0.5em] uppercase text-[#C41E1E] mb-8 border border-[#C41E1E]/30 bg-[#C41E1E]/5 px-6 py-2">Sales &amp; Communication Diagnostics</span>
         </div>
         <h1 className={`transition-all duration-1000 delay-200 ${ld ? 'opacity-100' : 'opacity-0 translate-y-12'}`}>
           <span className="block font-['Bebas_Neue'] text-6xl sm:text-7xl lg:text-[100px] xl:text-[120px] leading-[0.85] tracking-[0.04em] text-white">YOU'RE NOT BAD AT SALES.</span>
           <span className="block font-['Bebas_Neue'] text-5xl sm:text-6xl lg:text-[80px] xl:text-[100px] leading-[0.85] tracking-[0.04em] text-[#C41E1E]">YOU'VE JUST NEVER BEEN SEEN.</span>
         </h1>
         <div className={`mt-4 h-px w-32 sm:w-48 mx-auto bg-[#C41E1E]/50 transition-all duration-1000 delay-500 origin-center ${ld ? 'scale-x-100' : 'scale-x-0'}`} />
-        <p className={`mt-8 font-['Cormorant_Garamond'] italic text-lg sm:text-2xl text-white/40 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-600 ${ld ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
-          For the service business owner who delivers exceptional work — and walks away from conversations wondering why nobody seems to notice.
+        <p className={`mt-8 font-serif text-lg sm:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delay-600 ${ld ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
+          A 45-minute deep diagnostic to dismantle your sales blocks and uncover your true verbal currency. No scripts. No tactics. Just truth.
         </p>
         <div className={`mt-5 transition-all duration-1000 delay-700 ${ld ? 'opacity-100' : 'opacity-0'}`}>
           <span className="font-['Bebas_Neue'] text-sm tracking-[0.5em] text-white/15">TRUTH OVER TACTICS</span>
@@ -137,16 +137,16 @@ function Philosophy() {
               <BookBtn text="Learn More" variant="outline" href="/about" />
             </div>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-6">
             {[
               { q: 'Were you talking to a friend?', d: 'When you treat the call like a conversation with a friend — your authenticity becomes your weapon.' },
               { q: 'Did you have nothing to prove?', d: 'Carry the identity of an expert and you stop listening. Your insecurity speaks louder than your words.' },
               { q: 'Did you use zero tactics?', d: 'If tactic is the king, you cannot dance in your truest form. Freedom from structure IS the structure.' },
               { q: 'Did you charge what you\'re worth?', d: 'The service professional who discounts does not have a pricing problem. He has a belief problem. And belief does not respond to better proposals. It responds only to truth.' },
             ].map((x, i) => (
-              <div key={i} className={`border-l border-white/10 pl-6 transition-all duration-700 ${vis ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ transitionDelay: `${400 + i * 200}ms` }}>
-                <h3 className="font-['Playfair_Display'] text-lg text-white/70 italic">"{x.q}"</h3>
-                <p className="mt-2 text-white/25 text-sm leading-relaxed">{x.d}</p>
+              <div key={i} className={`border border-white/10 bg-[#080808] p-6 hover:border-[#C41E1E]/50 transition-all duration-700 ${vis ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`} style={{ transitionDelay: `${400 + i * 150}ms` }}>
+                <h3 className="font-['Playfair_Display'] text-xl text-white font-semibold">"{x.q}"</h3>
+                <p className="mt-3 text-white/50 text-sm leading-relaxed">{x.d}</p>
               </div>
             ))}
           </div>
@@ -197,15 +197,16 @@ function ProgramSection() {
                   {mods.map((m, i) => (
                     <Disclosure key={i}>
                       {({ open }) => (
-                        <div className={`border border-white/[0.05] bg-black/50 transition-all duration-500 hover:border-white/10 ${open ? 'border-white/15 bg-black/80' : ''} ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${400 + i * 100}ms` }}>
-                          <Disclosure.Button className="w-full p-5 text-left">
-                            <span className="text-white/15 text-[10px] tracking-widest font-mono">{m.n}</span>
-                            <h3 className="mt-1 font-['Playfair_Display'] text-base font-semibold text-white/70">{m.t}</h3>
-                            <p className="mt-0.5 text-[10px] text-white/20 tracking-wider uppercase">{m.s}</p>
+                        <div className={`border border-white/[0.05] bg-black/50 transition-all duration-500 hover:border-[#C41E1E]/40 ${open ? 'border-[#C41E1E]/50 bg-black/80' : ''} ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${400 + i * 100}ms` }}>
+                          <Disclosure.Button className="w-full p-6 text-left relative overflow-hidden group">
+                            <span className={`absolute top-0 left-0 w-1 h-full transition-all duration-500 ${open ? 'bg-[#C41E1E]' : 'bg-transparent group-hover:bg-[#C41E1E]/50'}`} />
+                            <span className={`text-[11px] tracking-widest font-mono font-bold transition-colors ${open ? 'text-[#C41E1E]' : 'text-white/30'}`}>{m.n}</span>
+                            <h3 className="mt-2 font-['Playfair_Display'] text-lg font-bold text-white/90">{m.t}</h3>
+                            <p className="mt-1 text-[11px] text-white/40 tracking-wider uppercase font-semibold">{m.s}</p>
                           </Disclosure.Button>
-                          <Disclosure.Panel className="px-5 pb-5">
-                            <div className="w-6 h-px bg-white/10 mb-3" />
-                            {m.pts.map((p, j) => <div key={j} className="flex items-start gap-2 mb-1.5"><span className="text-white/15 text-[8px] mt-0.5">—</span><span className="text-white/30 text-xs leading-relaxed">{p}</span></div>)}
+                          <Disclosure.Panel className="px-6 pb-6 pt-2">
+                            <div className="w-12 h-px bg-[#C41E1E]/50 mb-4" />
+                            {m.pts.map((p, j) => <div key={j} className="flex items-start gap-3 mb-2"><span className="text-[#C41E1E] text-[10px] mt-1 pr-1">✓</span><span className="text-white/60 text-sm leading-relaxed">{p}</span></div>)}
                           </Disclosure.Panel>
                         </div>
                       )}
@@ -246,17 +247,17 @@ function Mentors() {
         <SectionHead eyebrow="Your Mentors" title="TWO MINDS." titleAccent="ONE MISSION." vis={vis} />
         <div className="grid md:grid-cols-2 gap-6">
           {m.map((p, i) => (
-            <div key={i} className={`relative overflow-hidden border border-white/[0.05] bg-black group transition-all duration-700 hover:border-white/10 ${vis ? 'opacity-100' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${400 + i * 250}ms` }}>
-              <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity"><img src={p.img} alt="" className="w-full h-full object-cover" /></div>
-              <div className="relative z-10 p-8 sm:p-10">
-                <div className="absolute top-0 left-0 w-12 h-[2px]" style={{ background: p.accent }} />
-                <span className="text-[9px] tracking-[0.4em] uppercase text-white/20">{p.tag}</span>
-                <h3 className="mt-4 font-['Bebas_Neue'] text-4xl sm:text-5xl tracking-[0.1em] text-white/90">{p.name}</h3>
-                <p className="text-[11px] text-white/30 tracking-[0.2em] uppercase mt-1">{p.role}</p>
-                <div className="w-8 h-px bg-white/10 mt-6" />
-                <p className="mt-5 text-white/30 text-sm leading-relaxed">{p.bio}</p>
-                <blockquote className="mt-5 border-l border-white/10 pl-4">
-                  <p className="font-['Cormorant_Garamond'] italic text-white/20 text-base leading-relaxed">{p.quote}</p>
+            <div key={i} className={`relative overflow-hidden border border-white/10 bg-[#080808] group transition-all duration-700 hover:border-[#C41E1E] ${vis ? 'opacity-100' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${400 + i * 250}ms` }}>
+              <div className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.25] transition-opacity duration-700"><img src={p.img} alt="" className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-1000" /></div>
+              <div className="relative z-10 p-8 sm:p-12">
+                <div className="absolute top-0 left-0 w-24 h-[3px]" style={{ background: p.accent }} />
+                <span className="text-[10px] tracking-[0.4em] uppercase text-[#C41E1E] font-bold">{p.tag}</span>
+                <h3 className="mt-4 font-['Bebas_Neue'] text-5xl sm:text-6xl tracking-[0.05em] text-white">{p.name}</h3>
+                <p className="text-xs text-white/40 tracking-[0.2em] uppercase mt-2">{p.role}</p>
+                <div className="w-12 h-px bg-white/20 mt-8" />
+                <p className="mt-6 text-white/60 text-sm leading-10">{p.bio}</p>
+                <blockquote className="mt-8 border-l-2 border-[#C41E1E]/50 pl-5">
+                  <p className="font-['Cormorant_Garamond'] italic text-white/80 text-xl leading-relaxed">{p.quote}</p>
                 </blockquote>
               </div>
             </div>
@@ -279,20 +280,20 @@ function Results() {
         <p className={`text-center text-white/40 text-sm mb-12 max-w-3xl mx-auto transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
           Across agencies, consulting practices, and service businesses — the pattern is always identical. The work is exceptional. The person behind it has simply decided, somewhere quietly, that they are negotiable.
         </p>
-        <div className={`grid grid-cols-3 gap-8 max-w-xl mx-auto mb-16 transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-20 transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
           {[{ v: `${c1}+`, l: 'Pros Trained' }, { v: `${c2}%`, l: 'Breakthrough' }, { v: `${c3}x`, l: 'Revenue Growth' }].map((s, i) =>
-            <div key={i} className="text-center"><div className="font-['Bebas_Neue'] text-4xl sm:text-5xl text-white tracking-wider">{s.v}</div><div className="text-[10px] text-white/25 tracking-wider uppercase mt-1">{s.l}</div></div>
+            <div key={i} className="text-center p-6 border border-white/5 bg-[#080808] shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div className="font-['Bebas_Neue'] text-5xl sm:text-6xl text-[#C41E1E] tracking-wider">{s.v}</div><div className="text-[11px] font-bold text-white/40 tracking-widest uppercase mt-2">{s.l}</div></div>
           )}
         </div>
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-6">
           {[
             { t: "Before this I was chasing every deal. Now I close more by caring less about the close.", n: 'Sales Director', r: '18% → 42%' },
             { t: "'Your insecurities speak louder than your words.' That changed everything.", n: 'Founder, Ed-Tech', r: '3x revenue' },
             { t: "Brian's vocal mastery alone was worth it. I command every room now.", n: 'VP Sales', r: '+65% performance' },
           ].map((t, i) => (
-            <div key={i} className={`border border-white/[0.04] bg-black/40 p-6 transition-all duration-700 hover:border-white/10 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${500 + i * 150}ms` }}>
-              <p className="font-['Cormorant_Garamond'] italic text-white/30 text-base leading-relaxed">"{t.t}"</p>
-              <div className="mt-5 pt-4 border-t border-white/[0.05]"><p className="text-white/20 text-[10px] tracking-wider uppercase">{t.n}</p><p className="text-white/50 text-xs font-semibold mt-1">{t.r}</p></div>
+            <div key={i} className={`border border-white/10 bg-[#080808] p-8 transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${500 + i * 150}ms` }}>
+              <p className="font-serif text-white/80 text-lg leading-relaxed mb-6">"{t.t}"</p>
+              <div className="mt-auto pt-4 border-t border-white/10"><p className="text-[#C41E1E] text-xs font-bold tracking-wider uppercase mb-1">{t.n}</p><p className="text-white/60 text-sm font-semibold">{t.r}</p></div>
             </div>
           ))}
         </div>

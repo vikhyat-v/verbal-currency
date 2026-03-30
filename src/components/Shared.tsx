@@ -86,8 +86,8 @@ export function BookBtn({ text = 'Book Your Seat', size = 'md', variant = 'solid
 
   const sz = { sm: 'px-5 py-2.5 text-xs', md: 'px-8 py-3.5 text-sm', lg: 'px-10 py-4 text-base' }[size];
   const base = variant === 'solid'
-    ? 'bg-[#C41E1E] text-white hover:bg-red-700'
-    : 'border border-[#C41E1E] text-white/80 hover:bg-[#C41E1E] hover:text-white';
+    ? 'bg-[#C41E1E] text-white hover:bg-red-700 shadow-[0_0_20px_rgba(196,30,30,0.4)] hover:shadow-[0_0_40px_rgba(196,30,30,0.7)]'
+    : 'border border-[#C41E1E] text-white/80 hover:bg-[#C41E1E] hover:text-white hover:shadow-[0_0_30px_rgba(196,30,30,0.4)]';
   const cls = `magnetic inline-block font-semibold uppercase tracking-[0.2em] transition-colors duration-500 relative overflow-hidden group font-['DM_Sans'] ${base} ${sz} ${className}`;
   const wrapperCls = 'inline-block transition-transform duration-200 ease-out';
   const inner = (<><span className="relative z-10">{text}</span>{variant === 'solid' && <span className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />}</>);
