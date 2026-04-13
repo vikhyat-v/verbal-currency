@@ -85,7 +85,7 @@ export function initiatePayment(options: RazorpayOptions): Promise<{ success: bo
       currency: options.currency || 'INR',
       name: 'Verbal Currency',
       description: 'Truth Over Tactics — Premium Program',
-      image: '/images/filmscape.png',
+      image: '/images/poster.png',
       prefill: {
         name: options.name,
         email: options.email,

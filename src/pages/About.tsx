@@ -29,7 +29,7 @@ function Story() {
       <div ref={ref} className="max-w-4xl mx-auto px-6">
         <div className={`grid md:grid-cols-5 gap-12 transition-all duration-700 ${vis ? 'opacity-100' : 'opacity-0 translate-y-8'}`}>
           <div className="md:col-span-2">
-            <img src={IMG.filmscape} alt="Truth Over Tactics" className="w-full aspect-[3/4] object-cover border border-white/[0.05] grayscale hover:grayscale-0 transition-all duration-700" />
+            <img src={IMG.window} alt="Truth Over Tactics" className="w-full aspect-[3/4] object-cover border border-white/[0.05] grayscale hover:grayscale-0 transition-all duration-700" />
           </div>
           <div className="md:col-span-3">
             <span className="text-[10px] tracking-[0.5em] uppercase text-[#C41E1E] font-bold">The Origin</span>

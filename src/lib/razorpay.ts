@@ -37,7 +37,7 @@ export async function openPayment({ amount, name, email, phone, onSuccess, onFai
     currency: 'INR',
     name: 'Verbal Currency',
     description: 'Truth Over Tactics — Sales & Communication Mastery',
-    image: '/images/filmscape.png',
+    image: '/images/poster.png',
     prefill: { name, email, contact: phone || '' },
     theme: { color: '#ffffff', backdrop_color: '#000000' },
     handler: (response: any) => {

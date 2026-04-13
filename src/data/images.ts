@@ -6,7 +6,7 @@
 //   stage.png        → Two men on stage with crowd, smoky blue
 //   window.png       → Man at window, cityscape, VERBAL CURRENCY
 //   spotlight.png    → Man on stool under spotlight, TRUTH OVER TACTICS
-//   filmscape.png    → Two men arms crossed, A FILMSCAPE
+
 //   vikhyat.jpg      → Your photo (black suit, bar light)
 //
 // Then: npm run dev
@@ -16,6 +16,6 @@ export const IMG = {
   stage: '/images/stage.png',
   window: '/images/window.png',
   spotlight: '/images/spotlight.png',
-  filmscape: '/images/filmscape.png',
+
   vikhyat: '/images/vikhyat.jpg',
 };

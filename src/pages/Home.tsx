@@ -12,9 +12,7 @@ function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       <FogCanvas />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black z-[1]" />
-      <div className="absolute inset-0 z-[2] flex items-center justify-center pointer-events-none">
-        <img src={IMG.filmscape} alt="" className="h-full max-h-[80vh] object-contain opacity-[0.12] mix-blend-lighten" />
-      </div>
+
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[70vh] pointer-events-none z-[1]"
         style={{ background: 'conic-gradient(from 180deg, transparent 30%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 55%, transparent 70%)', animation: 'flickerLight 8s ease-in-out infinite' }} />
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -68,7 +66,7 @@ function Gallery() {
     { src: IMG.stage, label: 'THE STAGE', desc: 'A crowd ready to listen.', span: 'md:col-span-2' },
     { src: IMG.spotlight, label: 'THE SPOTLIGHT', desc: 'Under the light, nothing hides.', span: '' },
     { src: IMG.window, label: 'THE WINDOW', desc: 'Beyond the skyline.', span: '' },
-    { src: IMG.filmscape, label: 'THE FILMSCAPE', desc: 'No games. Just truth.', span: 'row-span-2' },
+
   ];
   return (
     <section className="py-20 sm:py-28 bg-[#050505]">
@@ -503,7 +501,7 @@ function EcosystemExplore() {
     { title: "THE SIMULATOR", desc: "Interactive roleplay to test your responses in real-time.", href: "/simulator", tag: "Practice", img: IMG.stage },
     { title: "PRODUCTS", desc: "Targeted deep dives into specific communication bottlenecks.", href: "/products", tag: "Self-Paced", img: IMG.poster },
     { title: "THE PHILOSOPHY", desc: "Understand the origin of Truth Over Tactics.", href: "/about", tag: "About", img: IMG.window },
-    { title: "FAQ", desc: "Every question, answered with absolute clarity.", href: "/faq", tag: "Details", img: IMG.filmscape },
+    { title: "FAQ", desc: "Every question, answered with absolute clarity.", href: "/faq", tag: "Details", img: IMG.spotlight },
   ];
   return (
     <section className="py-24 sm:py-32 bg-[#050505] border-t border-white/[0.02]">
