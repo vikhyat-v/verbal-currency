@@ -6,6 +6,7 @@ import FAQPage from './pages/FAQ';
 import Contact from './pages/Contact';
 import Simulator from './pages/Simulator';
 import Products from './pages/Products';
+import Snippets from './pages/Snippets';
 import './index.css';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/simulator" element={<Simulator />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/snippets" element={<Snippets />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Analytics />

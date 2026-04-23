@@ -1,19 +1,38 @@
-import { useState, Fragment } from 'react';
+import { useState, useEffect, useRef, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Dialog, Transition, Tab, Disclosure } from '@headlessui/react';
 import { PageLayout, FogCanvas, BookBtn, Divider, SectionHead, useInView, useCountUp } from '../components/Shared';
-import { IMG } from '../data/images';
+import { IMG, VIDEO } from '../data/images';
 
 /* ═══ HERO ═══ */
 function Hero() {
   const [ld, setLd] = useState(false);
-  useState(() => { setTimeout(() => setLd(true), 300); });
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => { const timer = setTimeout(() => setLd(true), 300); return () => clearTimeout(timer); }, []);
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      <FogCanvas />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black z-[1]" />
+      {/* Background Video */}
+      <video
+        ref={videoRef}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-40' : 'opacity-0'}`}
+        src={VIDEO.reel1Bg}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        onCanPlayThrough={() => setVideoLoaded(true)}
+      />
+      {/* Fallback fog while video loads */}
+      <div className={`absolute inset-0 transition-opacity duration-1000 ${videoLoaded ? 'opacity-30' : 'opacity-100'}`}>
+        <FogCanvas />
+      </div>
+      {/* Overlay gradients for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black z-[1]" />
+      <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[70vh] pointer-events-none z-[1]"
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[70vh] pointer-events-none z-[2]"
         style={{ background: 'conic-gradient(from 180deg, transparent 30%, rgba(255,255,255,0.03) 45%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 55%, transparent 70%)', animation: 'flickerLight 8s ease-in-out infinite' }} />
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div className={`transition-all duration-1000 ${ld ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
@@ -528,12 +547,72 @@ function EcosystemExplore() {
   );
 }
 
+/* ═══ FEATURED REELS ═══ */
+function FeaturedReels() {
+  const [ref, vis] = useInView(0.05);
+  const reels = [
+    {
+      src: VIDEO.reel1,
+      title: 'REEL ONE',
+      subtitle: 'The Unseen Game',
+      desc: 'A glimpse into the world of Verbal Currency — where truth becomes your most powerful closing tool.',
+    },
+    {
+      src: VIDEO.reel2,
+      title: 'REEL TWO',
+      subtitle: 'Freedom Over Tactics',
+      desc: 'Watch what happens when you stop performing and start being. Sales mastery, redefined.',
+    },
+  ];
+  return (
+    <section className="py-24 sm:py-32 bg-[#050505]">
+      <div ref={ref} className="max-w-6xl mx-auto px-6">
+        <SectionHead eyebrow="Watch" title="FEATURED" titleAccent="REELS." vis={vis} />
+        <div className="grid md:grid-cols-2 gap-8 mt-12">
+          {reels.map((reel, i) => (
+            <div
+              key={i}
+              className={`group relative border border-white/[0.06] bg-[#080808] overflow-hidden transition-all duration-700 hover:border-[#C41E1E]/40 hover:shadow-[0_0_40px_rgba(196,30,30,0.08)] ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              style={{ transitionDelay: `${300 + i * 200}ms` }}
+            >
+              {/* Video player */}
+              <div className="relative aspect-[9/16] sm:aspect-video bg-black overflow-hidden">
+                <video
+                  className="w-full h-full object-cover"
+                  src={reel.src}
+                  controls
+                  preload="metadata"
+                  playsInline
+                  controlsList="nodownload"
+                />
+                {/* Subtle vignette over video */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-40" />
+              </div>
+              {/* Info */}
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-2 h-2 bg-[#C41E1E] rounded-full animate-pulse" />
+                  <span className="text-[10px] tracking-[0.4em] uppercase text-[#C41E1E] font-bold">{reel.subtitle}</span>
+                </div>
+                <h3 className="font-['Bebas_Neue'] text-3xl sm:text-4xl tracking-[0.06em] text-white/90 group-hover:text-white transition-colors">{reel.title}</h3>
+                <p className="mt-3 text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors">{reel.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-20"><Divider /></div>
+    </section>
+  );
+}
+
 /* ═══ HOME PAGE ═══ */
 export default function Home() {
   return (
     <PageLayout>
       <Hero />
       <Marquee />
+      <FeaturedReels />
       <Philosophy />
       <Gallery />
       <ProgramSection />

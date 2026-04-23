@@ -19,3 +19,9 @@ export const IMG = {
 
   vikhyat: '/images/vikhyat.jpg',
 };
+
+export const VIDEO = {
+  reel1Bg: '/videos/reel1-bg.mp4',
+  reel1: '/videos/reel1.mp4',
+  reel2: '/videos/reel2.mp4',
+};

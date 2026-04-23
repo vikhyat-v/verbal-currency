@@ -27,7 +27,7 @@ export default function Products() {
 
                         <div className="mt-12 w-16 h-px bg-white/10 mx-auto" />
 
-                        <p className="mt-8 text-[10px] text-[#C41E1E] tracking-[0.4em] uppercase animate-pulse duration-[2s]">
+                        <p className="mt-8 text-[10px] text-[#C41E1E] tracking-[0.4em] uppercase animate-pulse duration-1000">
                             [ Deployment Pending ]
                         </p>
                     </div>

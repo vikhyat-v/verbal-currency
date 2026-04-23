@@ -140,6 +140,7 @@ export function Navbar() {
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
     { label: 'Program', to: '/#program' },
+    { label: 'Snippets', to: '/snippets' },
     { label: 'Mentors', to: '/#mentors' },
     { label: 'FAQ', to: '/faq' },
     { label: 'Contact', to: '/contact' },
@@ -174,7 +175,7 @@ export function Navbar() {
       />
 
       {/* Sidebar Drawer */}
-      <div className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-[#050505] border-l border-white/5 z-50 transform transition-transform duration-500 ease-[cubic-bezier(0.8,0,0.2,1)] flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-[#050505] border-l border-white/5 z-50 transform transition-transform duration-500 ease-in-out flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex-1 overflow-y-auto px-10 py-24 flex flex-col justify-center">
           <div className="space-y-6 flex flex-col">
             {navLinks.map((l, i) => (
@@ -221,7 +222,7 @@ export function Footer() {
           </div>
           <div>
             <h4 className="text-[10px] tracking-[0.3em] uppercase text-white/25 mb-3">Pages</h4>
-            {[{ l: 'Home', t: '/' }, { l: 'About', t: '/about' }, { l: 'FAQ', t: '/faq' }, { l: 'Contact', t: '/contact' }].map(x =>
+            {[{ l: 'Home', t: '/' }, { l: 'About', t: '/about' }, { l: 'Snippets', t: '/snippets' }, { l: 'FAQ', t: '/faq' }, { l: 'Contact', t: '/contact' }].map(x =>
               <Link key={x.l} to={x.t} className="block text-sm text-white/15 hover:text-white/50 transition-colors mb-1.5">{x.l}</Link>
             )}
           </div>
