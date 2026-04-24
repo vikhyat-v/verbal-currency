@@ -583,9 +583,9 @@ function FeaturedReels() {
               style={{ transitionDelay: `${300 + i * 200}ms` }}
             >
               {/* Video player */}
-              <div className="relative bg-black overflow-hidden" style={{ aspectRatio: '9/16', maxHeight: '75vw' }}>
+              <div className="relative w-full bg-black" style={{ aspectRatio: '16/9' }}>
                 <video
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                   src={reel.src}
                   controls
                   preload="metadata"
@@ -593,17 +593,15 @@ function FeaturedReels() {
                   controlsList="nodownload"
                   style={{ WebkitPlaysinline: true } as React.CSSProperties}
                 />
-                {/* Subtle vignette over video */}
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-40" />
               </div>
               {/* Info */}
-              <div className="p-5 sm:p-8">
-                <div className="flex items-center gap-3 mb-3">
+              <div className="p-4 sm:p-6 lg:p-8">
+                <div className="flex items-center gap-3 mb-2 sm:mb-3">
                   <div className="w-2 h-2 bg-[#C41E1E] rounded-full animate-pulse" />
                   <span className="text-[10px] tracking-[0.4em] uppercase text-[#C41E1E] font-bold">{reel.subtitle}</span>
                 </div>
-                <h3 className="font-['Bebas_Neue'] text-2xl sm:text-3xl md:text-4xl tracking-[0.06em] text-white/90 group-hover:text-white transition-colors">{reel.title}</h3>
-                <p className="mt-2 sm:mt-3 text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors">{reel.desc}</p>
+                <h3 className="font-['Bebas_Neue'] text-xl sm:text-2xl md:text-3xl lg:text-4xl tracking-[0.06em] text-white/90 group-hover:text-white transition-colors">{reel.title}</h3>
+                <p className="mt-2 text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/60 transition-colors">{reel.desc}</p>
               </div>
             </div>
           ))}

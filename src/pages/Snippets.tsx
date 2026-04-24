@@ -69,9 +69,9 @@ function VideoGrid() {
               <div className="grid lg:grid-cols-5 gap-0">
                 {/* Video — takes 3/5 on desktop */}
                 <div className="lg:col-span-3 relative bg-black">
-                  <div className="relative overflow-hidden" style={{ aspectRatio: '9/16', maxHeight: '75vw' }}>
+                  <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
                     <video
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-contain"
                       src={s.src}
                       controls
                       preload="metadata"
