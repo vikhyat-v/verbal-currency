@@ -23,6 +23,7 @@ function Hero() {
         playsInline
         preload="auto"
         onCanPlayThrough={() => setVideoLoaded(true)}
+        style={{ WebkitPlaysinline: true } as React.CSSProperties}
       />
       {/* Fallback fog while video loads */}
       <div className={`absolute inset-0 transition-opacity duration-1000 ${videoLoaded ? 'opacity-30' : 'opacity-100'}`}>
@@ -81,7 +82,7 @@ function Gallery() {
   const [ref, vis] = useInView(0.05);
   const [sel, setSel] = useState<string | null>(null);
   const imgs = [
-    { src: IMG.poster, label: 'THE POSTER', desc: 'Two voices. One truth.', span: 'row-span-2' },
+    { src: IMG.poster, label: 'THE POSTER', desc: 'Two voices. One truth.', span: 'sm:row-span-2' },
     { src: IMG.stage, label: 'THE STAGE', desc: 'A crowd ready to listen.', span: 'md:col-span-2' },
     { src: IMG.spotlight, label: 'THE SPOTLIGHT', desc: 'Under the light, nothing hides.', span: '' },
     { src: IMG.window, label: 'THE WINDOW', desc: 'Beyond the skyline.', span: '' },
@@ -91,13 +92,13 @@ function Gallery() {
     <section className="py-20 sm:py-28 bg-[#050505]">
       <div ref={ref} className="max-w-7xl mx-auto px-6">
         <SectionHead eyebrow="The Visual World" title="A FILMSCAPE," titleAccent="NOT A COURSE." vis={vis} />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px] sm:auto-rows-[280px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[180px] sm:auto-rows-[240px] md:auto-rows-[280px]">
           {imgs.map((img, i) => (
             <div key={i} onClick={() => setSel(img.src)}
               className={`relative overflow-hidden cursor-pointer group border border-white/[0.04] hover:border-white/15 transition-all duration-700 ${img.span}
                 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${200 + i * 120}ms` }}>
-              <img src={img.src} alt={img.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={img.src} alt={img.label} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <span className="font-['Bebas_Neue'] text-lg tracking-[0.15em] text-white/80">{img.label}</span>
@@ -204,8 +205,8 @@ function ProgramSection() {
           A structured dismantling of everything that has been getting in your way — followed by the construction of something that actually holds.
         </p>
         <Tab.Group>
-          <Tab.List className={`flex gap-2 mb-8 justify-center transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
-            {Object.keys(cats).map(c => <Tab key={c} className={({ selected }) => `px-6 py-2.5 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 outline-none ${selected ? 'bg-white text-black' : 'border border-white/10 text-white/40 hover:text-white/70'}`}>{c}</Tab>)}
+          <Tab.List className={`flex flex-wrap gap-2 mb-8 justify-center transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
+            {Object.keys(cats).map(c => <Tab key={c} className={({ selected }) => `px-5 py-2.5 text-[11px] tracking-[0.25em] uppercase transition-all duration-300 outline-none touch-manipulation ${selected ? 'bg-white text-black' : 'border border-white/10 text-white/40 hover:text-white/70'}`}>{c}</Tab>)}
           </Tab.List>
           <Tab.Panels>
             {Object.values(cats).map((mods, ci) => (
@@ -297,9 +298,9 @@ function Results() {
         <p className={`text-center text-white/40 text-sm mb-12 max-w-3xl mx-auto transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
           Across agencies, consulting practices, and service businesses — the pattern is always identical. The work is exceptional. The person behind it has simply decided, somewhere quietly, that they are negotiable.
         </p>
-        <div className={`grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-20 transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`grid grid-cols-3 gap-3 sm:gap-8 max-w-2xl mx-auto mb-16 sm:mb-20 transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0'}`}>
           {[{ v: `${c1}+`, l: 'Pros Trained' }, { v: `${c2}%`, l: 'Breakthrough' }, { v: `${c3}x`, l: 'Revenue Growth' }].map((s, i) =>
-            <div key={i} className="text-center p-6 border border-white/5 bg-[#050505]/60 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div className="font-['Bebas_Neue'] text-5xl sm:text-6xl text-[#C41E1E] tracking-wider">{s.v}</div><div className="text-[11px] font-bold text-white/40 tracking-widest uppercase mt-2">{s.l}</div></div>
+            <div key={i} className="text-center p-4 sm:p-6 border border-white/5 bg-[#050505]/60 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)]"><div className="font-['Bebas_Neue'] text-4xl sm:text-5xl lg:text-6xl text-[#C41E1E] tracking-wider">{s.v}</div><div className="text-[9px] sm:text-[11px] font-bold text-white/40 tracking-widest uppercase mt-1 sm:mt-2">{s.l}</div></div>
           )}
         </div>
         <div className="grid md:grid-cols-3 gap-6 relative z-10">
@@ -444,6 +445,7 @@ function FinalCTA() {
 /* ═══ OBJECTION ALCHEMY ═══ */
 function ObjectionAlchemy() {
   const [ref, vis] = useInView(0.1);
+  const [flipped, setFlipped] = useState<number | null>(null);
   const cards = [
     {
       obj: `"It's too expensive."`,
@@ -472,35 +474,40 @@ function ObjectionAlchemy() {
       <div ref={ref} className="max-w-6xl mx-auto px-6">
         <SectionHead eyebrow="Interactive" title="OBJECTION ALCHEMY." titleAccent="PLAY THE GAME." vis={vis} />
         <p className={`text-center text-white/40 text-sm mb-16 max-w-xl mx-auto transition-all duration-700 delay-300 ${vis ? 'opacity-100' : 'opacity-0 translate-y-6'}`}>
-          Hover over the common client objections below to reveal the difference between a scripted tactic and the ultimate truth.
+          <span className="hidden sm:inline">Hover over</span><span className="sm:hidden">Tap</span> the common client objections below to reveal the difference between a scripted tactic and the ultimate truth.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {cards.map((c, i) => (
-            <div key={i} className={`group perspective-1000 h-[320px] transition-all duration-700 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${400 + i * 150}ms` }}>
-              <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180">
+            <div
+              key={i}
+              className={`group perspective-1000 h-[300px] sm:h-[320px] cursor-pointer touch-manipulation transition-all duration-700 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+              style={{ transitionDelay: `${400 + i * 150}ms` }}
+              onClick={() => setFlipped(flipped === i ? null : i)}
+            >
+              <div className={`relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:rotate-y-180 ${flipped === i ? 'rotate-y-180' : ''}`}>
 
                 {/* Front */}
-                <div className="absolute inset-0 backface-hidden border border-white/[0.05] bg-black/50 p-8 flex flex-col items-center justify-center text-center">
+                <div className="absolute inset-0 backface-hidden border border-white/[0.05] bg-black/50 p-6 sm:p-8 flex flex-col items-center justify-center text-center">
                   <span className="text-[10px] tracking-[0.4em] uppercase text-white/20 mb-6">The Client Says:</span>
-                  <h3 className="font-['Playfair_Display'] italic text-2xl sm:text-3xl text-white/90">
+                  <h3 className="font-['Playfair_Display'] italic text-xl sm:text-2xl text-white/90">
                     {c.obj}
                   </h3>
                   <div className="mt-8 text-white/20 text-[10px] tracking-widest uppercase animate-pulse">
-                    Hover to Flip →
+                    <span className="hidden sm:inline">Hover</span><span className="sm:hidden">Tap</span> to Flip →
                   </div>
                 </div>
 
                 {/* Back */}
-                <div className="absolute inset-0 backface-hidden rotate-y-180 border border-white/[0.1] bg-[#0a0a0a] p-8 flex flex-col justify-center text-left">
-                  <div className="mb-6">
+                <div className="absolute inset-0 backface-hidden rotate-y-180 border border-white/[0.1] bg-[#0a0a0a] p-6 sm:p-8 flex flex-col justify-center text-left">
+                  <div className="mb-5">
                     <span className="text-[10px] tracking-[0.3em] uppercase text-[#C41E1E]">The Tactic</span>
-                    <p className="mt-2 text-white/40 text-[13px] leading-relaxed">{c.tactic}</p>
+                    <p className="mt-2 text-white/40 text-[12px] sm:text-[13px] leading-relaxed">{c.tactic}</p>
                   </div>
-                  <div className="w-8 h-px bg-white/10 mb-6" />
+                  <div className="w-8 h-px bg-white/10 mb-5" />
                   <div>
                     <span className="text-[10px] tracking-[0.3em] uppercase text-white">The Truth</span>
-                    <p className="mt-2 text-white/80 text-[13px] leading-relaxed font-medium">{c.truth}</p>
+                    <p className="mt-2 text-white/80 text-[12px] sm:text-[13px] leading-relaxed font-medium">{c.truth}</p>
                   </div>
                 </div>
 
@@ -526,15 +533,15 @@ function EcosystemExplore() {
     <section className="py-24 sm:py-32 bg-[#050505] border-t border-white/[0.02]">
       <div ref={ref} className="max-w-6xl mx-auto px-6">
         <SectionHead eyebrow="The Ecosystem" title="EXPLORE." titleAccent="GO DEEPER." vis={vis} />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-10 sm:mt-12 relative z-10">
           {pages.map((p, i) => (
-            <Link key={i} to={p.href} className={`group relative h-[300px] border border-white/10 bg-[#050505]/80 backdrop-blur-md overflow-hidden transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${300 + i * 150}ms` }}>
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700"><img src={p.img} alt="" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110" /></div>
+            <Link key={i} to={p.href} className={`group relative h-[220px] sm:h-[280px] lg:h-[300px] border border-white/10 bg-[#050505]/80 backdrop-blur-md overflow-hidden transition-all duration-700 hover:border-[#C41E1E]/50 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ transitionDelay: `${300 + i * 150}ms` }}>
+              <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700"><img src={p.img} alt="" loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110" /></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent" />
-              <div className="relative h-full flex flex-col justify-end p-6 z-10">
-                <span className="text-[10px] tracking-widest uppercase text-[#C41E1E] font-bold mb-3">{p.tag}</span>
-                <h3 className="font-['Bebas_Neue'] text-3xl sm:text-4xl text-white tracking-wide">{p.title}</h3>
-                <p className="mt-3 text-white/50 text-sm leading-relaxed group-hover:text-white/90 transition-colors">{p.desc}</p>
+              <div className="relative h-full flex flex-col justify-end p-4 sm:p-6 z-10">
+                <span className="text-[9px] sm:text-[10px] tracking-widest uppercase text-[#C41E1E] font-bold mb-2 sm:mb-3">{p.tag}</span>
+                <h3 className="font-['Bebas_Neue'] text-2xl sm:text-3xl lg:text-4xl text-white tracking-wide leading-tight">{p.title}</h3>
+                <p className="mt-2 sm:mt-3 text-white/50 text-xs sm:text-sm leading-relaxed group-hover:text-white/90 transition-colors line-clamp-2 sm:line-clamp-none">{p.desc}</p>
                 <div className="mt-6 flex items-center text-[#C41E1E] text-xs tracking-widest uppercase font-bold opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500">
                   Explore →
                 </div>
@@ -565,10 +572,10 @@ function FeaturedReels() {
     },
   ];
   return (
-    <section className="py-24 sm:py-32 bg-[#050505]">
-      <div ref={ref} className="max-w-6xl mx-auto px-6">
+    <section className="py-16 sm:py-24 lg:py-32 bg-[#050505]">
+      <div ref={ref} className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHead eyebrow="Watch" title="FEATURED" titleAccent="REELS." vis={vis} />
-        <div className="grid md:grid-cols-2 gap-8 mt-12">
+        <div className="grid sm:grid-cols-2 gap-5 sm:gap-8 mt-10 sm:mt-12">
           {reels.map((reel, i) => (
             <div
               key={i}
@@ -576,32 +583,33 @@ function FeaturedReels() {
               style={{ transitionDelay: `${300 + i * 200}ms` }}
             >
               {/* Video player */}
-              <div className="relative aspect-[9/16] sm:aspect-video bg-black overflow-hidden">
+              <div className="relative bg-black overflow-hidden" style={{ aspectRatio: '9/16', maxHeight: '75vw' }}>
                 <video
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                   src={reel.src}
                   controls
                   preload="metadata"
                   playsInline
                   controlsList="nodownload"
+                  style={{ WebkitPlaysinline: true } as React.CSSProperties}
                 />
                 {/* Subtle vignette over video */}
                 <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#080808] via-transparent to-transparent opacity-40" />
               </div>
               {/* Info */}
-              <div className="p-6 sm:p-8">
+              <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-2 h-2 bg-[#C41E1E] rounded-full animate-pulse" />
                   <span className="text-[10px] tracking-[0.4em] uppercase text-[#C41E1E] font-bold">{reel.subtitle}</span>
                 </div>
-                <h3 className="font-['Bebas_Neue'] text-3xl sm:text-4xl tracking-[0.06em] text-white/90 group-hover:text-white transition-colors">{reel.title}</h3>
-                <p className="mt-3 text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors">{reel.desc}</p>
+                <h3 className="font-['Bebas_Neue'] text-2xl sm:text-3xl md:text-4xl tracking-[0.06em] text-white/90 group-hover:text-white transition-colors">{reel.title}</h3>
+                <p className="mt-2 sm:mt-3 text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors">{reel.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="mt-20"><Divider /></div>
+      <div className="mt-16 sm:mt-20"><Divider /></div>
     </section>
   );
 }

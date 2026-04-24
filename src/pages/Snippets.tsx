@@ -59,18 +59,17 @@ function VideoGrid() {
       <div ref={ref} className="max-w-6xl mx-auto px-6">
         <SectionHead eyebrow="Featured Content" title="ALL SNIPPETS." titleAccent="WATCH & LEARN." vis={vis} />
 
-        <div className="space-y-12 sm:space-y-16 mt-12">
+        <div className="space-y-10 sm:space-y-16 mt-10 sm:mt-12">
           {snippets.map((s, i) => (
             <div
               key={i}
               className={`group relative border border-white/[0.05] bg-[#080808]/80 backdrop-blur-sm overflow-hidden transition-all duration-700 hover:border-[#C41E1E]/30 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}
               style={{ transitionDelay: `${300 + i * 250}ms` }}
             >
-              {/* Layout: video on top, info below — stacked always for maximum impact */}
               <div className="grid lg:grid-cols-5 gap-0">
                 {/* Video — takes 3/5 on desktop */}
                 <div className="lg:col-span-3 relative bg-black">
-                  <div className="relative aspect-[9/16] sm:aspect-video">
+                  <div className="relative overflow-hidden" style={{ aspectRatio: '9/16', maxHeight: '75vw' }}>
                     <video
                       className="absolute inset-0 w-full h-full object-cover"
                       src={s.src}
@@ -78,12 +77,13 @@ function VideoGrid() {
                       preload="metadata"
                       playsInline
                       controlsList="nodownload"
+                      style={{ WebkitPlaysinline: true } as React.CSSProperties}
                     />
                   </div>
                 </div>
 
                 {/* Info panel — takes 2/5 on desktop */}
-                <div className="lg:col-span-2 p-8 sm:p-10 flex flex-col justify-center relative">
+                <div className="lg:col-span-2 p-6 sm:p-8 lg:p-10 flex flex-col justify-center relative">
                   {/* Decorative accent line */}
                   <div className="absolute top-0 left-0 w-full lg:w-[3px] h-[3px] lg:h-full bg-gradient-to-r lg:bg-gradient-to-b from-[#C41E1E]/60 via-[#C41E1E]/20 to-transparent" />
 
@@ -92,15 +92,15 @@ function VideoGrid() {
                     <div className="w-2 h-2 bg-[#C41E1E] rounded-full snippet-pulse" />
                     <span className="text-[10px] tracking-[0.3em] uppercase text-[#C41E1E] font-bold">{s.tag}</span>
                   </div>
-                  <h3 className="mt-4 font-['Bebas_Neue'] text-4xl sm:text-5xl tracking-[0.05em] text-white/90 group-hover:text-white transition-colors leading-[0.95]">
+                  <h3 className="mt-4 font-['Bebas_Neue'] text-3xl sm:text-4xl lg:text-5xl tracking-[0.05em] text-white/90 group-hover:text-white transition-colors leading-[0.95]">
                     {s.title}
                   </h3>
-                  <div className="w-10 h-px bg-white/10 my-6" />
+                  <div className="w-10 h-px bg-white/10 my-5 sm:my-6" />
                   <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/60 transition-colors">
                     {s.desc}
                   </p>
-                  <blockquote className="mt-8 border-l-2 border-[#C41E1E]/40 pl-4">
-                    <p className="font-['Cormorant_Garamond'] italic text-white/60 text-lg leading-relaxed">{s.quote}</p>
+                  <blockquote className="mt-6 sm:mt-8 border-l-2 border-[#C41E1E]/40 pl-4">
+                    <p className="font-['Cormorant_Garamond'] italic text-white/60 text-base sm:text-lg leading-relaxed">{s.quote}</p>
                   </blockquote>
                 </div>
               </div>

@@ -36,6 +36,8 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
@@ -43,11 +45,19 @@
     font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
     background: #050505;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
   }
 
   ::selection {
     background: rgba(200, 30, 30, 0.25);
     color: #fff;
+  }
+
+  /* Safe area insets for notch/home-indicator on iPhone */
+  .safe-padding-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 
@@ -251,6 +261,11 @@
   animation: snippetPulse 2s ease-in-out infinite;
 }
 
+video {
+  /* Prevent videos from causing horizontal overflow on mobile */
+  max-width: 100%;
+}
+
 video::-webkit-media-controls-panel {
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent) !important;
 }
@@ -263,4 +278,44 @@ video::-webkit-media-controls-volume-slider,
 video::-webkit-media-controls-mute-button,
 video::-webkit-media-controls-fullscreen-button {
   filter: brightness(0.9);
+}
+
+/* Larger touch targets for video controls on mobile */
+@media (max-width: 640px) {
+  video::-webkit-media-controls-play-button,
+  video::-webkit-media-controls-mute-button,
+  video::-webkit-media-controls-fullscreen-button {
+    transform: scale(1.2);
+  }
+
+  video::-webkit-media-controls-panel {
+    padding: 0 8px 8px;
+  }
+}
+
+/* Touch-action optimization for interactive cards */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent tap flash on iOS for all interactive elements */
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Improve tap targets on mobile */
+@media (max-width: 640px) {
+  a, button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Exception: decorative links/spans inside flex containers */
+  a.block, a.inline-block, a.flex, a.inline-flex {
+    min-height: unset;
+    display: block;
+  }
 }

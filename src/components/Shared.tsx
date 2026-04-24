@@ -148,8 +148,8 @@ export function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${vis || open ? '' : '-translate-y-full'} ${scrollY > 60 || open ? 'bg-black/60 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : ''}`}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className={`fixed top-0 w-full z-40 transition-all duration-500 ${vis || open ? '' : '-translate-y-full'} ${scrollY > 60 || open ? 'bg-black/60 backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]' : ''}`} style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex flex-col leading-none z-50">
             <span className="font-['Bebas_Neue'] text-2xl text-white tracking-[0.15em]">VERBAL CURRENCY</span>
             <span className="text-[9px] tracking-[0.4em] text-[#C41E1E] uppercase mt-0.5">Truth Over Tactics</span>
@@ -175,8 +175,8 @@ export function Navbar() {
       />
 
       {/* Sidebar Drawer */}
-      <div className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-[#050505] border-l border-white/5 z-50 transform transition-transform duration-500 ease-in-out flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex-1 overflow-y-auto px-10 py-24 flex flex-col justify-center">
+      <div className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-[#050505] border-l border-white/5 z-50 transform transition-transform duration-500 ease-in-out flex flex-col ${open ? 'translate-x-0' : 'translate-x-full'}`} style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+        <div className="flex-1 overflow-y-auto px-8 sm:px-10 py-24 flex flex-col justify-center">
           <div className="space-y-6 flex flex-col">
             {navLinks.map((l, i) => (
               <div key={l.label} className={`overflow-hidden transition-all duration-700 delay-[${open ? 100 + i * 50 : 0}ms] ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -212,9 +212,9 @@ export function Navbar() {
 export function Footer() {
   const vikhyat = '/images/vikhyat.jpg';
   return (
-    <footer className="bg-black border-t border-white/[0.04] py-14">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid sm:grid-cols-4 gap-10">
+    <footer className="bg-black border-t border-white/[0.04] py-12 sm:py-14" style={{ paddingBottom: 'max(3rem, env(safe-area-inset-bottom, 0px))' }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10">
           <div>
             <div className="font-['Bebas_Neue'] text-2xl tracking-[0.15em] text-white/80">VERBAL CURRENCY</div>
             <div className="text-[9px] tracking-[0.4em] text-white/20 uppercase mt-0.5">Truth Over Tactics</div>
