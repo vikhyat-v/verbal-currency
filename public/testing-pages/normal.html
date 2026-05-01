@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psycho-Astro Identity Reset Checkout</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* --- TOP BANNER (Agrika Style) --- */
+        .top-banner {
+            background-color: #4a0072; /* Deep Purple */
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- MAIN HEADLINE (Yashica Style) --- */
+        .main-headline {
+            text-align: center;
+            color: #ff9800; /* Bold Orange */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        .main-headline span {
+            color: #333333;
+        }
+
+        /* --- SPLIT LAYOUT --- */
+        .split-layout {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .left-column {
+            flex: 1 1 55%;
+            min-width: 300px;
+        }
+
+        .right-column {
+            flex: 1 1 35%;
+            min-width: 300px;
+        }
+
+        /* --- VSL / PRODUCT MOCKUP AREA --- */
+        .vsl-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        /* Blurred background effect for VSL */
+        .vsl-bg-blur {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1593642532744-d377ab507dc8?q=80&w=1000&auto=format&fit=crop') center/cover;
+            filter: blur(8px);
+            opacity: 0.6;
+        }
+
+        .book-call-btn-overlay {
+            position: relative;
+            background-color: #212121;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        /* --- WHAT WE COVER LIST --- */
+        .cover-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li .check {
+            color: #e53935; /* Red checkmark */
+            font-size: 1.4rem;
+        }
+
+        .strike-price {
+            color: #e53935;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        /* --- CHECKOUT FORM (Yashica Style) --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+        }
+
+        .form-control::placeholder {
+            color: #777;
+        }
+
+        /* --- ORDER BUMP BOX --- */
+        .order-bump-box {
+            background-color: #fffae6; /* Pale yellow */
+            border: 2px dashed #e53935; /* Red dashed border */
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .order-bump-box input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .highlight-green {
+            background-color: #00ff00; /* Neon green highlight */
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 2px 4px;
+            color: #000;
+            line-height: 1.8;
+        }
+
+        .order-bump-price {
+            font-weight: 700;
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        .order-bump-price span {
+            background-color: #ffeb3b; /* Yellow highlight for price */
+            padding: 0 4px;
+            color: #d32f2f;
+        }
+
+        .order-bump-desc {
+            color: #d32f2f;
+            font-weight: 700;
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+
+        /* --- SUBMIT BUTTON --- */
+        .submit-btn {
+            width: 100%;
+            background-color: #d32f2f; /* Strong Red */
+            color: #ffffff;
+            border: none;
+            padding: 18px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .main-headline {
+                font-size: 2rem;
+            }
+            .split-layout {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Banner inspired by Agrika Khatri VSL -->
+    <div class="top-banner">
+        Random affirmations and visualisation can never bring BIG BREAKTHROUGHS.
+    </div>
+
+    <div class="container">
+        <!-- Main Headline inspired by Yashica Jalhotra -->
+        <h1 class="main-headline">
+            Stop Repeating the Same Mistakes, Rewrite Your Love & Money Patterns Right Away 😃
+        </h1>
+
+        <div class="split-layout">
+            
+            <!-- LEFT COLUMN: VSL & Details -->
+            <div class="left-column">
+                
+                <!-- VSL Placeholder inspired by Agrika Khatri -->
+                <div class="vsl-container">
+                    <div class="vsl-bg-blur"></div>
+                    <div class="book-call-btn-overlay">
+                        BOOK A CALL 🗓️
+                    </div>
+                </div>
+
+                <h2 class="cover-heading">HERE'S WHAT WE ARE GONNA COVER IN A NUTSHELL</h2>
+                
+                <ul class="feature-list">
+                    <li>
+                        <span class="check">✔</span> Atmakaraka (AK) Soul Identity Module <span class="strike-price">₹10,000</span>
+                    </li>
+                    <li>
+                        <span class="check">✔</span> Darakaraka (DK) Pattern Decoder <span class="strike-price">₹10,000</span>
+                    </li>
+                    <li>
+                        <span class="check">✔</span> 2nd House Lord Wealth Channeling <span class="strike-price">₹8,000</span>
+                    </li>
+                    <li>
+                        <span class="check">✔</span> Gnaati Karak (GK) Saboteur Removal <span class="strike-price">₹5,000</span>
+                    </li>
+                    <li>
+                        <span class="check">✔</span> 15 Main Audios & Worksheets <span class="strike-price">₹4,999</span>
+                    </li>
+                </ul>
+                
+                <p style="margin-top: 15px; font-style: italic; color: #555; font-size: 1.1rem;">
+                    "Your relationship pattern and your money pattern are the same pattern in two arenas. One course solves both."[cite: 1]
+                </p>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Lead / Checkout Form inspired by Yashica Jalhotra -->
+            <div class="right-column">
+                
+                <form action="#" method="POST">
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email ID" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="🇮🇳 ▾ Phone Number" required>
+                    </div>
+
+                    <!-- The classic Order Bump Box -->
+                    <div class="order-bump-box">
+                        <label style="display: flex; align-items: flex-start;">
+                            <input type="checkbox" id="order-bump">
+                            <span class="highlight-green">Yes, Add the exclusive Psycho-Astro Wealth Leakage eBook to My Order Now!</span>
+                        </label>
+                        
+                        <div class="order-bump-price">
+                            Only <strike>₹1500</strike> <span>₹199/- !</span>
+                        </div>
+                        
+                        <div class="order-bump-desc">
+                            Get The "101 Hidden Wealth Leaks in Your Birth Chart" Guide
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Enroll Now for ₹2,499[cite: 1]
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #666;">
+                        Secure 256-bit Encrypted Checkout 🔒
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
