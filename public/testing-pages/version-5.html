@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psycho-Astro Identity Reset — Fix Love & Money</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            /* Velvet Amethyst & Liquid Gold */
+            --bg-deep: #0a0310;
+            --surface: rgba(22, 10, 31, 0.6);
+            --surface-light: rgba(38, 17, 51, 0.8);
+            
+            --gold-primary: #e6b963;
+            --gold-light: #fce4a1;
+            --gold-dark: #99742e;
+            
+            --amethyst: #6b2c82;
+            --amethyst-glow: rgba(107, 44, 130, 0.4);
+            
+            --text-main: #fcfafc;
+            --text-dim: #bbaec2;
+            
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HYPNOTIC BACKGROUND ANIMATIONS ── */
+        .hypnotic-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #150621 0%, #0a0310 100%);
+            overflow: hidden;
+        }
+
+        .slow-spin-1, .slow-spin-2 {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            mix-blend-mode: screen;
+        }
+
+        .slow-spin-1 {
+            width: 80vw; height: 80vw;
+            background: conic-gradient(from 0deg, var(--amethyst), transparent, var(--gold-dark), transparent, var(--amethyst));
+            animation: spin 30s linear infinite;
+        }
+
+        .slow-spin-2 {
+            width: 60vw; height: 60vw;
+            background: conic-gradient(from 180deg, var(--gold-dark), transparent, var(--amethyst), transparent, var(--gold-dark));
+            animation: spin 20s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* ── SCROLL REVEALS ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* ── TYPOGRAPHY ── */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textShine 5s linear infinite;
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ── BUTTONS ── */
+        .btn-liquid {
+            display: inline-block;
+            position: relative;
+            padding: 18px 48px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--bg-deep);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+            background-size: 200% 200%;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(230, 185, 99, 0.3);
+            animation: gradientShift 4s ease infinite;
+        }
+
+        .btn-liquid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(230, 185, 99, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ── HERO ── */
+        .hero {
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            margin-bottom: 24px;
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero p.lead {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* ── VSL SECTION ── */
+        .vsl-frame {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+            background: var(--surface);
+            border: 1px solid rgba(230, 185, 99, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px var(--amethyst-glow);
+            transition: all 0.5s ease;
+        }
+
+        .vsl-frame:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 80px rgba(230, 185, 99, 0.2);
+        }
+
+        .play-pulse {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-deep);
+            font-size: 2rem;
+            padding-left: 6px;
+            position: relative;
+        }
+
+        .play-pulse::before, .play-pulse::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            border: 1px solid var(--gold-primary);
+            animation: pulseWave 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        .play-pulse::after {
+            animation-delay: 1.25s;
+        }
+
+        @keyframes pulseWave {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* ── GLASS CARDS ── */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(38, 17, 51, 0.4), rgba(22, 10, 31, 0.8));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 32px;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(230, 185, 99, 0.3);
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, rgba(38, 17, 51, 0.6), rgba(22, 10, 31, 0.9));
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .glass-card h3 {
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 16px;
+        }
+
+        /* ── PRICING ── */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+            align-items: center;
+        }
+
+        .price-tier {
+            text-align: center;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* The Hypnotic Animated Border for Featured Tier */
+        .price-tier.featured {
+            background: var(--bg-deep);
+            padding: 50px 32px;
+            z-index: 2;
+            border-radius: 8px;
+        }
+
+        .price-tier.featured::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-primary), var(--gold-dark));
+            background-size: 300% 300%;
+            z-index: -1;
+            border-radius: 10px;
+            animation: gradientBorder 4s linear infinite;
+        }
+
+        .price-tier.featured::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(145deg, rgba(38, 17, 51, 0.9), rgba(10, 3, 16, 0.95));
+            z-index: -1;
+            border-radius: 8px;
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .tier-name {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+        }
+
+        .featured .tier-name {
+            color: var(--gold-primary);
+        }
+
+        .tier-price {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .tier-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .tier-features li {
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .btn-outline {
+            display: block;
+            padding: 16px;
+            border: 1px solid var(--text-dim);
+            color: var(--text-main);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hypnotic Animated Background -->
+    <div class="hypnotic-bg">
+        <div class="slow-spin-1"></div>
+        <div class="slow-spin-2"></div>
+    </div>
+
+    <div class="container">
+        
+        <!-- ════ HERO ════ -->
+        <section class="hero fade-up">
+            <div class="hero-eyebrow">The Psycho-Astro Identity Reset[cite: 1]</div>
+            <h1>Break the Loop.<br><span class="gold-text">Fix Love & Money at the Root.</span></h1>
+            <p class="lead delay-1">Your relationship pattern and your money pattern are the same pattern in two arenas. One course solves both.[cite: 1] Rewire your subconscious blueprint in 15 days.[cite: 1]</p>
+            <div class="delay-2" style="margin-top: 20px;">
+                <a href="#pricing" class="btn-liquid">Begin The Reset Protocol</a>
+            </div>
+        </section>
+
+        <!-- ════ VSL ════ -->
+        <section class="fade-up">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Watch The Masterclass</h2>
+            <div class="vsl-frame">
+                <div class="play-pulse">▶</div>
+            </div>
+            <p class="text-dim" style="text-align: center; margin-top: 24px; font-size: 0.9rem;">The Hidden Link Between Your Wallet and Your Heart</p>
+        </section>
+
+        <!-- ════ PAIN POINTS ════ -->
+        <section>
+            <h2 class="fade-up" style="text-align: center; font-size: 2.5rem;">If This Feels Familiar, It Is Not Random.</h2>
+            <div class="card-grid">
+                <div class="glass-card fade-up delay-1">
+                    <h3>The Chaser Loop</h3>
+                    <p class="text-dim">The person who chases emotionally unavailable partners also chases high-risk quick-money schemes with the same nervous energy.[cite: 1]</p>
+                </div>
+                <div class="glass-card fade-up delay-2">
+                    <h3>The Over-Giver Leak</h3>
+                    <p class="text-dim">The person who over-gives in love also over-spends for emotional comfort.[cite: 1]</p>
+                </div>
+                <div class="glass-card fade-up delay-3">
+                    <h3>The Avoidant Trap</h3>
+                    <p class="text-dim">The person who is avoidant in relationships also avoids the consistent daily action that long-term wealth building requires.[cite: 1]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ 5 PILLARS ════ -->
+        <section>
+            <div class="fade-up" style="text-align: center;">
+                <h2 style="font-size: 2.8rem;">The 5-Pillar System</h2>
+                <p class="text-dim mt-2">Your birth chart isn't a destiny — it's a precise psychological map.</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="glass-card fade-up delay-1">
+                    <h3>Atmakaraka (AK)</h3>
+                    <p class="text-dim">The highest degree planet. Represents your soul identity in love AND natural abundance style.[cite: 1]</p>
+                </div>
+                <div class="glass-card fade-up delay-2">
+                    <h3>Darakaraka (DK)</h3>
+                    <p class="text-dim">The lowest degree planet. Reveals your default relationship pattern AND default money pattern.[cite: 1]</p>
+                </div>
+                <div class="glass-card fade-up delay-3">
+                    <h3>2nd House Lord</h3>
+                    <p class="text-dim">Determined by which house the 2nd lord sits in. This acts as your natural money channel.[cite: 1]</p>
+                </div>
+                <div class="glass-card fade-up delay-1">
+                    <h3>Gnaati Karak (GK)</h3>
+                    <p class="text-dim">The 6th planet by degree. Uncovers the karmic obstacle in love AND in money.[cite: 1]</p>
+                </div>
+                <div class="glass-card fade-up delay-2" style="grid-column: 1 / -1; text-align: center;">
+                    <h3 style="justify-content: center;">Venus House</h3>
+                    <p class="text-dim" style="max-width: 600px; margin: 0 auto;">Governs your relationship style AND wealth source AND wealth leak.[cite: 1]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ PRICING ════ -->
+        <section id="pricing">
+            <h2 class="fade-up" style="text-align: center; font-size: 3rem;">Choose Your Path</h2>
+            
+            <div class="pricing-grid">
+                <!-- Entry -->
+                <div class="glass-card price-tier fade-up delay-1">
+                    <div class="tier-name">Entry Tier</div>
+                    <div class="tier-price">₹999</div>
+                    <ul class="tier-features">
+                        <li>15 main audios[cite: 1]</li>
+                        <li>Complete 15-day journey</li>
+                        <li>Basic framework access</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Select Entry</a>
+                </div>
+
+                <!-- Core -->
+                <div class="price-tier featured fade-up delay-2">
+                    <div class="tier-name" style="font-weight: 800;">Core Tier</div>
+                    <div class="tier-price gold-text">₹2,499</div>
+                    <ul class="tier-features">
+                        <li>All 15 audios[cite: 1]</li>
+                        <li>Worksheets included[cite: 1]</li>
+                        <li>PDFs provided[cite: 1]</li>
+                        <li>Bonus content[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn-liquid" style="width: 100%; text-align: center;">Enroll in Core</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="glass-card price-tier fade-up delay-3">
+                    <div class="tier-name">Premium Tier</div>
+                    <div class="tier-price">₹5,999</div>
+                    <ul class="tier-features">
+                        <li>Everything in Core[cite: 1]</li>
+                        <li>Live Q&A sessions[cite: 1]</li>
+                        <li>Personalised reading[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Select Premium</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ FOOTER ════ -->
+        <footer class="fade-up">
+            <p style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 16px;" class="gold-text">"We decode your patterns — not just motivate you."[cite: 1]</p>
+            <p>© 2026 Psycho-Astro Identity Reset.</p>
+        </footer>
+
+    </div>
+
+    <!-- Intersect Observer for Fade Ups -->
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import Simulator from './pages/Simulator';
 import Products from './pages/Products';
 import Snippets from './pages/Snippets';
+import Testing from './pages/Testing';
 import './index.css';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/snippets" element={<Snippets />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/testing" element={<Testing />} />
       </Routes>
       <Analytics />
     </BrowserRouter>

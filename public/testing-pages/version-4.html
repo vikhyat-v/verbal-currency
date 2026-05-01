@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psycho-Astro Identity Reset — Fix Love & Money</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600&display=swap');
+
+        :root {
+            /* Midnight & Neon Aurora Palette */
+            --bg-dark: #030305;
+            --surface-dark: rgba(15, 15, 20, 0.6);
+            --surface-light: rgba(30, 30, 40, 0.4);
+            
+            --neon-magenta: #ff2a85;
+            --neon-purple: #8a2be2;
+            --neon-cyan: #00f0ff;
+            
+            --text-main: #ffffff;
+            --text-dim: #a0a0b0;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── ANIMATED BACKGROUND ── */
+        .bg-animations {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0a0a12 0%, #030305 100%);
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: floatOrb 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .orb-magenta {
+            background: var(--neon-magenta);
+            width: 40vw; height: 40vw;
+            top: -10%; left: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-purple {
+            background: var(--neon-purple);
+            width: 35vw; height: 35vw;
+            bottom: 10%; right: -5%;
+            animation-delay: -5s;
+        }
+
+        .orb-cyan {
+            background: var(--neon-cyan);
+            width: 30vw; height: 30vw;
+            top: 40%; left: 40%;
+            opacity: 0.2;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 10%) scale(1.1); }
+            100% { transform: translate(-5%, 5%) scale(0.9); }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* ── SCROLL ANIMATIONS (Triggered via JS) ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* ── TYPOGRAPHY ── */
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--neon-cyan), var(--neon-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textShine 4s linear infinite;
+        }
+
+        @keyframes textShine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 100px;
+            background: rgba(255, 42, 133, 0.1);
+            color: var(--neon-magenta);
+            border: 1px solid rgba(255, 42, 133, 0.3);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+            animation: pulseBadge 2s infinite alternate;
+        }
+
+        @keyframes pulseBadge {
+            0% { box-shadow: 0 0 10px rgba(255, 42, 133, 0.1); }
+            100% { box-shadow: 0 0 20px rgba(255, 42, 133, 0.4); }
+        }
+
+        /* ── HERO ── */
+        .hero {
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            margin-bottom: 24px;
+        }
+
+        .hero p.lead {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-glow {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--neon-magenta);
+            color: #fff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            padding: 18px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 100px;
+            background: linear-gradient(45deg, var(--neon-magenta), var(--neon-purple), var(--neon-cyan));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            background-size: 200%;
+            animation: textShine 3s linear infinite;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 42, 133, 0.5);
+        }
+
+        .btn-glow:hover::before {
+            opacity: 1;
+        }
+
+        /* ── VSL SECTION ── */
+        .vsl-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+            background: var(--surface-dark);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .vsl-container:hover {
+            transform: scale(1.02) translateY(-10px);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 240, 255, 0.15);
+        }
+
+        .play-btn {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
+            padding-left: 6px;
+            position: relative;
+            animation: floatOrb 4s infinite alternate ease-in-out;
+        }
+
+        .play-btn::after {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-cyan);
+            opacity: 0;
+            animation: ripple 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* ── GLASS CARDS (Hover Effects) ── */
+        .glass-card {
+            background: var(--surface-dark);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.7s ease;
+        }
+
+        .glass-card:hover::before {
+            left: 150%;
+        }
+
+        .glass-card:hover {
+            background: var(--surface-light);
+            border-color: rgba(138, 43, 226, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* ── GRIDS ── */
+        .pain-grid, .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .icon-glow {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--neon-magenta), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* ── PRICING ── */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+            align-items: center;
+        }
+
+        .price-card {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 32px;
+        }
+
+        /* Animated Glowing Border for Featured Card */
+        .price-card.featured {
+            background: var(--bg-dark);
+            border: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-card.featured::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-magenta), var(--neon-purple), var(--neon-cyan), var(--neon-magenta));
+            background-size: 400%;
+            z-index: -1;
+            border-radius: 22px;
+            animation: textShine 6s linear infinite;
+        }
+
+        .price-card.featured::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--surface-dark);
+            backdrop-filter: blur(20px);
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .price-features li {
+            margin-bottom: 12px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            color: var(--neon-cyan);
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-dim);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Continuous Animated Background -->
+    <div class="bg-animations">
+        <div class="glow-orb orb-magenta"></div>
+        <div class="glow-orb orb-purple"></div>
+        <div class="glow-orb orb-cyan"></div>
+    </div>
+
+    <div class="container">
+        
+        <!-- ════ HERO ════ -->
+        <section class="hero reveal">
+            <div class="badge">THE PSYCHO-ASTRO IDENTITY RESET[cite: 1]</div>
+            <h1>Fix Your Love & Money Patterns <br><span class="gradient-text">At The Root.</span></h1>
+            <p class="lead delay-1">Your relationship pattern and your money pattern are the same pattern in two arenas. One course solves both.[cite: 1] A transformative 15-Day Audio Course to rewire your entire operating system.[cite: 1]</p>
+            <div class="reveal delay-2">
+                <a href="#pricing" class="btn-glow">Initialize Your 15-Day Reset</a>
+            </div>
+        </section>
+
+        <!-- ════ VSL ════ -->
+        <section class="reveal">
+            <h2 style="text-align: center; margin-bottom: 40px;">Decode Your Subconscious Blueprint</h2>
+            <div class="vsl-container">
+                <div class="play-btn">▶</div>
+            </div>
+        </section>
+
+        <!-- ════ PAIN POINTS ════ -->
+        <section>
+            <h2 class="reveal text-center" style="font-size: 2.5rem; text-align: center;">If This Feels Familiar, It's Not Random.</h2>
+            <div class="pain-grid">
+                <div class="glass-card reveal delay-1">
+                    <div class="icon-glow">⟲</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">The Chaser Loop</h3>
+                    <p class="text-dim">The person who chases emotionally unavailable partners also chases high-risk quick-money schemes with the same nervous energy.[cite: 1]</p>
+                </div>
+                <div class="glass-card reveal delay-2">
+                    <div class="icon-glow">⇲</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">The Over-Giver Leak</h3>
+                    <p class="text-dim">The person who over-gives in love also over-spends for emotional comfort.[cite: 1]</p>
+                </div>
+                <div class="glass-card reveal delay-3">
+                    <div class="icon-glow">⊘</div>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px;">The Avoidant Trap</h3>
+                    <p class="text-dim">The person who is avoidant in relationships also avoids the consistent daily action that long-term wealth building requires.[cite: 1]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ 5 PILLARS ════ -->
+        <section>
+            <div class="reveal" style="text-align: center;">
+                <h2 style="font-size: 3rem;">The 5-Pillar System</h2>
+                <p class="text-dim mt-2">Your birth chart isn't a destiny — it's a psychological map.</p>
+            </div>
+            
+            <div class="pillars-grid">
+                <div class="glass-card reveal delay-1">
+                    <h3 class="gradient-text">Atmakaraka (AK)</h3>
+                    <p class="text-dim mt-2">The highest degree planet. Represents your soul identity in love AND natural abundance style.[cite: 1]</p>
+                </div>
+                <div class="glass-card reveal delay-2">
+                    <h3 class="gradient-text">Darakaraka (DK)</h3>
+                    <p class="text-dim mt-2">The lowest degree planet. Reveals your default relationship pattern AND default money pattern.[cite: 1]</p>
+                </div>
+                <div class="glass-card reveal delay-3">
+                    <h3 class="gradient-text">2nd House Lord</h3>
+                    <p class="text-dim mt-2">Determined by which house the 2nd lord sits in. This acts as your natural money channel.[cite: 1]</p>
+                </div>
+                <div class="glass-card reveal delay-1">
+                    <h3 class="gradient-text">Gnaati Karak (GK)</h3>
+                    <p class="text-dim mt-2">The 6th planet by degree. Uncovers the karmic obstacle in love AND in money.[cite: 1]</p>
+                </div>
+                <div class="glass-card reveal delay-2">
+                    <h3 class="gradient-text">Venus House</h3>
+                    <p class="text-dim mt-2">Governs your relationship style AND wealth source AND wealth leak.[cite: 1]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ PRICING ════ -->
+        <section id="pricing">
+            <h2 class="reveal" style="text-align: center; font-size: 3rem;">Select Your Integration Path</h2>
+            
+            <div class="pricing-grid">
+                <!-- Entry -->
+                <div class="glass-card price-card reveal delay-1">
+                    <h3 style="color: var(--neon-cyan);">Entry</h3>
+                    <div class="price-amount">₹999</div>
+                    <ul class="price-features">
+                        <li>15 main audios[cite: 1]</li>
+                        <li>Complete 15-day journey</li>
+                        <li>Basic framework access</li>
+                    </ul>
+                    <a href="#" class="btn-glow" style="background: transparent; border: 1px solid var(--neon-cyan);">Select Entry</a>
+                </div>
+
+                <!-- Core -->
+                <div class="glass-card price-card featured reveal delay-2">
+                    <div class="badge" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--bg-dark); margin:0;">MOST POPULAR</div>
+                    <h3 class="gradient-text">Core</h3>
+                    <div class="price-amount">₹2,499</div>
+                    <ul class="price-features">
+                        <li>All audios[cite: 1]</li>
+                        <li>Worksheets included[cite: 1]</li>
+                        <li>PDFs provided[cite: 1]</li>
+                        <li>Bonus content[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn-glow">Select Core</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="glass-card price-card reveal delay-3">
+                    <h3 style="color: var(--neon-purple);">Premium</h3>
+                    <div class="price-amount">₹5,999</div>
+                    <ul class="price-features">
+                        <li>Everything in Core[cite: 1]</li>
+                        <li>Live Q&A sessions[cite: 1]</li>
+                        <li>Personalised reading[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn-glow" style="background: transparent; border: 1px solid var(--neon-purple);">Select Premium</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ FOOTER ════ -->
+        <footer class="reveal">
+            <p>"We decode your patterns — not just motivate you."[cite: 1]</p>
+            <p style="margin-top: 10px; opacity: 0.5; font-size: 0.8rem;">© 2026 Psycho-Astro Reset</p>
+        </footer>
+
+    </div>
+
+    <!-- Scroll Reveal Logic -->
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // when to trigger
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

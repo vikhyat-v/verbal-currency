@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psycho-Astro Identity Reset</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Syne:wght@400;600;700;800&display=swap');
+
+        :root {
+            /* Abyssal Blue & Sunburst Palette */
+            --bg-deep: #03050B;
+            --bg-surface: #0B1021;
+            --bg-card: rgba(17, 24, 45, 0.7);
+            
+            --accent-orange: #FF5E00;
+            --accent-orange-glow: rgba(255, 94, 0, 0.4);
+            --accent-teal: #00F2FE;
+            --accent-teal-glow: rgba(0, 242, 254, 0.3);
+            
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;
+            
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+            
+            --border-glass: 1px solid rgba(255, 255, 255, 0.05);
+            --radius-lg: 24px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── DYNAMIC AURORA BACKGROUND ── */
+        .aurora-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+            background: var(--bg-deep);
+        }
+
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.5;
+            animation: floatBlob 20s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(0, 242, 254, 0.15); animation-delay: 0s; }
+        .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: rgba(255, 94, 0, 0.12); animation-delay: -5s; }
+        .blob-3 { top: 40%; left: 60%; width: 40vw; height: 40vw; background: rgba(79, 70, 229, 0.15); animation-delay: -10s; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10%, 15%) scale(1.2); }
+        }
+
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E');
+            z-index: -1; pointer-events: none;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        section { padding: 120px 0; position: relative; z-index: 10; }
+
+        /* ── TYPOGRAPHY ── */
+        h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.1; font-weight: 800; }
+        
+        .text-gradient-orange {
+            background: linear-gradient(135deg, #FFB75E, var(--accent-orange));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-teal {
+            background: linear-gradient(135deg, #FFF, var(--accent-teal));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* ── SPLIT HERO SECTION ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding-top: 80px;
+        }
+
+        .hero-copy { flex: 1.2; max-width: 650px; }
+        
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: var(--accent-teal);
+            padding: 8px 16px; border-radius: 100px;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; margin-bottom: 32px;
+        }
+
+        .hero h1 { font-size: clamp(3rem, 5.5vw, 5rem); margin-bottom: 24px; letter-spacing: -0.03em; }
+        .hero p.lead { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 400; max-width: 550px; }
+
+        /* Hypnotic Abstract Visual (Right Side) */
+        .hero-visual {
+            flex: 1;
+            display: flex; justify-content: center; align-items: center;
+            position: relative; height: 500px;
+        }
+
+        .astro-rings {
+            position: relative; width: 400px; height: 400px;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(60deg) rotateZ(0deg);
+            animation: gyroSpin 20s linear infinite;
+        }
+
+        .ring {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 50%; border: 2px solid transparent;
+        }
+
+        .r1 { border-top-color: var(--accent-orange); border-bottom-color: var(--accent-orange); animation: ringSpin 4s linear infinite; }
+        .r2 { border-left-color: var(--accent-teal); border-right-color: var(--accent-teal); width: 80%; height: 80%; top: 10%; left: 10%; animation: ringSpin 6s linear infinite reverse; }
+        .r3 { border-color: rgba(255,255,255,0.1); border-style: dashed; width: 120%; height: 120%; top: -10%; left: -10%; animation: ringSpin 15s linear infinite; }
+        
+        .core-orb {
+            position: absolute; top: 50%; left: 50%; width: 60px; height: 60px;
+            transform: translate(-50%, -50%) rotateX(-60deg);
+            background: var(--text-main); border-radius: 50%;
+            box-shadow: 0 0 40px var(--accent-orange), 0 0 80px var(--accent-teal);
+            animation: pulseOrb 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes gyroSpin { 100% { transform: perspective(1000px) rotateX(60deg) rotateZ(360deg); } }
+        @keyframes ringSpin { 100% { transform: rotate(360deg); } }
+        @keyframes pulseOrb { 0% { transform: translate(-50%, -50%) rotateX(-60deg) scale(0.9); } 100% { transform: translate(-50%, -50%) rotateX(-60deg) scale(1.2); } }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 20px 48px; border-radius: 100px;
+            font-family: var(--font-body); font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;
+            text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-orange); color: #000;
+            box-shadow: 0 10px 30px var(--accent-orange-glow);
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 94, 0, 0.6); background: #FF7300; }
+
+        /* ── CINEMATIC VSL STRIP ── */
+        .vsl-section { padding: 0; margin: 60px 0; }
+        .vsl-strip {
+            width: 100vw; position: relative; left: calc(-50vw + 50%);
+            background: var(--bg-surface); padding: 80px 24px;
+            border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .vsl-container {
+            width: 100%; max-width: 1000px; aspect-ratio: 16/9;
+            background: #000; border-radius: var(--radius-lg);
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8); border: 1px solid rgba(0, 242, 254, 0.2);
+            position: relative; overflow: hidden;
+        }
+
+        .vsl-container::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,242,254,0.1), rgba(255,94,0,0.1));
+            z-index: 1; transition: opacity 0.3s ease;
+        }
+
+        .vsl-container:hover::before { opacity: 0; }
+
+        .play-btn {
+            width: 100px; height: 100px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+            border: 2px solid var(--accent-teal); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: var(--accent-teal); z-index: 2; transition: all 0.3s ease; padding-left: 8px;
+        }
+        .vsl-container:hover .play-btn { transform: scale(1.1); background: var(--accent-teal); color: #000; box-shadow: 0 0 40px var(--accent-teal-glow); }
+
+        /* ── ASYMMETRICAL PAIN POINTS ── */
+        .staggered-grid {
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-top: 60px;
+        }
+
+        .card {
+            background: var(--bg-card); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: var(--border-glass); border-radius: var(--radius-lg);
+            padding: 40px; transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: rgba(0, 242, 254, 0.3); }
+
+        .card h3 { font-size: 2rem; margin-bottom: 16px; color: var(--text-main); }
+        .card p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; }
+
+        /* Asymmetrical spanning */
+        .card-1 { grid-column: 1 / 8; }
+        .card-2 { grid-column: 5 / 13; margin-top: -20px; }
+        .card-3 { grid-column: 2 / 10; margin-top: -20px; }
+
+        .card-number {
+            font-family: var(--font-display); font-size: 4rem; font-weight: 800;
+            color: rgba(255,255,255,0.05); position: absolute; top: 10px; right: 20px; line-height: 1; pointer-events: none;
+        }
+
+        /* ── CASCADING 5 PILLARS ── */
+        .pillar-list { margin-top: 60px; display: flex; flex-direction: column; gap: 24px; }
+        
+        .pillar-item {
+            display: flex; align-items: center; gap: 40px; background: var(--bg-card);
+            border: var(--border-glass); border-radius: 16px; padding: 32px 40px;
+            transition: all 0.3s; position: relative; overflow: hidden;
+        }
+
+        .pillar-item::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--accent-teal); transform: scaleY(0); transition: transform 0.3s; transform-origin: bottom;
+        }
+        .pillar-item:hover::before { transform: scaleY(1); }
+        .pillar-item:hover { background: rgba(17, 24, 45, 0.9); transform: translateX(10px); }
+
+        .pillar-abbr {
+            font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; color: var(--accent-teal); width: 80px; flex-shrink: 0;
+        }
+        .pillar-content h3 { font-size: 1.5rem; margin-bottom: 8px; }
+        .pillar-content p { color: var(--text-muted); }
+
+        /* ── PRICING ── */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 60px; align-items: center;
+        }
+
+        .price-card {
+            background: var(--bg-surface); border: var(--border-glass); border-radius: var(--radius-lg);
+            padding: 50px 40px; display: flex; flex-direction: column;
+        }
+
+        .price-card.featured {
+            background: linear-gradient(180deg, rgba(17, 24, 45, 0.9), rgba(3, 5, 11, 0.95));
+            border: 2px solid var(--accent-orange); box-shadow: 0 0 50px var(--accent-orange-glow);
+            transform: scale(1.05); position: relative; z-index: 2; padding: 60px 40px;
+        }
+
+        .featured-tag {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: var(--accent-orange); color: #000; font-weight: 800; font-size: 0.8rem;
+            letter-spacing: 0.15em; padding: 8px 24px; border-radius: 100px; text-transform: uppercase;
+        }
+
+        .price-card h3 { font-size: 1.5rem; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.1em; }
+        .featured h3 { color: var(--accent-orange); }
+        
+        .price { font-family: var(--font-display); font-size: 4rem; margin-bottom: 30px; line-height: 1; }
+        
+        .feature-list { list-style: none; margin-bottom: 40px; flex-grow: 1; }
+        .feature-list li {
+            margin-bottom: 16px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 12px; font-size: 1.05rem;
+        }
+        .feature-list li::before { content: '→'; color: var(--accent-teal); font-weight: bold; }
+        .featured .feature-list li::before { color: var(--accent-orange); }
+
+        .btn-outline {
+            display: block; text-align: center; padding: 18px; border-radius: 100px;
+            border: 1px solid var(--text-muted); color: var(--text-main); text-decoration: none;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+        .btn-full { width: 100%; }
+
+        /* ── ANIMATIONS ── */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; gap: 40px; }
+            .hero-visual { height: 300px; }
+            .card-1, .card-2, .card-3 { grid-column: 1 / 13; margin-top: 0; }
+            .pillar-item { flex-direction: column; text-align: center; gap: 20px; }
+            .price-card.featured { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Aurora & Noise Background -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+    <div class="container">
+        
+        <!-- ════ HERO (SPLIT LAYOUT) ════ -->
+        <section class="hero reveal active">
+            <div class="hero-copy">
+                <div class="hero-badge">✦ 15-Day Audio Framework</div>
+                <h1>Stop Repeating the Same Mistakes in <br><span class="text-gradient-orange">Love & Money.</span></h1>
+                <p class="lead">
+                    Did you know? The exact same subconscious pattern destroying your relationships is also leaking your wealth.[cite: 1] It's one hidden script in two arenas. Decode your birth chart and rewire your identity.
+                </p>
+                <a href="#pricing" class="btn btn-primary">Decode Your Pattern Now</a>
+            </div>
+            
+            <div class="hero-visual">
+                <!-- Abstract 3D CSS Animation representing Mind & Astrology -->
+                <div class="astro-rings">
+                    <div class="ring r1"></div>
+                    <div class="ring r2"></div>
+                    <div class="ring r3"></div>
+                    <div class="core-orb"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ VSL (CINEMATIC FULL WIDTH STRIP) ════ -->
+        <section class="vsl-section reveal">
+            <div class="vsl-strip">
+                <h2 style="font-size: 3rem; margin-bottom: 12px;">Watch The Masterclass</h2>
+                <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 40px;">The hidden link between your wallet and your heart.</p>
+                
+                <div class="vsl-container">
+                    <div class="play-btn">▶</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ PAIN POINTS (STAGGERED) ════ -->
+        <section>
+            <h2 class="reveal" style="font-size: 3.5rem; margin-bottom: 20px; max-width: 600px;">If This Feels Familiar, <br><span class="text-gradient-teal">It Is Not Bad Luck.</span></h2>
+            
+            <div class="staggered-grid">
+                <div class="card card-1 reveal">
+                    <span class="card-number">01</span>
+                    <h3>The Chaser</h3>
+                    <p>You chase emotionally unavailable partners, and you also chase high-risk, quick-money schemes with the exact same nervous energy.[cite: 1]</p>
+                </div>
+                <div class="card card-2 reveal">
+                    <span class="card-number">02</span>
+                    <h3>The Over-Giver</h3>
+                    <p>You give too much in relationships until you're empty, and you over-spend your money just to feel emotional comfort.[cite: 1]</p>
+                </div>
+                <div class="card card-3 reveal">
+                    <span class="card-number">03</span>
+                    <h3>The Avoidant</h3>
+                    <p>Closeness feels suffocating in love, and you avoid the consistent, daily action required to actually build long-term wealth.[cite: 1]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ 5 PILLARS (CASCADING LIST) ════ -->
+        <section>
+            <div class="reveal">
+                <h2 style="font-size: 3.5rem; margin-bottom: 16px;">The 5-Pillar System</h2>
+                <p style="color: var(--text-muted); font-size: 1.2rem;">Your birth chart isn't your destiny — it's just a map of your psychology.</p>
+            </div>
+            
+            <div class="pillar-list">
+                <div class="pillar-item reveal">
+                    <div class="pillar-abbr">AK</div>
+                    <div class="pillar-content">
+                        <h3>Atmakaraka</h3>
+                        <p>The highest degree planet. Represents your soul identity in love AND natural abundance style.[cite: 1]</p>
+                    </div>
+                </div>
+                <div class="pillar-item reveal">
+                    <div class="pillar-abbr">DK</div>
+                    <div class="pillar-content">
+                        <h3>Darakaraka</h3>
+                        <p>The lowest degree planet. Reveals your default relationship pattern AND default money pattern.[cite: 1]</p>
+                    </div>
+                </div>
+                <div class="pillar-item reveal">
+                    <div class="pillar-abbr" style="font-size: 2rem;">2ND</div>
+                    <div class="pillar-content">
+                        <h3>2nd House Lord</h3>
+                        <p>Determined by which house the 2nd lord sits in. This acts as your natural money channel.[cite: 1]</p>
+                    </div>
+                </div>
+                <div class="pillar-item reveal">
+                    <div class="pillar-abbr">GK</div>
+                    <div class="pillar-content">
+                        <h3>Gnaati Karak</h3>
+                        <p>The 6th planet by degree. Uncovers the karmic obstacle in love AND in money.[cite: 1]</p>
+                    </div>
+                </div>
+                <div class="pillar-item reveal">
+                    <div class="pillar-abbr" style="font-size: 2rem;">VEN</div>
+                    <div class="pillar-content">
+                        <h3>Venus House</h3>
+                        <p>Governs your relationship style AND wealth source AND wealth leak.[cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ PRICING ════ -->
+        <section id="pricing">
+            <h2 class="reveal" style="text-align: center; font-size: 3.5rem; margin-bottom: 20px;">Start Your 15-Day Reset</h2>
+            
+            <div class="pricing-grid">
+                <!-- Entry -->
+                <div class="price-card reveal">
+                    <h3>Entry</h3>
+                    <div class="price">₹999</div>
+                    <ul class="feature-list">
+                        <li>15 main audios[cite: 1]</li>
+                        <li>Complete 15-day journey</li>
+                        <li>Basic framework access</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Select Entry</a>
+                </div>
+
+                <!-- Core -->
+                <div class="price-card featured reveal">
+                    <div class="featured-tag">Most Popular</div>
+                    <h3>Core</h3>
+                    <div class="price text-gradient-orange">₹2,499</div>
+                    <ul class="feature-list">
+                        <li>All 15 audios[cite: 1]</li>
+                        <li>Worksheets included[cite: 1]</li>
+                        <li>PDFs provided[cite: 1]</li>
+                        <li>Bonus content[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-full">Enroll in Core</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="price-card reveal">
+                    <h3>Premium</h3>
+                    <div class="price">₹5,999</div>
+                    <ul class="feature-list">
+                        <li>Everything in Core[cite: 1]</li>
+                        <li>Live Q&A sessions[cite: 1]</li>
+                        <li>Personalised reading[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Select Premium</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ FOOTER ════ -->
+        <footer class="reveal" style="text-align: center; padding: 80px 0 40px; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.05);">
+            <p style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 16px; font-weight: 700;" class="text-gradient-teal">
+                "We decode your patterns — not just motivate you."[cite: 1]
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Psycho-Astro Identity Reset. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Intersection Observer for smooth scrolling fade-ups
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

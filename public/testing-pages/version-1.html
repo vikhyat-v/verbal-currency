@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psycho-Astro Identity Reset — Fix Love & Money</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Cosmic Indigo & Copper Palette */
+            --bg-base: #0d0b1a;
+            --bg-gradient: radial-gradient(circle at 80% -20%, #2a1f4c 0%, #0d0b1a 60%);
+            --surface: rgba(21, 18, 38, 0.4);
+            --surface-elevated: rgba(28, 24, 53, 0.6);
+            --surface-highlight: rgba(42, 31, 76, 0.5);
+            
+            --copper: #d4a574;
+            --copper-light: #e8c9a0;
+            --copper-dark: #b88655;
+            --lavender: #a78bfa;
+            
+            --text-ivory: #e8e4f0;
+            --text-dim: #8b86a3;
+            
+            --border-glass: 1px solid rgba(232, 201, 160, 0.12);
+            --border-highlight: 1px solid rgba(212, 165, 116, 0.3);
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 8px;
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 40px rgba(212, 165, 116, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-ivory);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Background Orbs */
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .orb-1 {
+            top: 10%; right: 10%;
+            width: 400px; height: 400px;
+            background: var(--lavender);
+        }
+        .orb-2 {
+            bottom: 20%; left: -5%;
+            width: 500px; height: 500px;
+            background: var(--copper-dark);
+            opacity: 0.2;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* ── TYPOGRAPHY ── */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-ivory);
+        }
+
+        .text-copper { color: var(--copper); }
+        .text-light { color: var(--copper-light); }
+        .text-dim { color: var(--text-dim); }
+
+        .label-eyebrow {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--copper-light);
+            background: rgba(212, 165, 116, 0.1);
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            border: var(--border-glass);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            text-align: center;
+            padding: 100px 0 60px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            margin-bottom: 24px;
+            background: linear-gradient(to right, var(--text-ivory), var(--copper-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--copper), var(--copper-dark));
+            color: var(--bg-base);
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 16px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.4);
+            background: linear-gradient(135deg, var(--copper-light), var(--copper));
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--copper-light);
+            border: 1px solid var(--copper);
+            box-shadow: none;
+        }
+        
+        .btn-ghost:hover {
+            background: rgba(212, 165, 116, 0.1);
+            box-shadow: none;
+        }
+
+        /* ── GLASS CARDS ── */
+        .glass-card {
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-glass);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(212, 165, 116, 0.3);
+            transform: translateY(-4px);
+        }
+
+        /* ── VSL SECTION ── */
+        .vsl-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--surface-elevated);
+            border-radius: var(--radius-lg);
+            border: var(--border-highlight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--copper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--copper-light);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .vsl-container:hover .play-btn {
+            background: var(--copper);
+            color: var(--bg-base);
+            transform: scale(1.1);
+        }
+
+        /* ── PAIN POINTS LIST ── */
+        .pain-grid {
+            display: grid;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .pain-item {
+            background: var(--surface-elevated);
+            border: var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .pain-icon {
+            color: var(--lavender);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* ── PILLARS GRID ── */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .pillar-card h3 {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--copper-light);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+        }
+
+        /* ── PRICING ── */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .price-card {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border: var(--border-highlight);
+            background: var(--surface-highlight);
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--copper);
+            color: var(--bg-base);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .price-amount {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-ivory);
+            margin: 16px 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 24px 0;
+            flex-grow: 1;
+        }
+
+        .price-features li {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: var(--border-glass);
+            margin-top: 60px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            section { padding: 50px 0; }
+            .hero { padding: 80px 0 40px; }
+            .price-card.featured { transform: scale(1); }
+            .glass-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+
+    <div class="container">
+        
+        <!-- ════ HERO ════ -->
+        <section class="hero">
+            <div class="label-eyebrow">THE PSYCHO-ASTRO IDENTITY RESET[cite: 1]</div>
+            <h1>Fix Your Love & Money Patterns at the Root</h1>
+            <p class="lead">Your relationship pattern and your money pattern are the same pattern in two arenas. One course solves both.[cite: 1] A 15-Day Audio Course designed to rewire your subconscious blueprint.[cite: 1]</p>
+            <a href="#pricing" class="btn">Start Your 15-Day Reset</a>
+        </section>
+
+        <!-- ════ VSL ════ -->
+        <section>
+            <div class="vsl-container">
+                <div class="play-btn">▶</div>
+            </div>
+            <p style="text-align: center; margin-top: 16px; font-size: 0.9rem;" class="text-dim">Watch the Masterclass: The Hidden Link Between Your Wallet and Your Heart</p>
+        </section>
+
+        <!-- ════ PAIN POINTS ════ -->
+        <section>
+            <h2 style="text-align: center; font-size: 2rem;">If This Feels Familiar, It's Not Random</h2>
+            <div class="pain-grid">
+                <div class="pain-item glass-card">
+                    <div class="pain-icon">✦</div>
+                    <div>
+                        <p><strong>The Chaser Loop:</strong> The person who chases emotionally unavailable partners also chases high-risk quick-money schemes with the same nervous energy.[cite: 1]</p>
+                    </div>
+                </div>
+                <div class="pain-item glass-card">
+                    <div class="pain-icon">✦</div>
+                    <div>
+                        <p><strong>The Over-Giver Leak:</strong> The person who over-gives in love also over-spends for emotional comfort.[cite: 1]</p>
+                    </div>
+                </div>
+                <div class="pain-item glass-card">
+                    <div class="pain-icon">✦</div>
+                    <div>
+                        <p><strong>The Avoidant Trap:</strong> The person who is avoidant in relationships also avoids the consistent daily action that long-term wealth building requires.[cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ 5 PILLARS ════ -->
+        <section>
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div class="label-eyebrow">THE METHOD</div>
+                <h2 style="font-size: 2.2rem;">The 5-Pillar Psycho-Astro System</h2>
+                <p class="text-dim mt-2">Your birth chart isn't a destiny — it's a psychological map.</p>
+            </div>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card glass-card">
+                    <h3><span>☀️</span> Atmakaraka (AK)</h3>
+                    <p>The highest degree planet. Represents your soul identity in love AND natural abundance style.[cite: 1]</p>
+                </div>
+                <div class="pillar-card glass-card">
+                    <h3><span>🌙</span> Darakaraka (DK)</h3>
+                    <p>The lowest degree planet. Reveals your default relationship pattern AND default money pattern.[cite: 1]</p>
+                </div>
+                <div class="pillar-card glass-card">
+                    <h3><span>🏛️</span> 2nd House Lord</h3>
+                    <p>Determined by which house the 2nd lord sits in. This acts as your natural money channel.[cite: 1]</p>
+                </div>
+                <div class="pillar-card glass-card">
+                    <h3><span>⚔️</span> Gnaati Karak (GK)</h3>
+                    <p>The 6th planet by degree. Uncovers the karmic obstacle in love AND in money.[cite: 1]</p>
+                </div>
+                <div class="pillar-card glass-card" style="grid-column: 1 / -1;">
+                    <h3><span>✨</span> Venus House</h3>
+                    <p>Governs your relationship style AND wealth source AND wealth leak.[cite: 1]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ PRICING ════ -->
+        <section id="pricing">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2.2rem;">Choose Your Level</h2>
+                <p class="text-dim mt-2">15 days. One pattern. Two arenas.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Entry -->
+                <div class="price-card glass-card">
+                    <h3 class="text-light">Entry Tier</h3>
+                    <div class="price-amount">₹999</div>
+                    <ul class="price-features">
+                        <li>15 main audios[cite: 1]</li>
+                        <li>Complete 15-day journey</li>
+                        <li>Basic framework access</li>
+                    </ul>
+                    <a href="#" class="btn btn-ghost">Select Entry</a>
+                </div>
+
+                <!-- Core -->
+                <div class="price-card glass-card featured">
+                    <div class="price-badge">Most Popular</div>
+                    <h3 class="text-copper">Core Tier</h3>
+                    <div class="price-amount">₹2,499</div>
+                    <ul class="price-features">
+                        <li>All audios[cite: 1]</li>
+                        <li>Worksheets included[cite: 1]</li>
+                        <li>PDFs provided[cite: 1]</li>
+                        <li>Bonus content[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn">Select Core</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="price-card glass-card">
+                    <h3 class="text-light">Premium Tier</h3>
+                    <div class="price-amount">₹5,999</div>
+                    <ul class="price-features">
+                        <li>Everything in Core[cite: 1]</li>
+                        <li>Live Q&A sessions[cite: 1]</li>
+                        <li>Personalised reading[cite: 1]</li>
+                    </ul>
+                    <a href="#" class="btn btn-ghost">Select Premium</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════ FOOTER ════ -->
+        <footer>
+            <p>"We decode your patterns — not just motivate you."[cite: 1]</p>
+            <p style="margin-top: 12px; opacity: 0.6;">© 2026 The Psycho-Astro Identity Reset. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
