@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psycho-Astro Diagnostic | Fix Love & Money</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Onyx & Liquid Copper/Champagne Gold Palette */
+            --bg-void: #060608;
+            --bg-surface: #0f0f13;
+            --bg-elevated: rgba(18, 18, 22, 0.6);
+            
+            --gold-light: #F2E8CF;
+            --gold-core: #C5A880;
+            --gold-dark: #8C7355;
+            --copper-glow: rgba(197, 168, 128, 0.4);
+            
+            --text-main: #F5F5F7;
+            --text-muted: #9CA3AF;
+            
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --border-glass: 1px solid rgba(255, 255, 255, 0.05);
+            --border-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* ── REALISTIC 3D SOLAR SYSTEM BACKGROUND ── */
+        .solar-system-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -3;
+            background: radial-gradient(circle at center, #12100e 0%, var(--bg-void) 80%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+            overflow: hidden;
+        }
+
+        .solar-system {
+            position: relative;
+            width: 1200px; height: 1200px;
+            transform-style: preserve-3d;
+            transform: rotateX(72deg) rotateY(0deg); 
+            animation: systemSpin 150s linear infinite;
+        }
+
+        @keyframes systemSpin {
+            0% { transform: rotateX(72deg) rotateZ(0deg); }
+            100% { transform: rotateX(72deg) rotateZ(360deg); }
+        }
+
+        /* Glowing Sun */
+        .sun-core {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 140px; height: 140px;
+            transform: translate(-50%, -50%) rotateX(-72deg); 
+            background: radial-gradient(circle at 30% 30%, #ffffff 0%, var(--gold-light) 20%, var(--gold-core) 60%, var(--gold-dark) 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 80px var(--gold-core), 0 0 150px var(--gold-dark), inset -10px -10px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Mechanical Astrological Ring (Houses & Degrees) */
+        .astro-grid-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 1100px; height: 1100px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(197, 168, 128, 0.15);
+            background: repeating-conic-gradient(from 0deg, transparent 0deg 29.5deg, rgba(197, 168, 128, 0.1) 29.5deg 30deg);
+            pointer-events: none;
+        }
+
+        .astro-grid-ring::before {
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 95%; height: 95%; border-radius: 50%;
+            background: repeating-conic-gradient(from 0deg, transparent 0deg 4.9deg, rgba(255, 255, 255, 0.05) 4.9deg 5deg);
+            border: 1px dashed rgba(197, 168, 128, 0.1);
+        }
+
+        /* Orbital Rings */
+        .orbit {
+            position: absolute;
+            top: 50%; left: 50%;
+            border-radius: 50%;
+            border: 1px solid rgba(197, 168, 128, 0.12);
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+        }
+
+        .orbit-1 { width: 300px; height: 300px; animation: orbitSpin 15s linear infinite; }
+        .orbit-2 { width: 480px; height: 480px; border-color: rgba(255, 255, 255, 0.04); animation: orbitSpin 30s linear infinite reverse; }
+        .orbit-3 { width: 680px; height: 680px; border: 1px dashed rgba(197, 168, 128, 0.2); animation: orbitSpin 50s linear infinite; }
+        .orbit-4 { width: 900px; height: 900px; animation: orbitSpin 90s linear infinite reverse; }
+
+        @keyframes orbitSpin { 100% { transform: translate(-50%, -50%) rotateZ(360deg); } }
+
+        /* Realistic 3D Planets */
+        .planet {
+            position: absolute;
+            left: 50%;
+            border-radius: 50%;
+            transform: translateX(-50%) rotateX(-72deg); /* Keeps planets facing the camera */
+            box-shadow: inset -4px -4px 10px rgba(0,0,0,0.8), 0 0 15px rgba(197, 168, 128, 0.1);
+        }
+
+        /* Planet specific styling (Realistic colors, no emojis) */
+        .p-mercury { width: 14px; height: 14px; top: -7px; background: radial-gradient(circle at 30% 30%, #d4c5b9, #5c554e); }
+        .p-venus   { width: 22px; height: 22px; top: -11px; background: radial-gradient(circle at 30% 30%, #F2C9A1, #8C7355); }
+        .p-earth   { width: 26px; height: 26px; top: -13px; background: radial-gradient(circle at 30% 30%, #4a8bad, #1a3c54); }
+        .p-mars    { width: 18px; height: 18px; top: -9px; background: radial-gradient(circle at 30% 30%, #c46845, #5e2411); }
+
+        /* Deep vignette to keep focus on center content */
+        .bg-vignette {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, var(--bg-void) 95%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* ── FLOATING VSL POPUP (PICTURE-IN-PICTURE) ── */
+        .floating-vsl {
+            position: fixed;
+            bottom: 40px; right: 40px;
+            width: 320px; aspect-ratio: 16/9;
+            background: #000;
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(197, 168, 128, 0.15);
+            transform: translateY(150%) scale(0.9);
+            opacity: 0;
+            transition: all 0.8s var(--ease-out);
+            z-index: 100;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; cursor: pointer;
+        }
+
+        .floating-vsl.visible {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .vsl-badge {
+            position: absolute; top: 10px; left: 10px;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            padding: 4px 10px; border-radius: 4px;
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--gold-light);
+            display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pulse-dot {
+            width: 6px; height: 6px; background: #ff3b3b; border-radius: 50%;
+            animation: pulseRed 1.5s infinite;
+        }
+
+        @keyframes pulseRed {
+            0% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 59, 59, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0); }
+        }
+
+        .play-icon-small {
+            width: 40px; height: 40px; border: 1px solid var(--gold-core); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--gold-core);
+            font-size: 1rem; padding-left: 4px; background: rgba(197, 168, 128, 0.15);
+        }
+
+        /* ── DIAGNOSTIC CONTAINER ── */
+        .funnel-container {
+            width: 100%;
+            max-width: 850px;
+            padding: 60px 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .step {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            text-align: center;
+        }
+
+        .step.active {
+            display: block;
+            animation: slideUp 0.8s var(--ease-out) forwards;
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── TYPOGRAPHY ── */
+        .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold-core);
+            margin-bottom: 24px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        h1, h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            font-weight: 400;
+            color: var(--text-main);
+            text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        }
+        
+        .gold-text {
+            color: var(--gold-core);
+        }
+
+        p.lead {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ── INTERACTIVE OPTIONS (ULTRA PREMIUM) ── */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .option-card {
+            background: var(--bg-elevated);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: var(--border-glass);
+            box-shadow: var(--border-highlight), 0 10px 30px rgba(0,0,0,0.4);
+            border-radius: var(--radius-md);
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.4s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle glowing gradient on hover */
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(197, 168, 128, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .option-card:hover {
+            border-color: rgba(197, 168, 128, 0.4);
+            transform: translateY(-2px);
+            box-shadow: var(--border-highlight), 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(197, 168, 128, 0.05);
+        }
+
+        .option-card:hover::before {
+            opacity: 1;
+        }
+
+        .option-icon {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--gold-core);
+            font-weight: 500;
+            opacity: 0.9;
+            min-width: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .option-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            font-weight: 400;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-core), var(--gold-dark));
+            color: #000;
+            border: none;
+            padding: 20px 48px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(197, 168, 128, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::after {
+            left: 150%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(197, 168, 128, 0.3);
+        }
+
+        /* ── LOADING DIAGNOSTIC UI ── */
+        .scanner-ui {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg-elevated);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: var(--border-glass);
+            box-shadow: var(--border-highlight), 0 20px 50px rgba(0,0,0,0.5);
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scanner-ring {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.05);
+            border-top-color: var(--gold-core);
+            border-right-color: var(--gold-light);
+            animation: scanSpin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+
+        @keyframes scanSpin { 100% { transform: rotate(360deg); } }
+
+        .terminal-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--gold-core);
+            text-align: left;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 0.8;
+        }
+
+        .log-line {
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+            margin-bottom: 8px;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* ── PRICING REPORT (MATURE & CLINICAL) ── */
+        .report-card {
+            background: linear-gradient(180deg, rgba(20, 20, 24, 0.8), rgba(10, 10, 12, 0.95));
+            backdrop-filter: blur(30px);
+            border: var(--border-glass);
+            box-shadow: var(--border-highlight), 0 30px 80px rgba(0,0,0,0.8);
+            border-radius: var(--radius-lg);
+            padding: 60px 40px;
+            margin-bottom: 40px;
+        }
+
+        .main-vsl-area {
+            width: 100%; aspect-ratio: 16/9; background: #000; 
+            border: var(--border-glass);
+            border-radius: var(--radius-md); margin: 40px 0; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.4s ease; position: relative; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .main-vsl-area:hover { 
+            border-color: rgba(197, 168, 128, 0.5); 
+            transform: scale(1.01);
+        }
+
+        .play-icon {
+            width: 70px; height: 70px; border: 1px solid var(--gold-core); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--gold-core);
+            font-size: 1.5rem; padding-left: 5px; background: rgba(197, 168, 128, 0.05);
+            backdrop-filter: blur(10px); transition: all 0.3s ease;
+        }
+
+        .main-vsl-area:hover .play-icon {
+            background: var(--gold-core);
+            color: #000;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+            text-align: left;
+        }
+
+        .price-tier {
+            background: rgba(255,255,255,0.02);
+            border: var(--border-glass);
+            padding: 40px 32px;
+            border-radius: var(--radius-md);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .price-tier.featured {
+            background: rgba(197, 168, 128, 0.03);
+            border: 1px solid rgba(197, 168, 128, 0.3);
+            transform: scale(1.03);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+            z-index: 2;
+        }
+
+        .tier-header { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; font-weight: 500; }
+        .featured .tier-header { color: var(--gold-core); }
+        
+        .tier-price { font-family: var(--font-heading); font-size: 3.2rem; color: var(--text-main); margin-bottom: 24px; line-height: 1; }
+        
+        .feature-list { list-style: none; margin-bottom: 30px; }
+        .feature-list li {
+            margin-bottom: 16px; color: var(--text-muted); font-size: 0.95rem;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .feature-list li::before { content: '—'; color: var(--gold-dark); font-size: 1rem; font-weight: bold; }
+        .featured .feature-list li::before { color: var(--gold-core); }
+
+        .btn-outline {
+            display: block; text-align: center; padding: 16px;
+            border: 1px solid rgba(255,255,255,0.2); color: var(--text-main);
+            border-radius: 8px; text-decoration: none; text-transform: uppercase;
+            font-weight: 600; font-size: 0.85rem; letter-spacing: 0.15em; transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: var(--gold-core); color: var(--gold-core); background: rgba(197, 168, 128, 0.05); }
+        .btn-full { width: 100%; }
+
+        /* ── PERSISTENT TESTIMONIALS SECTION ── */
+        .testimonials-section {
+            margin: 60px auto 40px; padding-top: 40px; border-top: 1px solid rgba(197, 168, 128, 0.2);
+            text-align: center; max-width: 850px; position: relative; z-index: 10;
+        }
+        .testimonials-section h3 { font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-main); margin-bottom: 10px; font-weight: 700; }
+        .stars { color: var(--gold-core); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
+        
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .review-card {
+            background: rgba(255,255,255,0.02); border: var(--border-glass); border-radius: var(--radius-md);
+            padding: 12px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .review-card:hover { border-color: rgba(197, 168, 128, 0.4); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
+        
+        .review-img-placeholder { width: 100%; height: auto; aspect-ratio: 4/3; background: rgba(0,0,0,0.5); border-radius: 8px; object-fit: cover; border: 1px solid rgba(255,255,255,0.05); }
+        .review-caption { margin-top: 12px; font-size: 0.9rem; color: var(--gold-light); text-align: center; font-style: italic; }
+
+        @media (max-width: 768px) {
+            .floating-vsl { width: 220px; bottom: 20px; right: 20px; }
+            .play-icon-small { width: 30px; height: 30px; font-size: 0.8rem; }
+            .vsl-badge { font-size: 0.5rem; padding: 2px 6px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="solar-system-wrapper">
+        <div class="solar-system">
+            <div class="astro-grid-ring"></div>
+            <div class="sun-core"></div>
+            
+            <div class="orbit orbit-1"><div class="planet p-mercury"></div></div>
+            <div class="orbit orbit-2"><div class="planet p-venus"></div></div>
+            <div class="orbit orbit-3"><div class="planet p-earth"></div></div>
+            <div class="orbit orbit-4"><div class="planet p-mars"></div></div>
+        </div>
+    </div>
+    
+    <div class="bg-vignette"></div>
+
+    <div class="floating-vsl" id="floating-vsl">
+        <div class="vsl-badge"><span class="pulse-dot"></span> Masterclass</div>
+        <div class="play-icon-small">▶</div>
+    </div>
+
+    <div class="funnel-container">
+        
+        <div class="steps-wrapper">
+            <div class="step active" id="step-1">
+                <span class="eyebrow">Psycho-Astro Diagnostic System</span>
+                <h1>Stop Repeating the Same Mistakes in <br><span class="gold-text">Love & Money.</span></h1>
+                <p class="lead">Your relationship pattern and your money pattern are the same pattern in two arenas. One course solves both. Initiate the diagnostic to decode the operating system secretly running your life.</p>
+                <button class="btn-primary" onclick="startQuiz()">Initiate Diagnostic</button>
+            </div>
+
+            <div class="step" id="step-2">
+                <span class="eyebrow">Phase 1: Reality Check</span>
+                <h2>Identify Your <span class="gold-text">Current Pattern</span></h2>
+                <p class="lead">Think about your past relationships. Which of these painful situations repeats the most?</p>
+                
+                <div class="options-grid">
+                    <div class="option-card" onclick="nextStep(3)">
+                        <div class="option-icon">I</div>
+                        <div class="option-text">Even when I see the red flags and know something is wrong, I ignore them, stay, and get hurt.</div>
+                    </div>
+                    <div class="option-card" onclick="nextStep(3)">
+                        <div class="option-icon">II</div>
+                        <div class="option-text">I always attract people who need 'saving,' and I give until I'm completely empty.</div>
+                    </div>
+                    <div class="option-card" onclick="nextStep(3)">
+                        <div class="option-icon">III</div>
+                        <div class="option-text">As soon as a relationship gets too close or serious, closeness feels threatening and I pull away.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step-3">
+                <span class="eyebrow">Phase 2: Financial Mapping</span>
+                <h2>Identify Your <span class="gold-text">Wealth Pattern</span></h2>
+                <p class="lead">Now, look at your financial behavior. When you feel stressed or see a new opportunity, what happens?</p>
+                
+                <div class="options-grid">
+                    <div class="option-card" onclick="startDiagnostic()">
+                        <div class="option-icon">I</div>
+                        <div class="option-text">I use emotional spending as comfort management when I feel stressed.</div>
+                    </div>
+                    <div class="option-card" onclick="startDiagnostic()">
+                        <div class="option-icon">II</div>
+                        <div class="option-text">I jump into impulsive investments driven by FOMO and excitement.</div>
+                    </div>
+                    <div class="option-card" onclick="startDiagnostic()">
+                        <div class="option-icon">III</div>
+                        <div class="option-text">I experience financial paralysis and avoid looking at my numbers entirely.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step-4">
+                <h2>Compiling <span class="gold-text">Blueprint...</span></h2>
+                <p class="lead" style="margin-bottom: 40px;">Cross-referencing behavioral inputs with astrological architecture...</p>
+                
+                <div class="scanner-ui">
+                    <div class="scanner-ring"></div>
+                    <div class="terminal-text" id="terminal-log">
+                        </div>
+                </div>
+            </div>
+
+            <div class="step" id="step-5">
+                
+                <div class="report-card">
+                    <span class="eyebrow">Diagnostic Complete</span>
+                    <h1 style="font-size: 3.2rem;">Pattern <span class="gold-text">Identified.</span></h1>
+                    
+                    <p class="lead" style="color: var(--text-main); font-weight: 400; text-align: center;">
+                        You are running the exact same nervous system response in your wallet as you are in your heart. 
+                        There is a critical misalignment between your Darakaraka (DK) and your 2nd House Lord.
+                    </p>
+
+                    <div class="vsl-play-area">
+                        <div class="play-icon">▶</div>
+                        <div style="position: absolute; bottom: 20px; color: var(--gold-core); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;">Watch Masterclass Analysis</div>
+                    </div>
+
+                    <p class="lead" style="font-size: 1.1rem; margin-top: 40px; text-align: center;">
+                        Your birth chart isn't a destiny—it's a psychological map. Over 15 days, we will decode your 5 specific pillars (AK, DK, 2nd Lord, GK, Venus House) and rewire the root cause.
+                    </p>
+
+                    <div class="pricing-grid">
+                        <div class="price-tier">
+                            <div class="tier-header">Entry Path</div>
+                            <div class="tier-price">₹999</div>
+                            <ul class="feature-list">
+                                <li>15 Main Audios</li>
+                                <li>15-Day Complete Journey</li>
+                                <li>Basic Framework Access</li>
+                            </ul>
+                            <a href="#" class="btn-outline">Select Entry</a>
+                        </div>
+
+                        <div class="price-tier featured">
+                            <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold-core); color: #000; padding: 6px 16px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; border-radius: 4px;">THE FULL RESET</div>
+                            <div class="tier-header">The Core Reset</div>
+                            <div class="tier-price gold-text">₹2,499</div>
+                            <ul class="feature-list">
+                                <li style="color: var(--text-main);">All 15 Audios</li>
+                                <li style="color: var(--text-main);">Worksheets & PDFs</li>
+                                <li style="color: var(--text-main);">Bonus Content Vault</li>
+                            </ul>
+                            <button class="btn-primary btn-full" style="margin-top: 0;">Enroll Now</button>
+                        </div>
+
+                        <div class="price-tier">
+                            <div class="tier-header">Premium Path</div>
+                            <div class="tier-price">₹5,999</div>
+                            <ul class="feature-list">
+                                <li>Everything in Core</li>
+                                <li>Live Q&A Sessions</li>
+                                <li>Personalised Reading</li>
+                            </ul>
+                            <a href="#" class="btn-outline">Select Premium</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonials-section">
+            <h3>Proof of <span class="gold-text">Transformation</span></h3>
+            <div class="stars">★★★★★</div>
+            <p class="lead" style="font-size: 1rem; margin-bottom: 30px;">Real screenshots from people who broke their subconscious loop.</p>
+            
+            <div class="review-grid">
+                <div class="review-card">
+                    <img src="https://via.placeholder.com/400x300/12100e/C5A880?text=WhatsApp+Screenshot" alt="Student Review" class="review-img-placeholder">
+                    <div class="review-caption">"My income doubled 30 days after fixing my 2nd House Lord block..."</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://via.placeholder.com/400x300/12100e/C5A880?text=Email+Screenshot" alt="Student Review" class="review-img-placeholder">
+                    <div class="review-caption">"I stopped impulsive spending and finally saved my first ₹5 Lakhs."</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://via.placeholder.com/400x300/12100e/C5A880?text=DM+Screenshot" alt="Student Review" class="review-img-placeholder">
+                    <div class="review-caption">"The Darakaraka module explained exactly why I kept self-sabotaging."</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px; font-style: italic; letter-spacing: 0.05em;">"We decode your patterns — not just motivate you."</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">© 2026 Psycho-Astro Identity Reset. All Rights Reserved.</p>
+            </div>
+        </div>
+        </div>
+
+    <script>
+        const floatingVsl = document.getElementById('floating-vsl');
+
+        function startQuiz() {
+            floatingVsl.classList.add('visible'); // Show floating VSL
+            nextStep(2);
+        }
+
+        // Smooth transition logic
+        function nextStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            const target = document.getElementById('step-' + stepNumber);
+            target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Diagnostic Loading Sequence
+        function startDiagnostic() {
+            nextStep(4);
+            
+            const logs = [
+                "> Analyzing Darakaraka (DK) default patterns...",
+                "> Scanning 2nd House wealth channels...",
+                "> Mapping Venus House leakage points...",
+                "> Identifying Atmakaraka (AK) suppression...",
+                "> Compiling Dual-Arena Blueprint..."
+            ];
+
+            const terminal = document.getElementById('terminal-log');
+            let logIndex = 0;
+
+            const logInterval = setInterval(() => {
+                if (logIndex < logs.length) {
+                    const line = document.createElement('div');
+                    line.className = 'log-line';
+                    line.innerText = logs[logIndex];
+                    terminal.appendChild(line);
+                    
+                    // Keep terminal scrolling to bottom
+                    if(terminal.children.length > 3) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                    
+                    logIndex++;
+                } else {
+                    clearInterval(logInterval);
+                    setTimeout(() => {
+                        floatingVsl.classList.remove('visible'); // Hide floating VSL on last step
+                        nextStep(5);
+                    }, 800);
+                }
+            }, 700); // Speed of terminal logs
+        }
+    </script>
+</body>
+</html>

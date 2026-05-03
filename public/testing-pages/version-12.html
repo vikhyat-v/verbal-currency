@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Psycho-Astro Diagnostic | Wealth Pattern Reset</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Exact Colors from Version-10 */
+            --bg-void: #020203;
+            --bg-surface: #0a0a0f;
+            --bg-elevated: rgba(12, 12, 16, 0.65);
+            --glass-border: 1px solid rgba(212, 175, 55, 0.15);
+            
+            --gold-light: #FCE8B2;
+            --gold-core: #D4AF37;
+            --gold-deep: #8C7323;
+            
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1AA;
+            
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --shadow-gold: 0 10px 40px rgba(212, 175, 55, 0.2);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ════ EXACT 3D SOLAR SYSTEM BACKGROUND FROM VERSION-10 ════ */
+        .solar-system-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -3;
+            background: radial-gradient(circle at center, #07070a 0%, #020203 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        .solar-system {
+            position: relative;
+            width: 100vw; height: 100vw;
+            max-width: 1400px; max-height: 1400px;
+            transform-style: preserve-3d;
+            transform: rotateX(65deg) rotateY(0deg); 
+            animation: systemDrift 120s linear infinite;
+        }
+
+        @keyframes systemDrift {
+            0% { transform: rotateX(65deg) rotateZ(0deg); }
+            100% { transform: rotateX(65deg) rotateZ(360deg); }
+        }
+
+        .sun-core {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 140px; height: 140px;
+            transform: translate(-50%, -50%) rotateX(-65deg); 
+            background: radial-gradient(circle, #ffffff 0%, var(--gold-light) 30%, var(--gold-core) 70%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 100px var(--gold-core), 0 0 200px var(--gold-deep);
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%; left: 50%;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+        }
+
+        .orbit-1 { width: 350px; height: 350px; animation: spin 25s linear infinite; }
+        .orbit-2 { width: 550px; height: 550px; border-color: rgba(255, 255, 255, 0.08); animation: spin 40s linear infinite reverse; }
+        .orbit-3 { width: 800px; height: 800px; border: 1px dashed rgba(212, 175, 55, 0.3); animation: spin 60s linear infinite; }
+        .orbit-4 { width: 1100px; height: 1100px; animation: spin 90s linear infinite reverse; }
+
+        @keyframes spin {
+            100% { transform: translate(-50%, -50%) rotateZ(360deg); }
+        }
+
+        .planet {
+            position: absolute;
+            top: -8px; left: 50%;
+            border-radius: 50%;
+            transform: translateX(-50%) rotateX(-65deg); 
+            box-shadow: 0 0 25px currentColor;
+        }
+
+        .p-1 { width: 16px; height: 16px; background: #fff; color: #fff; }
+        .p-2 { width: 20px; height: 20px; background: #9b4dca; color: #9b4dca; top: -10px; }
+        .p-3 { width: 28px; height: 28px; background: #00e5ff; color: #00e5ff; top: -14px; }
+        .p-4 { width: 18px; height: 18px; background: var(--gold-core); color: var(--gold-core); top: -9px; }
+
+        .astro-chart-3d {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 1300px; height: 1300px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid rgba(212, 175, 55, 0.1);
+            background: conic-gradient(from 0deg, transparent 0%, rgba(212, 175, 55, 0.04) 2%, transparent 8%, transparent 30%, rgba(212, 175, 55, 0.04) 32%, transparent 40%);
+            animation: spin 180s linear infinite reverse;
+            pointer-events: none;
+        }
+
+        .astro-chart-3d::before, .astro-chart-3d::after {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); border-radius: 50%;
+            border: 1px dashed rgba(255, 255, 255, 0.06);
+        }
+        .astro-chart-3d::before { width: 88%; height: 88%; }
+        .astro-chart-3d::after { width: 115%; height: 115%; border: 1px solid rgba(212, 175, 55, 0.15); }
+
+        .bg-vignette {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at center, transparent 0%, var(--bg-void) 90%);
+            z-index: -2; pointer-events: none;
+        }
+
+        /* ════ FLOATING VSL POPUP (PICTURE-IN-PICTURE) ════ */
+        .floating-vsl {
+            position: fixed;
+            bottom: 40px; right: 40px;
+            width: 320px; aspect-ratio: 16/9;
+            background: #000;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.15);
+            transform: translateY(150%) scale(0.9);
+            opacity: 0;
+            transition: all 0.8s var(--ease-out);
+            z-index: 100;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; cursor: pointer;
+        }
+
+        .floating-vsl.visible { transform: translateY(0) scale(1); opacity: 1; }
+
+        .vsl-badge {
+            position: absolute; top: 10px; left: 10px;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            padding: 4px 10px; border-radius: 4px;
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--gold-light);
+            display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pulse-dot {
+            width: 6px; height: 6px; background: #ff3b3b; border-radius: 50%;
+            animation: pulseRed 1.5s infinite;
+        }
+
+        @keyframes pulseRed {
+            0% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 59, 59, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0); }
+        }
+
+        .play-icon-small {
+            width: 40px; height: 40px; border: 1px solid var(--gold-core); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--gold-core);
+            font-size: 1rem; padding-left: 4px; background: rgba(212, 175, 55, 0.15);
+        }
+
+        /* ════ DIAGNOSTIC FUNNEL CONTAINER ════ */
+        .funnel-container {
+            width: 100%; max-width: 850px; padding: 40px 24px; position: relative; z-index: 10;
+        }
+
+        .step { display: none; opacity: 0; transform: translateY(30px); text-align: center; }
+        .step.active { display: block; animation: slideUp 0.8s var(--ease-out) forwards; }
+
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* ════ TYPOGRAPHY ════ */
+        .eyebrow {
+            font-family: var(--font-body); font-weight: 700; font-size: 0.85rem;
+            letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-core);
+            margin-bottom: 24px; display: inline-block; border-bottom: 1px solid var(--gold-core);
+            padding-bottom: 8px;
+        }
+
+        h1, h2 {
+            font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.15; margin-bottom: 24px; font-weight: 700; color: var(--text-primary);
+            text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+        }
+        
+        .gold-text {
+            background: linear-gradient(to right, var(--gold-light), var(--gold-core), var(--gold-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            display: inline-block; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        p.lead {
+            font-size: 1.25rem; color: var(--text-primary); margin-bottom: 40px;
+            max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;
+            font-weight: 400; text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+        }
+
+        /* ════ INTERACTIVE OPTIONS ════ */
+        .options-grid { display: flex; flex-direction: column; gap: 16px; max-width: 650px; margin: 0 auto; }
+
+        .option-card {
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: var(--glass-border); border-radius: var(--radius-md); padding: 24px 30px;
+            display: flex; align-items: center; gap: 20px; cursor: pointer; text-align: left;
+            transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .option-card:hover {
+            border-color: rgba(212, 175, 55, 0.5); background: rgba(20, 20, 25, 0.85);
+            transform: translateX(8px); box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .option-icon {
+            font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold-core);
+            font-weight: 700; opacity: 0.9; min-width: 30px;
+        }
+
+        .option-text { font-size: 1.1rem; color: var(--text-primary); font-weight: 400; line-height: 1.5; }
+
+        /* ════ BUTTONS ════ */
+        .btn-primary {
+            display: inline-block; padding: 20px 48px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-core), var(--gold-deep));
+            background-size: 200% auto; color: #000; border: none; font-family: var(--font-body);
+            font-weight: 700; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.1em;
+            border-radius: 8px; cursor: pointer; transition: all 0.4s ease; margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+        }
+
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5); }
+
+        /* ════ SCANNER UI ════ */
+        .scanner-ui {
+            max-width: 500px; margin: 0 auto; background: var(--glass-bg); backdrop-filter: blur(20px);
+            border: var(--glass-border); border-radius: var(--radius-lg); padding: 50px;
+            position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .scanner-ring {
+            width: 80px; height: 80px; margin: 0 auto 30px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.05); border-top-color: var(--gold-core); border-right-color: var(--gold-light);
+            animation: scanSpin 1s linear infinite;
+        }
+        @keyframes scanSpin { 100% { transform: rotate(360deg); } }
+
+        .terminal-text {
+            font-family: 'Courier New', monospace; font-size: 0.85rem; color: var(--gold-core);
+            text-align: left; height: 80px; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0.9;
+        }
+
+        .log-line { opacity: 0; animation: fadeIn 0.2s forwards; margin-bottom: 6px; }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* ════ REPORT & PRICING ════ */
+        .report-card {
+            background: linear-gradient(180deg, rgba(15, 15, 20, 0.85), rgba(5, 5, 8, 0.95));
+            backdrop-filter: blur(20px); border: var(--glass-border); border-radius: var(--radius-lg);
+            padding: 50px 40px; margin-bottom: 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+        }
+
+        .main-vsl-area {
+            width: 100%; aspect-ratio: 16/9; background: #000; border: 1px solid var(--gold-core);
+            border-radius: var(--radius-md); margin: 40px 0; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.4s ease; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        .main-vsl-area:hover { border-color: var(--gold-light); transform: scale(1.02); }
+        
+        .main-play-icon {
+            width: 80px; height: 80px; border: 2px solid var(--gold-core); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--gold-core);
+            font-size: 2rem; padding-left: 6px; background: rgba(212, 175, 55, 0.1); backdrop-filter: blur(10px); transition: all 0.3s ease;
+        }
+        .main-vsl-area:hover .main-play-icon { background: var(--gold-core); color: #000; }
+
+        /* ════ PRICING GRID ════ */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 50px; text-align: left; }
+        
+        .price-tier {
+            background: rgba(255,255,255,0.02); border: var(--glass-border); padding: 40px 32px;
+            border-radius: var(--radius-md); transition: all 0.4s ease; position: relative;
+        }
+        .price-tier.featured {
+            background: linear-gradient(180deg, rgba(30, 25, 10, 0.9), rgba(5, 5, 8, 0.95));
+            border: 2px solid var(--gold-core); transform: scale(1.05); box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2); z-index: 2;
+        }
+        .price-tier.featured::before {
+            content: 'MOST POPULAR'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            background: var(--gold-core); color: #000; font-family: var(--font-body); font-weight: 800;
+            font-size: 0.75rem; letter-spacing: 0.15em; padding: 6px 20px; border-radius: 30px;
+        }
+
+        .tier-header { font-size: 1.1rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 700; }
+        .featured .tier-header { color: var(--text-primary); }
+        .tier-price { font-family: var(--font-heading); font-size: 3.5rem; color: var(--text-primary); margin-bottom: 24px; line-height: 1; }
+        .featured .tier-price { color: var(--gold-core); }
+        
+        .feature-list { list-style: none; margin-bottom: 30px; }
+        .feature-list li { margin-bottom: 16px; color: var(--text-secondary); font-size: 1rem; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+        .feature-list li::before { content: '✓'; color: var(--gold-core); font-weight: bold; font-size: 1.2rem; }
+
+        .btn-outline {
+            display: block; text-align: center; padding: 16px; border: 1px solid var(--text-secondary); color: var(--text-primary);
+            border-radius: 8px; text-decoration: none; text-transform: uppercase; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.1em; transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: var(--gold-core); color: var(--gold-core); }
+        .btn-full { width: 100%; margin-top: 0; }
+
+        /* ════ PERSISTENT TESTIMONIALS SECTION ════ */
+        .testimonials-section {
+            margin: 60px auto 40px; padding-top: 40px; border-top: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center; max-width: 850px;
+        }
+        .testimonials-section h3 { font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-primary); margin-bottom: 10px; font-weight: 700; }
+        .stars { color: var(--gold-core); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
+        
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .review-card {
+            background: rgba(255,255,255,0.02); border: var(--glass-border); border-radius: var(--radius-md);
+            padding: 12px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .review-card:hover { border-color: rgba(212, 175, 55, 0.4); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
+        
+        .review-img-placeholder { width: 100%; height: auto; aspect-ratio: 4/3; background: rgba(0,0,0,0.5); border-radius: 8px; object-fit: cover; border: 1px solid rgba(255,255,255,0.05); }
+        .review-caption { margin-top: 12px; font-size: 0.9rem; color: var(--gold-light); text-align: center; font-style: italic; }
+        
+        @media (max-width: 900px) {
+            .floating-vsl { width: 220px; bottom: 20px; right: 20px; }
+            .solar-system { transform: rotateX(65deg) scale(0.6); }
+            .price-tier.featured { transform: scale(1); padding: 40px 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="solar-system-wrapper">
+        <div class="solar-system">
+            <div class="astro-chart-3d"></div>
+            <div class="sun-core"></div>
+            <div class="orbit orbit-1"><div class="planet p-1"></div></div>
+            <div class="orbit orbit-2"><div class="planet p-2"></div></div>
+            <div class="orbit orbit-3"><div class="planet p-3"></div></div>
+            <div class="orbit orbit-4"><div class="planet p-4"></div></div>
+        </div>
+    </div>
+    
+    <div class="bg-vignette"></div>
+
+    <div class="floating-vsl" id="floating-vsl">
+        <div class="vsl-badge"><span class="pulse-dot"></span> Masterclass</div>
+        <div class="play-icon-small">▶</div>
+    </div>
+
+    <div class="funnel-container">
+        
+        <div class="steps-wrapper">
+            
+            <div class="step active" id="step-1">
+                <span class="eyebrow">Psycho-Astro Diagnostic System</span>
+                <h1>Hard work isn't the problem. You aren't broke... <br><span class="gold-text">You are predictable.</span></h1>
+                <p class="lead">Your income isn't random. It follows your subconscious pattern. The exact same cycle keeping you stuck in relationships is leaking your wealth. Initiate the diagnostic to decode your financial operating system.</p>
+                <button class="btn-primary" onclick="startQuiz()">Initiate Diagnostic</button>
+            </div>
+
+            <div class="step" id="step-2">
+                <span class="eyebrow">Phase 1: Financial Reality Check</span>
+                <h2>Identify Your <span class="gold-text">Current Pattern</span></h2>
+                <p class="lead">Think about the last two years. Which of these frustrating cycles repeats the most?</p>
+                
+                <div class="options-grid">
+                    <div class="option-card" onclick="nextStep(3)">
+                        <div class="option-icon">I</div>
+                        <div class="option-text">I work hard, try new things, and learn constantly, but my income remains completely stuck.</div>
+                    </div>
+                    <div class="option-card" onclick="nextStep(3)">
+                        <div class="option-icon">II</div>
+                        <div class="option-text">I repeat the exact same financial mistakes and boom-and-bust cycles year after year.</div>
+                    </div>
+                    <div class="option-card" onclick="nextStep(3)">
+                        <div class="option-icon">III</div>
+                        <div class="option-text">I know exactly what I need to do to build wealth, but I constantly overthink or delay doing it.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step-3">
+                <span class="eyebrow">Phase 2: The Action Trap</span>
+                <h2>Why Are You <span class="gold-text">Stuck?</span></h2>
+                <p class="lead">When you try to break this financial cycle, what is the biggest obstacle you face?</p>
+                
+                <div class="options-grid">
+                    <div class="option-card" onclick="startDiagnostic()">
+                        <div class="option-icon">I</div>
+                        <div class="option-text">People say 'just manifest it,' but positive thinking doesn't stop my automatic financial behaviors.</div>
+                    </div>
+                    <div class="option-card" onclick="startDiagnostic()">
+                        <div class="option-icon">II</div>
+                        <div class="option-text">Motivation fades. My subconscious habits take over before my logical brain can stop them.</div>
+                    </div>
+                    <div class="option-card" onclick="startDiagnostic()">
+                        <div class="option-icon">III</div>
+                        <div class="option-text">I get paralyzed by over-analysis, or I make impulsive decisions based on excitement and FOMO.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step-4">
+                <h2>Compiling <span class="gold-text">Blueprint...</span></h2>
+                <p class="lead" style="margin-bottom: 40px;">Cross-referencing subconscious behavior with astrological architecture...</p>
+                
+                <div class="scanner-ui">
+                    <div class="scanner-ring"></div>
+                    <div class="terminal-text" id="terminal-log">
+                        </div>
+                </div>
+            </div>
+
+            <div class="step" id="step-5">
+                
+                <div class="report-card">
+                    <span class="eyebrow">Diagnostic Complete</span>
+                    <h1 style="font-size: 3.2rem;">Pattern <span class="gold-text">Identified.</span></h1>
+                    
+                    <p class="lead" style="color: var(--text-primary); font-weight: 400; text-align: center;">
+                        This is not a lack of effort or knowledge. This is a subconscious behavior pattern. Positive thinking and motivation alone cannot override it because they don't change how you automatically react.
+                    </p>
+
+                    <div class="main-vsl-area">
+                        <div class="main-play-icon">▶</div>
+                        <div style="position: absolute; bottom: 20px; color: var(--gold-core); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;">Watch Masterclass Analysis</div>
+                    </div>
+
+                    <p class="lead" style="font-size: 1.1rem; margin-top: 40px; text-align: center;">
+                        The Psycho-Astro Manifestation System™ decodes your behavior first. Over 15 days, we will map your 5 specific pillars (AK, DK, 2nd Lord, GK, Venus House) and rewire the root cause so your decisions change in real life.
+                    </p>
+
+                    <div class="pricing-grid">
+                        <div class="price-tier">
+                            <div class="tier-header">Entry Path</div>
+                            <div class="tier-price">₹999</div>
+                            <ul class="feature-list">
+                                <li>15 Main Audios</li>
+                                <li>15-Day Complete Journey</li>
+                                <li>Basic Framework Access</li>
+                            </ul>
+                            <a href="#" class="btn-outline">Select Entry</a>
+                        </div>
+
+                        <div class="price-tier featured">
+                            <div class="tier-header">The Core Reset</div>
+                            <div class="tier-price">₹2,499</div>
+                            <ul class="feature-list">
+                                <li style="color: var(--text-primary);">All 15 Audios</li>
+                                <li style="color: var(--text-primary);">Worksheets & PDFs</li>
+                                <li style="color: var(--text-primary);">Bonus Content Vault</li>
+                            </ul>
+                            <button class="btn-primary btn-full">Enroll Now</button>
+                        </div>
+
+                        <div class="price-tier">
+                            <div class="tier-header">Premium Path</div>
+                            <div class="tier-price">₹5,999</div>
+                            <ul class="feature-list">
+                                <li>Everything in Core</li>
+                                <li>Live Q&A Sessions</li>
+                                <li>Personalised Reading</li>
+                            </ul>
+                            <a href="#" class="btn-outline">Select Premium</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <div class="testimonials-section">
+            <h3>Proof of <span class="gold-text">Transformation</span></h3>
+            <div class="stars">★★★★★</div>
+            <p class="lead" style="font-size: 1rem; margin-bottom: 30px;">Real screenshots from people who broke their subconscious financial loop.</p>
+            
+            <div class="review-grid">
+                <div class="review-card">
+                    <img src="https://via.placeholder.com/400x300/12100e/D4AF37?text=WhatsApp+Screenshot" alt="Student Review" class="review-img-placeholder">
+                    <div class="review-caption">"My income doubled 30 days after fixing my 2nd House Lord block..."</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://via.placeholder.com/400x300/12100e/D4AF37?text=Email+Screenshot" alt="Student Review" class="review-img-placeholder">
+                    <div class="review-caption">"I stopped impulsive spending and finally saved my first ₹5 Lakhs."</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://via.placeholder.com/400x300/12100e/D4AF37?text=DM+Screenshot" alt="Student Review" class="review-img-placeholder">
+                    <div class="review-caption">"The Darakaraka module explained exactly why I kept self-sabotaging."</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <p style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--gold-light); margin-bottom: 10px; font-style: italic;">"Manifestation doesn't override your pattern. Action does."</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">© 2026 Psycho-Astro Identity Reset. All Rights Reserved.</p>
+            </div>
+        </div>
+        </div>
+
+    <script>
+        const floatingVsl = document.getElementById('floating-vsl');
+
+        // Show floating VSL when quiz starts
+        function startQuiz() {
+            floatingVsl.classList.add('visible'); 
+            nextStep(2);
+        }
+
+        // Move between steps
+        function nextStep(stepNumber) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            const target = document.getElementById('step-' + stepNumber);
+            target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Diagnostic Loading Sequence
+        function startDiagnostic() {
+            nextStep(4);
+            
+            const logs = [
+                "> Decoding subconscious decision patterns...",
+                "> Analyzing Darakaraka (DK) financial defaults...",
+                "> Mapping 2nd House wealth channels...",
+                "> Identifying action blockages and FOMO triggers...",
+                "> Generating Psycho-Astro Blueprint..."
+            ];
+
+            const terminal = document.getElementById('terminal-log');
+            let logIndex = 0;
+
+            const logInterval = setInterval(() => {
+                if (logIndex < logs.length) {
+                    const line = document.createElement('div');
+                    line.className = 'log-line';
+                    line.innerText = logs[logIndex];
+                    terminal.appendChild(line);
+                    
+                    if(terminal.children.length > 3) {
+                        terminal.removeChild(terminal.firstChild);
+                    }
+                    
+                    logIndex++;
+                } else {
+                    clearInterval(logInterval);
+                    setTimeout(() => {
+                        floatingVsl.classList.remove('visible'); // Hide floating VSL on last step
+                        nextStep(5);
+                    }, 800);
+                }
+            }, 700); 
+        }
+    </script>
+</body>
+</html>
